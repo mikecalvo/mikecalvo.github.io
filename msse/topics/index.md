@@ -36,7 +36,7 @@ layout: default
 - Topics: Data Binding, Url Mappings, Filters, Plugins
 - Reading Grails Chapter 10, 7.2-7.6
 
-**Assignment 1 Due**
+<span class="assignment-due">Assignment 1 Due</span>
 
 ---
 
@@ -70,7 +70,9 @@ layout: default
 
 - Topics: AngularJS Introduction, Concepts, Controllers
 - Reading: Grails Chapter 13
-Assignment 2 Due
+
+<span class="assignment-due">Assignment 2 Due</span>
+
 
 ---
 
@@ -96,4 +98,4 @@ Assignment 2 Due
 
 - Topics: Minification, Obfuscation, NodeJS, Grunt
 
-Assignment 3 Due
+<span class="assignment-due">Assignment 3 Due</span>

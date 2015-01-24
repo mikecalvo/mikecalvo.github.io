@@ -1,6 +1,6 @@
 ---
 title: Web Application Development
-layout: post
+layout: default
 ---
 
 # About Me

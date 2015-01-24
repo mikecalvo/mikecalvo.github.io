@@ -49,14 +49,13 @@ layout: default
 
 # A Simple Example
 
-{% highlight groovy %}
-
+``` groovy
 class Person {
   String firstName
   String lastName
   Date dateOfBirth
 }
-{% endhighlight %}
+```
 
 ---
 
@@ -64,16 +63,16 @@ class Person {
 - Basic string literals are defined by single quote
 - Double quoted Strings are called Gstrings and allow for variable substitution
 
-{% highlight groovy %}
+``` groovy
 "${firstName} ${lastName}"
-{% endhighlight %}
+```
 
 - Triple double quotes allow for multi-line strings
 
-{% highlight groovy %}
+``` groovy
 """Name: ${firstName} ${lastName}
           Date of Birth: ${dateOfBirth}"""
-{% endhighlight %}
+```
 
 ---
 
@@ -91,16 +90,16 @@ class Person {
 - Groovy provides shorthand ways of creating collections
 - Lists
 
-{% highlight groovy%}
+``` groovy
 def list = ['a', 'b', 'c']
-{% endhighlight %}
+```
 
 
 - Maps
 
-{% highlight groovy%}
+``` groovy
 def map = [firstName: 'Mike', lastName: 'Calvo']
-{% endhighlight %}
+```
 
 ---
 
@@ -122,7 +121,7 @@ def map = [firstName: 'Mike', lastName: 'Calvo']
 
 # Closure Examples
 
-{% highlight groovy %}
+``` groovy
 def log = { String message -> println message }
 log('hi')
 
@@ -132,20 +131,19 @@ log('bye')
 def adder = { a, b -> a + b }
 println adder(1,2)
 
-{% endhighlight %}
+```
 ---
 
 # _Groovy Style_
 When defined inline closures are usually passed as arguments outside the parenthesis
 
-{% highlight groovy %}
-
+``` groovy
 // Closure is argument to eachLine
 new File('foo.txt').eachLine { println it }
 
 // Closure is argument to constructor
 new Thread { while(true) { sleep(500); check() } }
-{% endhighlight %}
+```
 
 ---
 
@@ -184,7 +182,7 @@ new Thread { while(true) { sleep(500); check() } }
 
 # Example Slurping/Building
 
-{% highlight groovy %}
+``` groovy
 def response = JsonSlurper.parse('{"name": "Mike", "dob": {"month": 7 }}')
 assert response.name == 'Mike'
 assert response.dob.month == 7
@@ -196,8 +194,8 @@ def root = builder.people {
     dob(month: 7)
   }
 }
-assert builder.toString() == '{"people":{"name":"mike", "dob":{"month": 7}}}'
-{% endhighlight %}
+assert builder.toString() == '{"people":{"person":{"name":"mike", "dob":{"month": 7}}}}'
+```
 
 ---
 
@@ -223,7 +221,7 @@ assert builder.toString() == '{"people":{"name":"mike", "dob":{"month": 7}}}'
 
 # Example Operator Overloads
 
-{% highlight groovy %}
+``` groovy
 def list = ['a', 'b']
 list += 'c'
 list << 'd'
@@ -234,7 +232,7 @@ assert list*.name == ['mike', 'matt']
 def map = [name: 'Mike'] + [dob: new Date()]
 assert map.dob
 assert map.name == 'Mike'
-{% endhighlight %}
+```
 
 ---
 
