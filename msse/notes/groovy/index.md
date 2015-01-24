@@ -210,7 +210,7 @@ assert builder.toString() == '{"people":{"person":{"name":"mike", "dob":{"month"
 ---
 
 # _Groovy Style_
-- Don\'t use semicolons
+- Don't use semicolons
 - Use the save navigation operator (?)
   - Example: bean?.property?.value?.method()
 - Use operator overloads
@@ -239,7 +239,7 @@ assert map.name == 'Mike'
 # Groovy Meta Programming
 - Enabling the dynamic elements of Groovy
 - Methods & properties can be added to classes at runtime
-- Methods that don\'t exist at compile time can be invoked at runtime
+- Methods that don't exist at compile time can be invoked at runtime
 
 ---
 
