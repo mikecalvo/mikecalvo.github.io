@@ -21,3 +21,9 @@ layout: default
 ---
 
 ## Assignments
+
+### [Assignment #1](assignments/1)
+
+### [Assignment #2](assignments/2)
+
+### [Assignment #3](assignments/3)
