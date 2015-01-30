@@ -12,7 +12,7 @@ layout: default
 ## Lecture Notes
 
 ### Week 1: [Introduction](notes/introduction/) | [Tools](notes/tools/) | [Groovy](notes/groovy/)
-
+### Week 2: [Grails Intro](notes/grails_intro/) | [Grails Config](notes/grails_config) | [Testing](notes/testing) | [Spock](notes/spock)
 ---
 
 ## [Topic List/Schedule/Reading](topics/)
