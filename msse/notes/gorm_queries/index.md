@@ -2,8 +2,6 @@
 title: Web Application Development
 layout: default
 ---
-footer: © Citronella Software Ltd 2015
-slidenumbers: true
 
 # GORM Queries
 ## Mike Calvo
