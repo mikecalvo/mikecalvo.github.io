@@ -128,12 +128,13 @@ slidenumbers: true
 # Adding Grails Project to Git
 - Create project on git server
 - cd to top folder
-`
+
+``` shell
 git init
 git remote add origin PATH/TO/REPO
 git fetch
 git checkout -t origin/master
-`
+```
 
 ---
 
@@ -208,7 +209,7 @@ git checkout -t origin/master
 - Dyamically created CRUD actions and views for a controller
 - Good starting point for a basic set of app functionality
 
-```
+``` groovy
 class ArtistController {
   static scaffold = true
 }
