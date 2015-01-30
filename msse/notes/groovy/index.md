@@ -1,6 +1,9 @@
----
-title: Web Application Development
-layout: default
+footer: © Citronella Software Ltd 2015
+slidenumbers: true
+# Groovy
+## Mike Calvo
+## mike@citronellasoftware.com
+
 ---
 
 # What Is Groovy?
@@ -48,8 +51,7 @@ layout: default
 ---
 
 # A Simple Example
-
-``` groovy
+```
 class Person {
   String firstName
   String lastName
@@ -62,17 +64,10 @@ class Person {
 # Groovy Strings
 - Basic string literals are defined by single quote
 - Double quoted Strings are called Gstrings and allow for variable substitution
-
-``` groovy
-"${firstName} ${lastName}"
-```
-
+  - “${firstName} ${lastName}”
 - Triple double quotes allow for multi-line strings
-
-``` groovy
-"""Name: ${firstName} ${lastName}
-          Date of Birth: ${dateOfBirth}"""
-```
+“””Name: ${firstName} ${lastName}
+          Date of Birth: ${dateOfBirth}”””
 
 ---
 
@@ -80,26 +75,19 @@ class Person {
 - Variables are not required to be declared with a type
 - The type is given when the variable is assigned
 - Use the def keyword
-- Example: ```def s = 'a string value' // s is a string```
+- Example: def s = ‘a string value’ // s is a string
 - This applies to function return types as well
-- Example: ```def foo() { return 0 } // foo defined to return an int```
+- Example: def foo() { return 0 } // foo defined to return an int
 
 ---
 
 # Collections
 - Groovy provides shorthand ways of creating collections
 - Lists
-
-``` groovy
-def list = ['a', 'b', 'c']
-```
-
+def list = [‘a’, ‘b’, ‘c’]
 
 - Maps
-
-``` groovy
-def map = [firstName: 'Mike', lastName: 'Calvo']
-```
+def map = [firstName: ‘Mike’, lastName: ‘Calvo’]
 
 ---
 
@@ -120,8 +108,7 @@ def map = [firstName: 'Mike', lastName: 'Calvo']
 ---
 
 # Closure Examples
-
-``` groovy
+```
 def log = { String message -> println message }
 log('hi')
 
@@ -132,12 +119,12 @@ def adder = { a, b -> a + b }
 println adder(1,2)
 
 ```
+
 ---
 
 # _Groovy Style_
 When defined inline closures are usually passed as arguments outside the parenthesis
-
-``` groovy
+```
 // Closure is argument to eachLine
 new File('foo.txt').eachLine { println it }
 
@@ -157,7 +144,7 @@ new Thread { while(true) { sleep(500); check() } }
 ---
 
 # Duck Typing
-- Dynamic typing concept that uses an object's set of methods and properties to determine semantics rather than inheritance or implementation of an interface
+- Dynamic typing concept that uses an object’s set of methods and properties to determine semantics rather than inheritance or implementation of an interface
 
 "If something walks like a duck and quacks like a duck then I can refer to that thing as a duck"
 
@@ -175,14 +162,13 @@ new Thread { while(true) { sleep(500); check() } }
 # Parsing Structured Data
 - Groovy excels at parsing and converting hierarchical data into object instances
 - JSON and XML data can easily be converted into Groovy Maps
-- Standard \"Slurper\" Libraries for reading
-- Standard \"Builder\" Libraries for static object -> data conversion
+- Standard "Slurper" Libraries for reading
+- Standard "Builder" Libraries for static object -> data conversion
 
 ---
 
 # Example Slurping/Building
-
-``` groovy
+```
 def response = JsonSlurper.parse('{"name": "Mike", "dob": {"month": 7 }}')
 assert response.name == 'Mike'
 assert response.dob.month == 7
@@ -194,7 +180,7 @@ def root = builder.people {
     dob(month: 7)
   }
 }
-assert builder.toString() == '{"people":{"person":{"name":"mike", "dob":{"month": 7}}}}'
+assert builder.toString() == '{"people":{"name":"mike", "dob":{"month": 7}}}'
 ```
 
 ---
@@ -215,13 +201,12 @@ assert builder.toString() == '{"people":{"person":{"name":"mike", "dob":{"month"
   - Example: bean?.property?.value?.method()
 - Use operator overloads
 - Use map-based constructors
-  - Example: ```new Person(firstName: 'mike', dob: new Date())```
+  - Example: new Person(firstName: 'mike', dob: new Date())
 
 ---
 
 # Example Operator Overloads
-
-``` groovy
+```
 def list = ['a', 'b']
 list += 'c'
 list << 'd'

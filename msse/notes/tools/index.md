@@ -1,6 +1,10 @@
----
-title: Web Application Development
-layout: default
+footer: © Citronella Software Ltd 2015
+slidenumbers: true
+
+# Tools
+## Mike Calvo
+### mike@citronellasoftware.com
+
 ---
 
 # Overview
@@ -18,31 +22,34 @@ layout: default
 - Download available from Oracle
 - Look for Java SE Downloads
 - Be sure to set your JAVA_HOME environment variable
-- Add \$JAVA_HOME/bin to your path
+- Add $JAVA_HOME/bin to your path
 
+^ Google Java SE Downloads and show them the links
 
 ---
 
 # GVM
-- [Groovy Environment Manager](http://gvmtool.net/)
+- [http://gvmtool.net/](Groovy Environment Manager)
 - Helps manage version of Groovy-based tools
 - Groovy
 - Grails
 - Gradle
 - Install GVM:
-  ```$ curl -s get.gvmtool.net | bash```
+  `$ curl -s get.gvmtool.net | bash`
 
 ---
 
 # Use GVM
 - Install Groovy:
-  ```$ gvm install groovy```
+  `$ gvm install groovy`
 - Install Grails:
-```$ gvm install grails```
+`$ gvm install grails`
 - Confirm:
-  ```$ gvm current```
-  ```$ groovy -version```
-  ```$ grails -version```
+  `$ gvm current`
+  `$ groovy -version`
+  `$ grails -version`
+
+^ go out to command line and show gvm in action
 
 ---
 
@@ -90,7 +97,7 @@ https://www.jetbrains.com/estore/students/academic
 - Installing Git
 - Mac: Install Xcode Command Line Tools
 - Windows: Download Windows Git installer
-- Linux: ```$ yum install git```
+- Linux: `$ yum inbstall git`
 
 ---
 
@@ -126,7 +133,9 @@ https://www.jetbrains.com/estore/students/academic
 - Confirm your installation
 - Download and unzip distribution
 - Start Tomcat:
-  - ```$ ./startup.sh```
+  - $ ./startup.sh
+
+^ Show this working locally
 
 ---
 

@@ -1,11 +1,14 @@
----
-title: Web Application Development
-layout: default
+footer: © Citronella Software Ltd 2015
+slidenumbers: true
+# Course Intro
+## Mike Calvo
+### mike@citronellasoftware.com
+
 ---
 
 # About Me
 - 1999 MSSE Graduate
-  - Instructor since 2000
+-- Instructor since 2000
 - Independent Software Consultant
 - CTO Mind Gamez LLC
 
@@ -14,10 +17,10 @@ layout: default
 # Course Objectives
 - Provide hands-on experience creating a functioning web application
 - Provide an understanding of concepts required to implement a full-stack web application
-  - Server
-  - Data
-  - Client
-  - Deployment
+  -- Server
+  -- Data
+  -- Client
+  -- Deployment
 - Learn implementation-specific details with Groovy, Grails, and AngularJS
 - Divide time equally between server and client topics
 - Inspire critical thought and debate
@@ -36,16 +39,16 @@ layout: default
 - Grails: RAD web platform (inspired by Ruby on Rails)
 - JavaScript: the language of the web
 - AngularJS: popular single page application framework
-  - Created by Google
-- Twitter Bootstrap\: CSS and JavaScript library for responsive web UI
+  -- Created by Google
+- Twitter Bootstrap: CSS and JavaScript library for responsive web UI
 
 ---
 
 # Why Groovy/Grails?
 - Easy transition for Java developers
 - Based on many tried and true technologies
-  - Hibernate
-  - Spring
+  -- Hibernate
+  -- Spring
 - Significantly easier than building Java-based web application
 - Dynamic languages are dominating the web
 
@@ -53,7 +56,7 @@ layout: default
 
 # Why AngularJS?
 - JavaScript development used to suck
-- People realized it\'s not going anywhere
+- People realized it's not going anywhere
 - Great frameworks and patterns emerged
 - Single-page apps are what people expect
 - AngularJS is the most widely adopted single-page app framework today
@@ -65,6 +68,7 @@ layout: default
 - PHP
 - .NET
 - Backbone
+_I welcome comparisons and discussion especially from those with direct experience_
 
 ---
 
@@ -90,17 +94,18 @@ layout: default
 - IntelliJ IDEA
 -- Get an [academic license](https://www.jetbrains.com/estore/students/)
 - Develop on *nix
-  - Mac
-  - Cygwin
-  - Linux
+-- Mac
+-- Cygwin
+-- Linux
 - Get familiar with Git
 - Pick a partner today
 
 ---
 
 # Getting Help
+
 - Your partner
-- [Stackoverflow](http://stackoverflow.com)
+- http://stackoverflow.com
   - Your question has likely been answered here
 - Email/iMessage/Google Chat: mjcalvo@gmail.com
 - Something Urgent: 612-760-0430
