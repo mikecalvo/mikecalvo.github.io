@@ -109,8 +109,7 @@ slidenumbers: true
   `grails -version`
 - Change directory to where you want project to live
   - Top level directory will be created for you
-
-##`grails create-app <project-name>`
+- `grails create-app <project-name>`
 
 ^ Go do this and show them around directory structure
 ^ Grails wrapper
@@ -129,7 +128,7 @@ slidenumbers: true
 - Create project on git server
 - cd to top folder
 
-``` shell
+```
 git init
 git remote add origin PATH/TO/REPO
 git fetch
