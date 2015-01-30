@@ -202,4 +202,4 @@ layout: default
 - Grails Interactive Console
   - Makes interactive test debugging faster
 - Complete documentation at grails.org
-  - http://grails.org/doc/latest/guide/testing.html
+  - [http://grails.org/doc/latest/guide/testing.html](http://grails.org/doc/latest/guide/testing.html)
