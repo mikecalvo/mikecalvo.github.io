@@ -1,3 +1,7 @@
+---
+title: Web Application Development
+layout: default
+---
 # Week 1
 - Topics: Introductions, Tools, Overview, Groovy
 - Concepts: Dynamic Programming Languages
