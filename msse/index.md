@@ -27,3 +27,4 @@ layout: default
 
 ### Week 1: [Introduction](notes/introduction/) | [Tools](notes/tools/) | [Groovy](notes/groovy/)
 ### Week 2: [Grails Intro](notes/grails_intro/) | [Grails Config](notes/grails_config) | [Testing](notes/testing) | [Spock](notes/spock)
+### Week 3: [GORM Basics](notes/gorm_basics) | [GORM Queries](notes/gorm_queries) | [GORM Data](notes/gorm_data) | [NOSQL](notes/nosql)

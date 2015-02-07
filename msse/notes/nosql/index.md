@@ -116,12 +116,14 @@ layout: default
 - Install MongoDB plugin via BuildConfig.groovy:
   ` compile ":mongodb:1.3.0"`
 - Update Config.groovy with MongoDB instance info:
-```
+
+``` groovy
 grails{ mongo {
   host = 'host'
   port = 12345
-  databaseName = 'datanbase'
-  }}
+  databaseName = 'database'
+  }
+}
 ```
 
 ---
@@ -134,7 +136,8 @@ grails{ mongo {
 
 ---
 # Example MongoDB Mapped Domain
-```
+
+``` groovy
 class Audit {
 
   static mapWith = "mongo"
@@ -167,7 +170,8 @@ class Audit {
 
 ---
 # Embedded Example
-```
+
+``` groovy
 class Customer {
   String name
   String email
@@ -203,7 +207,8 @@ class Address {
 
 ---
 # Dynamic Attributes Example
-```
+
+``` groovy
 class Audit {
 
   static mapWith = "mongo"

@@ -2,7 +2,8 @@
 title: Web Application Development
 layout: default
 ---
-# HTML and CSS
+
+# HTML and CSS Overview
 ## Mike Calvo
 ## mike@citronellasoftware.com
 

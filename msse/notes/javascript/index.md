@@ -153,9 +153,9 @@ obj.hasOwnProperty('color') // false
 # Looping Over Properties
 
 ``` javascript
-var object = [name: 'a', date: new Date(), scores: [1, 2, 3]];
+var object = { name: 'a', date: new Date(), scores: [1, 2, 3] };
 for (var p in object) {
-  if (object.hasOwnProperty('p')) {
+  if (object.hasOwnProperty(p)) {
     console.log(p+': '+object[p]);
   }
 }
@@ -167,9 +167,10 @@ for (var p in object) {
 
 ``` javascript
 var object = [name: 'Mike', type: 'employee'];
-delete object.type
+delete object.type; // Now object == [name: 'Mike']
 
-// Now object == [name: 'Mike']
+var array = ['a', 'b', 'c'];
+delete array[1]; // ['a', undefined, 'c']
 ```
 
 ---
@@ -320,6 +321,52 @@ object.value; // !!! Undefined !!!
 sendMyRequest(url, function(status) {
   console.log('Request completed.  Status: '+status);
 });
+```
+
+---
+# Regular Expressions
+- Core type in JavaScript
+- /regex/
+- Use test() to check for match
+
+---
+# RegEx Example
+
+``` javascript
+var parse_number = /^-?\d+(?:\.\d*)?(?:e[+\-]?\d+)?$/i
+
+parse_number.test('1');           // true
+parse_number.test('98.6');        // true
+parse_number.test('123.45E-67');  // true
+parse_number.test('192.168.1.1'); // false
+
+```
+
+---
+# JavaScript in HTML
+- Javascript code can exist within `<script>` tags
+- Externally defined Javascript files can be included using `src` attribute
+- Script tags can live in the head and the body
+- Script tags are executed in order within the page
+- JavaScript code has accss to the HTML document (DOM)
+
+---
+# Example HTML Scripts
+
+``` html
+<!DOCTYPE html>
+<html><head>
+  <script src="angular.js"></script>
+  <script>
+    var app = {};
+  </script>
+  </head>
+  <body>
+    <script>
+      document.body.innerHTML += '<div>hi</div>';
+    </script>
+  </body>
+</html>
 ```
 
 ---

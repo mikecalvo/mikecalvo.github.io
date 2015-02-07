@@ -1,15 +1,9 @@
----
-title: Topics and Reading
-layout: default
-
----
 # Week 1
 - Topics: Introductions, Tools, Overview, Groovy
 - Concepts: Dynamic Programming Languages
 - Reading: Grails Chapter 2
 
 ---
-
 # Week 2
 - Topics: Grails Basics, Testing, Spock
 - Concepts: Grails dependencies
@@ -36,13 +30,13 @@ layout: default
 - Topics: Data Binding, Url Mappings, Filters, Plugins
 - Reading Grails Chapter 10, 7.2-7.6
 
-<span class="assignment-due">Assignment 1 Due</span>
-
 ---
 
 # Week 6
 - Topics: Security, Web Services, REST
 - Reading Grails Chapter 11, 12, http://grails.org/doc/latest/guide/security.html
+
+# Assignment 1 Due
 
 ---
 
@@ -57,40 +51,43 @@ layout: default
 # Week 8
 
 - Topics: Introduction to HTML, CSS, JavaScript
+- Reading: Angular Chapter 5
 
 ---
 
 # Week 9
 
-- Topics: jQuery, underscore, Mobile views, Twitter Bootstrap
+- Topics: NodeJS, Bower, Twitter Bootstrap, Angular Introduction
+- Reading: Grails Chapter 13, Angular Chapter 2, 3
 
 ---
 
 # Week 10
 
-- Topics: AngularJS Introduction, Concepts, Controllers
-- Reading: Grails Chapter 13
-
-<span class="assignment-due">Assignment 2 Due</span>
-
+- Topics: Controllers, Scope, Routing
+- Reading: Angular Chapter 6, 7, 13
+# Assignment 2 Due
 
 ---
 
 # Week 11
 
-- Topics: AngularJS: Routers, Services, Resources
+- Topics: AngularJS: AJAX, Resources
+- Reading: Angular Chapter 7, 18, 21
 
 ---
 
 # Week 12
 
-- Topics: AngularJS: Resources, Directives, Filters, Validation
+- Topics: AngularJS: Directives, Filters, Validation
+- Reading: Angular Chapter 10
 
 ---
 
 # Week 13
 
 - Topics: Functional and E2E Testing: Jasmine, Protractor
+- Reading: Angular Chapter 25
 
 ---
 
@@ -98,4 +95,4 @@ layout: default
 
 - Topics: Minification, Obfuscation, NodeJS, Grunt
 
-<span class="assignment-due">Assignment 3 Due</span>
+# Assignment 3 Due
