@@ -343,12 +343,13 @@ class OrderLine {
 ---
 
 # Example Sorted One-to-many
+
 ```  groovy
 class Order {
   Date orderDate
   static hasMany = [lines: OrderLine]
   static mapping {
-    lines sort:'lineNumber' // this affects Order.lines.each calls
+    lines sort:'number' // this affects Order.lines.each calls
   }
 }
 
@@ -375,6 +376,7 @@ class OrderLine {
 ---
 
 # Self-referring Many-to-many Example
+
 ```  groovy
 class User {
   static hasMany = [followers : User, following : User]

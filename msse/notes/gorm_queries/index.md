@@ -94,7 +94,7 @@ log4j = {
 
 # Easy Counting and Listing
 - GORM provides static count() and list() methods on each domain class
-- list() performs a simplequery operations with limited control on results
+- list() performs a simple query operations with limited control on results
   - max, order, offset, fetch, sort are all supported
 - count() returns a count of all items in the corresponding table
 
@@ -120,6 +120,7 @@ log4j = {
 ---
 
 # Example Criteria Query
+
 ``` groovy
 User.withCriteria {
   and {
