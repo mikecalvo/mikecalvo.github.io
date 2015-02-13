@@ -61,3 +61,101 @@ layout: default
 - Configure base url
 - All REST methods provided by default
 - Customizable
+
+---
+# Setting up Angular on Grails
+1. Install Asset Pipeline Plugin
+1. Install node and bower
+1. Use bower to install jquery and angular
+1. Add references to application.js
+
+---
+# Install AssetPipeline Plugin
+- Edit grails-app/conf/BuildConfig.groovy
+- Add to plugins section:
+`compile ":asset-pipeline:2.1.1"`
+
+---
+# Installing Node and Bower
+- Go to [http://nodejs.org/](http://nodejs.org/)
+- On a Mac with Homebrew, run:
+  `brew install nodejs`
+- After Node is installed, install Bower:
+  `npm install bower -g`
+
+---
+# Use Bower to install jQuery and Angular
+- cd to grails-app/assets directory
+  `bower install jquery`
+  `bower install angular`
+- Generate bower.json file:
+  `bower init`
+
+---
+# Add JQuery and Angular to application.js
+- assets/javascript/application.js
+- Manifest file for including other javascript assets
+- Omit the bower_components folder:
+
+```
+//= require jquery/dist/jquery
+//= require angular/angular
+```
+
+---
+# Grails Asset Pipeline Plugin
+- Comes as part of Grails
+- Manages static web assets in Grails applications
+  - Scripts, CSS, images
+- Simplifies bundling and uglifying scripts for deployment
+- Options for including assets: tags and manifests
+- Building war file will 'compile' assets for deployment
+
+---
+# Asset Pipleline Tags:
+
+``` html
+<head>
+  <asset:javascript src="application.js" />
+  <asset:stylesheet href="application.css" />
+</head>
+```
+
+---
+# Manifests
+- Purpose: instructions for including files into your pages
+- Define included assets in one file and use <asset> tag to include that file
+- Directives provide include functionality
+
+---
+# Asset Pipeline Directives
+- require: include a single file
+- require_self: include the body of the current file
+- require_tree: include all files and subdirectories in the path
+- require_full_tree: used for including files from plugins
+
+---
+# Initializing Angular App
+- Creating an Angular App with a controller:
+
+``` javascript
+var app = angular.module('app', []);
+app.controller('welcomeController', function($scope) {
+  $scope.message = 'Welcome to the Muzic App'l
+});
+```
+---
+
+# Angular HTML
+- HTML page must define an 'ng-app' tag which marks the start of the Angular app
+- HTML element defines an ng-controller attribute which assigns the controller for that part of the page:
+
+``` html
+<html>
+   <body ng-app="app">
+      <div ng-controller="welcomeController">
+      {{ message }}
+      </div>
+   </body>
+</html>
+```

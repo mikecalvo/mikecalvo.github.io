@@ -58,7 +58,7 @@ layout: default
 - Decides what happens next
   - Execute another action
   - Renders a view page
-  - Directly rener a response
+  - Directly render a response
 
 ---
 # Controller Autowiring
@@ -123,7 +123,8 @@ layout: default
 
 ---
 # Crazy Simple Controller
-```
+
+``` groovy
 class ArtistController {
 
   // Maps to /artist/get/id
@@ -159,7 +160,8 @@ class ArtistController {
 
 ---
 # Crazy Simple GSP
-```html
+
+``` html
 <html>
 <body>
 Details for <span id="name">${artist.name}</span>
@@ -241,7 +243,8 @@ Details for <span id="name">${artist.name}</span>
 
 ---
 # Example Model
-```
+
+``` groovy
 class SongController {
   def show() {
     def song = Song.get(params.id)
@@ -267,7 +270,8 @@ class SongController {
 
 ---
 # Example HTTP Method Restriction
-```
+
+``` groovy
 class SomeController {
   def allowedMethods = [modify: 'POST', delete['POST', 'DELETE']]
 
@@ -307,7 +311,8 @@ class FileController {
 
 ---
 # Example Binary Response
-```
+
+``` groovy
 class ProfileController {
 
   def image() {
@@ -323,7 +328,8 @@ class ProfileController {
 
 ---
 # Controller Interceptors
-```
+
+``` groovy
 def beforeInterceptor = [action: this.&auth, except: 'login']
 // defined with private scope, so it's not considered an action
 private auth() {
@@ -356,7 +362,8 @@ def login() {
 
 ---
 # Essential Tags
-```
+
+``` html
 <g:if test="${session.user != null}">
   Welcome ${session.user.firstName}
 </g:if>
@@ -371,7 +378,8 @@ def login() {
 
 ---
 # Link Tags
-```
+
+``` html
 <g:link controller="artist" action="create">
   New Artist
 </g:link>
@@ -386,7 +394,8 @@ def login() {
 
 ---
 # Form Tags
-```
+
+``` html
 <g:form controller="user" action="register"> ... </g:form>
 
 <g:textField name="firstName" value="${user?.firstName}" />
@@ -419,17 +428,18 @@ def login() {
 
 ---
 # Example TagLib
-```
+
+``` groovy
 class DateTagLib {
   def dateFromNow { attrs->
     def niceDate = formatNiceDate(attrs.date)
     out << niceDate
   }
 }
+```
 
 In page:
-<g:dateFromNow date="${post.created}" />
-```
+`<g:dateFromNow date="${post.created}" />`
 
 ---
 # TagLib Namespace
@@ -456,6 +466,7 @@ In page:
 
 ---
 # Example Layout
+
 ```html
 <html>
   <head>
@@ -470,6 +481,7 @@ In page:
 
 ---
 # Triggering a Layout
+
 ```html
 <html>
   <head>
