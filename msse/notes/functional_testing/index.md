@@ -40,7 +40,7 @@ layout: default
 
 ---
 # Example Selenium Java Test
-```
+``` groovy
 WebDriver driver = new FirefoxDriver();
 driver.get(myAppUrl);
 driver.findElement(By.id('textInput')).sendKeys('U2');
@@ -58,7 +58,7 @@ assert driver.findElement(By.id('bandNameHeading')).getText() == 'U2';
 
 ---
 # Geb DSL Example
-```
+``` groovy
 import geb.Browser
 
 Browser.drive {
@@ -110,8 +110,8 @@ Browser.drive {
 
 ---
 # BuildConfig.groovy
-```
-plugins{
+``` groovy
+plugins {
   test "org.grails.plugins:geb:0.10.0"
 }
 
@@ -136,7 +136,7 @@ dependencies {
 # Remote Control Plugin
 - Allows a external process to send commands to Grails app
 - Pass closures to RemoteControl instance:
-```
+``` groovy
 def remote = RemoteControl()
 def count = remote {
   // This will get run inside Grails server and returned to test!
@@ -147,7 +147,7 @@ def count = remote {
 ---
 # Installing Remote Control Plugin
 BuildConfig.groovy:
-```
+``` groovy
 dependencies {
   // ... other stuff ...
   compile ":remote-control:1.5"
@@ -163,7 +163,7 @@ dependencies {
 
 ---
 # Exmaple Get Artist Page
-```
+``` groovy
 import geb.Page
 
 class ArtistGetPage extends Page {
@@ -180,7 +180,7 @@ class ArtistGetPage extends Page {
 
 ---
 # Example Geb Functional Test
-```
+``` groovy
 class ArtistFunctionalSpec extends GebSpec {
 
   // setup code...
@@ -206,7 +206,7 @@ class ArtistFunctionalSpec extends GebSpec {
 
 ---
 # Simple GebConfig.groovy
-```
+``` groovy
 import org.openqa.selenium.phantomjs.PhantomJSDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 
@@ -217,7 +217,7 @@ driver = {
 
 ---
 # Running Functional Tests
-`grailsw test-app -functional`
+- `grailsw test-app functional:`
 - Launches the grails app first
 - Runs all tests in tests/functional
 
@@ -227,5 +227,5 @@ driver = {
 - Interact with HTML form elements
 - Test file downloading
 - Much more:
-  - http://www.gebish.org/manual/current/index.html
-  - http://www.gebish.org/manual/current/testing.html
+  - [http://www.gebish.org/manual/current/index.html](http://www.gebish.org/manual/current/index.html)
+  - [http://www.gebish.org/manual/current/testing.html](http://www.gebish.org/manual/current/testing.html)

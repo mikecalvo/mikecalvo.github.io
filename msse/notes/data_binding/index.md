@@ -25,7 +25,7 @@ layout: default
 
 ---
 # Action Argument Examples
-```
+``` groovy
 def addPost(Long userId, String content) {
   def user = User.get(userId)
   user.addComment(content)
@@ -42,7 +42,7 @@ def findComment(@RequestParameter('form_comment')String comment) {
 - HTTP request parameters can be assigned, in bulk, to domain instances
 - Parameters must match domain property names
 
-```
+``` groovy
 def create() {
   def post = new Post(params)
   post.save()
@@ -74,7 +74,7 @@ def create() {
 
 ---
 # Command Object Example
-```
+``` groovy
 class UserRegistrationCommand {
   String loginId
   String password
@@ -102,7 +102,7 @@ class UserRegistrationCommand {
 - File data should be mapped to byte array
 - GSP should contain an uploadForm and a file input:
 
-```
+``` html
 <g:uploadForm action="upload">
   Photo: <input name="photo" type="file" />
   <g:submitButton name="upload" value="Upload" />
@@ -113,7 +113,7 @@ class UserRegistrationCommand {
 # Receiving File in Action
 - File can be mapped to a domain property or saved to disk
 
-```
+``` groovy
 class PhotoUploadCommand {
   byte[] photo
   String loginId

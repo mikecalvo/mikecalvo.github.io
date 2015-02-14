@@ -11,7 +11,7 @@ layout: default
 # Week 2
 - Topics: Grails Basics, Testing, Spock
 - Concepts: Grails dependencies
-- Reading: Grails Chapter 1, 9, https://code.google.com/p/spock/wiki/SpockBasics
+- Reading: Grails Chapter 1, 9, [https://code.google.com/p/spock/wiki/SpockBasics](https://code.google.com/p/spock/wiki/SpockBasics)
 
 ---
 
@@ -38,7 +38,7 @@ layout: default
 
 # Week 6
 - Topics: Security, Web Services, REST
-- Reading Grails Chapter 11, 12, http://grails.org/doc/latest/guide/security.html
+- Reading Grails Chapter 11, 12, [http://grails.org/doc/latest/guide/security.html](http://grails.org/doc/latest/guide/security.html)
 
 # Assignment 1 Due
 

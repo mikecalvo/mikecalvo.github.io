@@ -31,4 +31,9 @@ layout: default
 
 ### Week 3: [GORM Basics](notes/gorm_basics) | [GORM Queries](notes/gorm_queries) | [GORM Data](notes/gorm_data) | [NOSQL](notes/nosql)
 
-### Week 4: [Web Basics](notes/web_basics) | [Grails Controllers](notes/controllers_views) | [Functional Testing](notes/functional_testing/)
+### Week 4: [Web Basics](notes/web_basics) | [Grails Controllers and Views](notes/controllers_views) | [Functional Testing](notes/functional_testing/)
+
+### Week 5: [Data Binding](notes/data_binding) | [Url Mappings](notes/url_mappings) | [Filters](notes/filters) | [Plugins](notes/plugins)
+
+### Week 6: [Security](notes/security) | [Rest](notes/rest)
+  - Assignment 1 Due
