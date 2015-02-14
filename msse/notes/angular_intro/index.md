@@ -62,28 +62,70 @@ layout: default
 - All REST methods provided by default
 - Customizable
 
+# Angular Dependencies
+- Angular requires jQuery
+- Must be included in the page before the angular include
+
 ---
 # Setting up Angular on Grails
-1. Install Asset Pipeline Plugin
-1. Install node and bower
-1. Use bower to install jquery and angular
+1. Update Asset Pipeline Plugin
 1. Add references to application.js
 
 ---
 # Install AssetPipeline Plugin
 - Edit grails-app/conf/BuildConfig.groovy
-- Add to plugins section:
+- Edit update the asset pipeline plugin:
 `compile ":asset-pipeline:2.1.1"`
 
 ---
-# Installing Node and Bower
-- Go to [http://nodejs.org/](http://nodejs.org/)
-- On a Mac with Homebrew, run:
-  `brew install nodejs`
-- After Node is installed, install Bower:
-  `npm install bower -g`
+# Asset Pipeline
+- Grails plugin to make including of web assets into pages easier
+- Included by default in Grails projects
+- Assets are placed in grails-app/assets by convention
+- Supports javascript, css and images
 
 ---
+# Asset Pipeline Directives
+- Files in the assets folder can contain directives
+- Directives (special comments) instruct the file to include other files when serving this file
+- Asset files are requested in GSP files via the `<asset>` tag:
+
+``` html
+<head>
+  <asset:stylesheet href="aplication.css"/>
+  <asset:javascript src="application.js"/>
+</head>
+```
+
+---
+# Example Directives
+- Include a specific file:
+`//= require jquery/dist/jquery`
+- Include all files in a directory:
+`//= require_tree .`
+- Include the contents of the resource
+`//= require_self`
+- Files in the assets folder are flattened up one level
+
+---
+# Including Bower Components
+- We configured Bower to install components into assets/bower_components
+- We can now include bower assets using resources
+- By convention these are included in the files:
+  - assets/javascript/application.js
+  - assets/stylesheets/application.css
+
+---
+# Include jQuery and Angular
+- Example application.js
+  - We don't need the bower_components because they are rolled up
+
+``` javascript
+//= require jquery/dist/jquery
+//= require angular/angular
+//= require_tree .
+//= require_self
+```
 # Use Bower to install jQuery and Angular
 - cd to grails-app/assets directory
   `bower install jquery`
@@ -151,11 +193,38 @@ app.controller('welcomeController', function($scope) {
 - HTML element defines an ng-controller attribute which assigns the controller for that part of the page:
 
 ``` html
-<html>
    <body ng-app="app">
       <div ng-controller="welcomeController">
       {{ message }}
       </div>
    </body>
+```
+
+---
+
+# Complete Example
+
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+  <asset:stylesheet href="aplication.css"/>
+  <asset:javascript src="application.js"/>
+
+</head>
+
+<body ng-app="app">
+
+<div ng-controller="welcomeController">
+  {{ message }}
+</div>
+
+<script>
+  var app = angular.module('app', []);
+  app.controller('welcomeController', function ($scope) {
+    $scope.message = 'Welcome to the Muzic App'
+  })
+</script>
+</body>
 </html>
 ```

@@ -30,7 +30,7 @@ layout: default
 
 # Basic Document Structure
 
-```
+``` html
 <!DOCTYPE html>
 <html>
   <head>
