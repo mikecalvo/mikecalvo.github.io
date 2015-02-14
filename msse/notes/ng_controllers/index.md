@@ -246,20 +246,94 @@ $scope.savePlay = function() {
 ```
 
 ---
-# Dependencies
+# Creating Dynamic HTML Attributes
+- If your element id requires a dynamic value, use ng-id
+- If your class requires a dynamic value (dynamically styled) use ng-class
+
+``` html
+<tr ng-repeat="artist in artists">
+  <td ng-id="artist-name-{{ artist.id }}"> {{ artist.name }} </td>
+  <td ng-class="{'featured': isFeatured(artist)}"> {{ artist.status }}</td>
+</tr>
+```
+
+---
+# Select Control
+- Angular provides support for the select/dropdown control
+- ng-options directive used to populate the options
+- Values can be objects
+  - Different properties can be used for display labels and selected values
+- Controller generally populates the list that backs the select
+
+---
+# Example ng-options
+
+``` html
+<select ng-options="artist.id as artist.name for artist in artists" ng-model="selected">
+  <option value="">Pick One</option>
+</select>
+```
+
+``` javascript
+angular.module('app').controller('songController', function($scope) {
+  $scope.selected = undefined;
+  $scope.artists = ['U2', 'The Smiths', 'The Cure', 'Stereolab'];
+});
+
+```
 
 ---
 # Watching Scope
+- Controllers can monitor scope state changes
+- $scope.$watch('value', callback)
+  - callback called any time the $scope.value changes
+- $scope.$watchCollection('collection', callback)
+  - callback called any time something added or removed
 
 ---
-# App Routes
+# Watch Scope Example
+
+``` javascript
+$scope.$watch('songStyle', function(style) {
+  if (style === 'Classical') {
+    $scope.song.composer = {};
+  } else if (style == 'Rock') {
+    $scope.song.explicitLyrics = false;
+  }
+});
+```
 
 ---
-# Sub views
+
+# Angular Opinions
+- Controllers and views have specific functions
+- They should be used for specific things and only those specific things
+- What are they?
 
 ---
-# Angular Plugins/Dependencies
-- ui-router
+# Controllers Should
+- Initialize the scope
+- Contain functionality required by the view to present the model
+- Contain functionality to update the scope based on user interaction
 
 ---
-# Modular Components
+# Controllers Should Not
+- Manipulate the DOM
+- Persist data
+- Manipulate data outside the scope
+
+---
+# Views Should
+- Contain markup required to present data to the user
+- Contain minimal amounts of logic relating to the presentation of the data
+
+---
+# Views Should Not
+- Contain any complex logic
+- Contain any logic that alters the model
+
+---
+# Summary
+- Controllers provide data and functionality to views
+- Views are HTML-based UI with special angular attributes called directives
+- The Views and Controllers share data via the scope
