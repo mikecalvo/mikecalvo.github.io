@@ -332,8 +332,8 @@ Matches all h1 elements with a class attribute of “headline”
 
 ---
 # Adding JavaScript
-- Inline: <script> element
-- External file: <script src="file_path">
+- Inline: `<script>` element
+- External file: `<script src="file_path">`
 - Typically placed in HEAD of document but can exist within body as well
 - Code executed in order as found within the document
 
