@@ -208,7 +208,7 @@ app.controller('welcomeController', function($scope) {
 <!DOCTYPE html>
 <html>
 <head>
-  <asset:stylesheet href="aplication.css"/>
+  <asset:stylesheet href="application.css"/>
   <asset:javascript src="application.js"/>
 
 </head>
