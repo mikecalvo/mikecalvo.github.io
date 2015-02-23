@@ -40,6 +40,7 @@ layout: default
 
 ---
 # Example Selenium Java Test
+
 ``` groovy
 WebDriver driver = new FirefoxDriver();
 driver.get(myAppUrl);
@@ -58,6 +59,7 @@ assert driver.findElement(By.id('bandNameHeading')).getText() == 'U2';
 
 ---
 # Geb DSL Example
+
 ``` groovy
 import geb.Browser
 
@@ -96,11 +98,17 @@ Browser.drive {
 
 ---
 # Page Object Pattern
-- Geb and Selenium support a page-oriented approach
+- Geb encourages a page-oriented approach
 - Define Page objects that represent the key interaction elements of a page
 - Pages are placed, by convention, in a sub-package called pages
 - The test or specification tells the driver to navigate to a page
 - Elements exposed by Page are available to the test or spec
+
+---
+# Benefits of Page Object Pattern
+- All page-specific details are contained in the page Object
+- Create logical representations of the page that remain more consistent than DOM
+- Many tests can reuse common page definitions
 
 ---
 # Installing Geb Grails Plugin
@@ -110,6 +118,7 @@ Browser.drive {
 
 ---
 # BuildConfig.groovy
+
 ``` groovy
 plugins {
   test "org.grails.plugins:geb:0.10.0"
@@ -136,6 +145,7 @@ dependencies {
 # Remote Control Plugin
 - Allows a external process to send commands to Grails app
 - Pass closures to RemoteControl instance:
+
 ``` groovy
 def remote = RemoteControl()
 def count = remote {

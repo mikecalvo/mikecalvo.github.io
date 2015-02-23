@@ -79,7 +79,7 @@ class AppFilters {
 ```
 
 ---
-Filter Dependencies
+# Filter Dependencies
 - Filters can be applied in order
   - Add the 'dependsOn' field to mark filters to be applied first
 

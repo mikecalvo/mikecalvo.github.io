@@ -25,6 +25,7 @@ layout: default
 
 ---
 # Action Argument Examples
+
 ``` groovy
 def addPost(Long userId, String content) {
   def user = User.get(userId)
@@ -114,16 +115,23 @@ class UserRegistrationCommand {
 - File can be mapped to a domain property or saved to disk
 
 ``` groovy
+def upload() {
+  def file = request.getFile('photo')
+  file.transferTo(new File(basePhotoDir+'/'+params.loginId))
+}
+```
+
+---
+# Receiving File as Command
+
+``` groovy
 class PhotoUploadCommand {
   byte[] photo
   String loginId
 }
-def upload() {
+
+def upload(PhotoUploadCommand puc) {
   User.findByLoginId(puc.loginId)
   user.photo = puc.photo
-
-  // OR
-  def file = request.getFile('photo')
-  file.transferTo(new File(basePhotoDir+'/'+params.loginId))
 }
 ```
