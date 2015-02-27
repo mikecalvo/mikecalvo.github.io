@@ -74,7 +74,7 @@ layout: default
 
 ---
 # HTML Escaping
-- Code in HTML must exist within a <script> element
+- Code in HTML must exist within a `<script>` element
 - Replace every `<`, `>` character with the HTML escaped equivalent
   - `&lt;`
   - `&gt;`
