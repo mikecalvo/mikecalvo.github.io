@@ -20,6 +20,7 @@ layout: default
 - Began to emerge at the dawn of the century
 - Developed by the W3C Working Group and industry consortiums
 
+---
 # Elements of XML Web Services
 - Define standard request and response XML structures
 - SOAP - Simple Object Access Protocol
@@ -194,10 +195,10 @@ class Post {
 # UrlMappings/RestController Approach
 - grails-app/conf/UrlMappings.groovy contains definitions for how URLs are mapped to controllers
 - URLs can be mapped as 'resources' or 'resource' in this file:
-  `"/api/artists"(resources: 'artistRest')` for resources with multiple values
-  `"/api/config"(resource: 'configRest')` for resources with a single value
+  `"/api/artists"(resources: 'artistRest')` multiple values
+  `"/api/config"(resource: 'configRest')` single value
 - Specify the controller name for the resource
-- Create this contorller and make it a subclass of RestfulController
+- Create this controller and make it a subclass of RestfulController
 
 ---
 # Muzic Artist REST Resource
@@ -211,11 +212,10 @@ class Post {
 
 ---
 # Limitations of @Resource and RestfulController Approaches
-- Response payloads too closely tied to domain model
-  - Updates to domain model may unintentionally break clients
-  - Timeline for API changes may be different than timeline for business or domain  changes
-  - May not want to expose all fields of domain model to clients
-  - Includes implementation-specific fields like the Groovy Type
+- Updates to domain model may unintentionally break clients
+- Timeline for API changes may be different than timeline for business or domain  changes
+- May not want to expose all fields of domain model to clients
+- Includes implementation-specific fields like the Groovy Type
 - Error handling/reporting a bit generic
 
 ---
