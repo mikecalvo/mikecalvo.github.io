@@ -75,7 +75,12 @@ layout: default
 # Beautiful CSS
 - Styling for semantic elements (Headings, paragraphs, emphasize, small ,etc)
 - Alignment classes: text-left, text-center, text-right
-- Code blocks: <code>, <kbd>, <var>
+- Code blocks:
+
+  ```html
+  <code>, <kbd>, <var>
+  ```
+
 - Tables - row seperators, nice headers, striped rows, borders, hover
 - Forms - clean labels, inline forms, placeholders, horizontal forms, validation
 

@@ -35,5 +35,27 @@ layout: default
 
 ### Week 5: [Data Binding](notes/data_binding) | [Url Mappings](notes/url_mappings) | [Filters](notes/filters) | [Plugins](notes/plugins)
 
-### Week 6: [Security](notes/security) | [Rest](notes/rest)
+### Week 6: [Security](notes/security)
   - Assignment 1 Due
+
+### Week 7: [REST](notes/rest) | [Services](notes/services)
+  - Code Review Group 1
+
+### Week 8: [HTML and CSS](notes/html_css) | [JavaScript](notes/javascript) | [Bootstrap](notes/bootstrap)
+
+### Week 9: [Node, Grunt, Bower](notes/node) | [Intro to Angular](notes/angular)
+
+### Week 10: [Angular Controllers](notes/ng_controllers) | [Angular Routing](notes/ng_routing)
+- Assignment 2 Due
+- Code Review Group 2
+
+### Week 11: [Angular Bootstrap](notes/ng_bootstrap) | [Angular REST](notes/ng_rest)
+
+### Week 12: [Angular Services](notes/ng_services) | [Angular Validation](notes/ng_validation)
+
+
+### Week 13: [Angular Directives](notes/ng_directives) | [Angular Filters](notes/ng_filters)
+
+### Week 14: [Messaging](notes/messaging) | [Scheduling](notes/scheduling)
+- Assignment 3 Due
+- Code Review Group 3

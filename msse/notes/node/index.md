@@ -262,7 +262,7 @@ module.exports = function (grunt) {
 ```
 
 ---
-# Integrating Grunt with Grails
+# Integrating npm, Bower and Grunt with Grails
 - Tie running of the grunt to the normal Grails build
 - Add a file called '_Events.groovy' to grails-app/scripts
 - This file can be used to tie into Grails build process events
@@ -272,9 +272,49 @@ module.exports = function (grunt) {
 
 ``` groovy
 eventCompileStart = { kind ->
+  executeNpmInstall()
+  executeBowerInstall()
   executeGruntTasks()
 }
 
+```
+
+---
+# _Events.groovy (continued)
+
+```
+private void executeNpmInstall() {
+  def npmInstall = "npm install"
+  println "| npm install..."
+  def proc = npmInstall.execute()
+  proc.waitFor()
+  if (proc.exitValue() != 0) {
+    println "Error installing npm dependencies"
+    println "Output: ${proc.in.text}"
+  }
+}
+```
+
+---
+# _Events.groovy (continued)
+
+``` groovy
+private void executeBowerInstall() {
+  def bowerInstall = "node_modules/.bin/bower install"
+  println "| bower install..."
+  def proc = bowerInstall.execute()
+  proc.waitFor()
+  if (proc.exitValue() != 0) {
+    println "Error installing bower dependencies"
+    println "Output: ${proc.in.text}"
+  }
+}
+```
+
+---
+# _Events.groovy (end)
+
+``` groovy
 private void executeGruntTasks() {
   def gruntScript = "node_modules/.bin/grunt"
   println "| Load js dependencies from cache..."

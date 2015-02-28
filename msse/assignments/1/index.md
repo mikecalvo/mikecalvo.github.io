@@ -19,7 +19,7 @@ layout: default
 1. Working Grails project on which I can run without error or failure:
   - ./grailsw test-app
   - ./grailsw run-app
-  - ./grailsw archive
+  - ./grailsw war
 1. All requirements implemented and tested with passing tests
 
 # Account Requirements

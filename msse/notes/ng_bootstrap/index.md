@@ -111,11 +111,10 @@ $scope.getArtist = function (input) {
 ---
 # Control 2: Alerts
 - Alerts are highlighted areas for displaying messages
-- Types:
-  - danger: errors
-  - success: confirmation
-  - info: plain messages
-- [Examples](http://angular-ui.github.io/bootstrap/#/alert)
+- danger: errors
+- success: confirmation
+- info: plain messages
+- [http://angular-ui.github.io/bootstrap/#/alert](http://angular-ui.github.io/bootstrap/#/alert)
 
 ---
 # Add a Confirmation Alert on Add
