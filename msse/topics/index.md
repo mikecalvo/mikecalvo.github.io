@@ -68,8 +68,8 @@ layout: default
 
 # Week 10
 
-- Topics: Controllers, Scope, Routing
-- Reading: Angular Chapter 6, 13, 22
+- Topics: Angular Controllers, Scope, Routing
+- Reading: Angular Chapter 6, 7, 13, 22
 
 # Assignment 2 Due
 
@@ -77,22 +77,22 @@ layout: default
 
 # Week 11
 
-- Topics: AngularJS: AJAX, Resources
-- Reading: Angular Chapter 7, 18, 21
+- Topics: Angular Bootstrap and REST
+- Reading: Angular Chapter 20, 21
 
 ---
 
 # Week 12
 
-- Topics: AngularJS: Directives, Filters, Validation
-- Reading: Angular Chapter 10
+- Topics: Angular Validation and Services
+- Reading: Angular Chapter 11, 12
 
 ---
 
 # Week 13
 
-- Topics: Functional and E2E Testing: Jasmine, Protractor
-- Reading: Angular Chapter 25
+- Topics: Angular Directives and Filters
+- Reading: Angular Chapter 14, 15, 16, 17
 
 ---
 
