@@ -43,7 +43,7 @@ layout: default
 
 ### Week 8: [HTML and CSS](notes/html_css) | [JavaScript](notes/javascript) | [Bootstrap](notes/bootstrap)
 
-### Week 9: [Node, Grunt, Bower](notes/node) | [Intro to Angular](notes/angular)
+### Week 9: [Node, Grunt, Bower](notes/node) | [Intro to Angular](notes/angular_intro)
 
 ### Week 10: [Angular Controllers](notes/ng_controllers) | [Angular Routing](notes/ng_routing)
 - Assignment 2 Due
