@@ -85,14 +85,14 @@ layout: default
 # Week 12
 
 - Topics: Angular Validation and Services
-- Reading: Angular Chapter 11, 12
+- Reading: Angular Chapter 11 - 12
 
 ---
 
 # Week 13
 
 - Topics: Angular Directives and Filters
-- Reading: Angular Chapter 14, 15, 16, 17
+- Reading: Angular Chapter 14 - 17
 
 ---
 

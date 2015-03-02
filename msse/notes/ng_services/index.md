@@ -25,21 +25,37 @@ app.service('usefulService', function() {
 ```
 
 Use the service:
+
 ``` javascript
-app.controller, function(usefulService) {
+app.controller('MyController', function(usefulService) {
     usefulService.goCrazy();
-}
+});
 ```
 
 ---
 # Defining a Factory
 
 ``` javascript
-angular.module('app').factory('factoryName', function() {
+angular.module('app').factory('confirmDialog', function() {
   // return something of value that can be injected into other things
-  // example: return function(param) { doSomethingCoolWithValue(param); }
 
-  return {
+  return function(template, scope) {
+    // put logic here to create a dialog and populate scope with values
+    return modalInstance;
   }
 });
+```
+
+---
+# Use a Factory
+
+``` javascript
+app.controller('SongController', function(confirmDialog) {
+  $scope.removeSong = function(song) {
+    confirmDialog('deleteSongConfirmation', {message: 'Delete song '+song.title+'?'}).
+      then(function() {
+        song.$delete({id: song.id});
+      });
+  }
+})
 ```
