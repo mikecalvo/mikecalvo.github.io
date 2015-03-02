@@ -15,7 +15,9 @@ layout: default
 ```
 <input type="date">
 <input type="number">
-<input required>
+<input type="email">
+<input type="url">
+<input type="checkbox" required>
 ```
 
 ---
@@ -26,6 +28,40 @@ layout: default
 - Angular will apply styles to each input based on:
   - Validity
   - Interaction characteristics
+  - Must turn off browser validation (novalidate)
+
+---
+# Example Form With Validation
+
+``` html
+<form name="userForm" novalidate ng-submit="addUser(newUser)">
+  <div>
+    <input name="userName" required ng-model="newUser.name" placeholder="Name">
+  </div>
+  <div>
+    <input name="userEmail" type="email" ng-model="newUser.email" placeholder="Email">
+  </div>
+  <div>
+    <input type="checkbox" required> I agree to the terms and conditions
+  </div>
+  <button type="submit" ng-disabled="userForm.$invalid">OK</button>
+</form>
+```
+
+---
+# Form Validation Variables
+$prisine - true if user has not interacted
+$dirty - true if user has interacted
+$valid - true if valid
+$invalid - true if not valid
+$error - detailed errors
+
+---
+# Providing Feedback For Validation
+- Angular automatically applies CSS classes based on the status of the form inputs
+- Match concepts in the form
+  - valid/invalid & dirty/pristene
+- Define CSS to match these classes based on the feedback desired
 
 ---
 # Angular Validation CSS Classes
@@ -37,7 +73,6 @@ layout: default
 - ng-dirty: the control has been interacted with
 - ng-touched: the control has been blurred
 - ng-untouched: the control hasn't been blurred
-- ng-pending: any $asyncValidators are unfulfilled
 
 ---
 # Define Styles
@@ -48,3 +83,13 @@ layout: default
 - Red background?
 - Alert icon?
 - As they type?
+
+---
+# Example Styles
+
+``` css
+form .ng-invalid.ng-dirty { background-color: lightpink; }
+form .ng-valid.ng-dirty { background-color: lightgreen; }
+span.summary.ng-invalid { color: red; font-weight: bold; }
+span.summary.ng-valid { color: green; }
+```
