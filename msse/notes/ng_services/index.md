@@ -163,3 +163,7 @@ $routeParams - parameters to the view
 $swipe - swipe gestures
 $timeout - enhanced setTimeout function
 $window - DOM window object
+
+---
+# Adding a Service to Muzic
+- Add a confirm dialog service that can be reused by 2 controllers to produce a confirmation dialog

@@ -21,6 +21,14 @@ layout: default
 ```
 
 ---
+# Other Angular Validation Directives
+- pattern
+- minlength
+- maxlength
+- min
+- max
+
+---
 # Validation Requires a Form
 - Even though the form won't get used to post the data
 - Used to attach validation errors to the form
@@ -93,3 +101,55 @@ form .ng-valid.ng-dirty { background-color: lightgreen; }
 span.summary.ng-invalid { color: red; font-weight: bold; }
 span.summary.ng-valid { color: green; }
 ```
+
+--
+# Displaying messages
+- Use the automatically added validation properties on the form fields to conditionally show/hide error messages
+- Each validation has it's own property on the $error object
+
+---
+# Validation Message Examples
+
+``` html
+Name:
+<input type="text" ng-model="user.name" name="uName" required="" />
+<br />
+<div ng-show="form.$submitted || form.uName.$touched">
+  <div ng-show="form.uName.$error.required">Tell us your name.</div>
+</div>
+
+E-mail:
+<input type="email" ng-model="user.email" name="uEmail" required="" />
+<br />
+<div ng-show="form.$submitted || form.uEmail.$touched">
+  <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+  <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+</div>
+```
+
+---
+# Resetting Form States
+- Any named form in view is available in the scope
+- Call $setPristine() and $setUntouched() to return form to orignal state
+
+---
+# More on Form Validation
+- Custom model update triggers
+- Custom validation
+[https://docs.angularjs.org/guide/forms](https://docs.angularjs.org/guide/forms)
+
+---
+# Add Validation to Muzic
+- Use a form and validation attributes on view
+- Create some styles to provide feedback
+- Use REST to search for artist
+- Create a Factory for Artist Angular Resource
+- Add searching to the ArtistRestController
+
+---
+# Summary
+- Angular validation leverages HTML 5 field validations
+- Use CSS to define feedback styles for validation failures
+- Choose how soon you want to provide feedback
+- Create your own validation if necessary
+- As always: validate on the server as well
