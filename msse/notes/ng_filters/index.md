@@ -161,3 +161,10 @@ module.controller('MyController', function($scope, $filter, values) {
   $scope.values = $filter('limitTo')(values, 5);
   });
 ```
+
+---
+# Summary
+- Angular is strongly opinionated on where data transformation for display should happen
+- Do it in filters
+- Filters can accept arguments and use other filter
+- Filters can operate on single values and collections
