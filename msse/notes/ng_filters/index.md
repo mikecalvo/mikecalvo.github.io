@@ -159,7 +159,7 @@ angular.module('app').filter('skip', function() {
 ``` javascript
 module.controller('MyController', function($scope, $filter, values) {
   $scope.values = $filter('limitTo')(values, 5);
-  });
+});
 ```
 
 ---
