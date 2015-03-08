@@ -33,7 +33,7 @@ layout: default
 # Create Listing Requirements
 - Create a web app page allowing a user to create a listing
 - Listing is required to have a name, description, start date, listing days and starting price
-- Listing page requires a seller acount to be selected
+- Listing page requires a seller account to be selected
 - Listing page requires a deliver option to be selected (US Only, Worldwide, Pick Up Only)
 
 ---

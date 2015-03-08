@@ -15,43 +15,30 @@ layout: default
 - Functional Testing
 
 ---
+# Special Instructions:
+1. Remove all generated tests from your project that are not implemented (have no test methods)
+1. Be sure to have a working test for each requirement you are implementing
+1. Functional tests means to Geb tests
+1. Create at least one test that is data-driven  (uses Spock where functionality)
+
+---
 
 # Security Requirements
-- Protect access to adding a new listing for only logged in users
-- Create listing page will automatically set the logged in user as the seller
-- Active listing page will automatically set the logged in user as the bidder
-- Reviews are protected so that only sellers and winners can provide feedback
-- View/Edit profile page is protected by account
-
----
-
-# Category Requirements
-- When creating a listing provide the option of putting the listing in a category
-- Categories are hierarchical (Electronics->Computers->Mac)
-- New categories can be created when adding the listing
-- User can specify category through a dropdown (select) or typeahead control.  The hierarchy of the category selected must be evident to the user
-- Create a web app page that shows the complete category hierarchy
-
----
-
-# Listing Image Requirements
-- When creating a listing, up to 3 images can be specified (upload file from browser)
-- The images are displayed on the listing detail page
-- The first image is displayed on the listings page
+- Verify with functional tests the following requirements:
+  - Protect access to adding a new listing for only logged in users
+  - Create listing page will automatically set the logged in user as the seller
+  - Active listing page will automatically set the logged in user as the bidder
+  - Reviews are protected so that only sellers and winners can provide feedback
+  - View/Edit profile page is protected by account
 
 ---
 
 # REST API Requirements
-- Create a RESTful API using JSON for the following functions
-- API endpoints creating or updating data must be secured
-- Get listings - default active only, support parameter for completed
-- Get bids for a listing
-- Get/Create/Edit/Delete listing
-- Get/Edit account
-- Create bid
-- Create feedback (both seller and buyer)
-
----
-
-# Notification Requirements
-- Notfiy the seller and buyer via email when the listing expires
+- Verify with functional tests providing the following requirements via a RESTful API using JSON the following end points:
+  - API endpoints creating or updating data must be secured
+  - Get listings - default active only, support parameter for completed
+  - Get bids for a listing
+  - Get/Create/Edit/Delete listing
+  - Get/Edit account
+  - Create bid
+  - Create feedback (both seller and buyer)
