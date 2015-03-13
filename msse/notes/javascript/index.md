@@ -249,8 +249,8 @@ add.apply(null, [5, 6]);
 - Javascript has flexible argument rules
 - Callers of a function don't have to match the argument parameters exactly
 - Non-supplied arguments are undefined
-- Extra argumnents are ignored
-- All fucntions can access the complete set of arguments via the arguments function which is an array
+- Extra arguments are ignored
+- All functions can access the complete set of arguments via the arguments value which is an array
 
 ---
 # Arguments Example
