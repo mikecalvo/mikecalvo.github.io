@@ -51,7 +51,7 @@ layout: default
 ---
 
 # Example Node Libraries
-- http: serving up and HTTP server and making HTTP requests
+- http: serving up an HTTP server and making HTTP requests
 - fs: interacting with the file system
 - os: operating system-specific functionality
 - crypto: cryptography
@@ -136,14 +136,16 @@ console.log('Server running at http://127.0.0.1:8124/');
 - Node-based package manager for web projects
 - Manages external JavaScript and CSS dependencies
 - Installing Bower:
-  - In your web-app folder: `npm install bower --save`
+  - In your grails-app folder: `npm install bower --save`
 
 ---
 
 # Use Bower
-`bower install jquery`
-`bower install git://github.com/user/package.git`
-`bower install bootsrap`
+``` shell
+bower install jquery
+bower install git://github.com/user/package.git
+bower install bootstrap
+```
 
 ---
 
@@ -175,7 +177,7 @@ console.log('Server running at http://127.0.0.1:8124/');
 - Create a file called .bowerrc in your root project folder:
 ``` json
 {
-  "directory" : "web-app/assets/bower-components"
+  "directory" : "grails-app/assets/bower-components"
 }
 ```
 
@@ -196,7 +198,7 @@ console.log('Server running at http://127.0.0.1:8124/');
   `node_modules/.bin/bower install jquery --save`
   `node_modules/.bin/bower install angular --save`
 1. Verify your installs:
-  `ls web-app/assets/bower-components`
+  `ls grails-app/assets/bower-components`
   `angular jquery`
 1. Check the bower.json file to be sure in includes jquery and angular
 
@@ -264,7 +266,7 @@ module.exports = function (grunt) {
 ---
 # Integrating npm, Bower and Grunt with Grails
 - Tie running of the grunt to the normal Grails build
-- Add a file called '_Events.groovy' to grails-app/scripts
+- Add a file called _Events.groovy to grails-app/scripts
 - This file can be used to tie into Grails build process events
 
 ---

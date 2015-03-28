@@ -297,7 +297,7 @@ var object = (function() {
   var value = 5;  // Shhhh - this is private
 
   return {
-    increment: function(amount) { value += 5; },
+    increment: function(amount) { value += amount; },
     getValue: function() { return value; }
   }
 })();

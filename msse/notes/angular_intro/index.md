@@ -28,7 +28,7 @@ layout: default
 # Angular Views
 - Just plain HTML
 - Special attributes tell Angular
-  - how to bind data
+  - How to bind data
   - Repeat elements
   - Show or hide elements
   - Respond to events
@@ -62,6 +62,7 @@ layout: default
 - All REST methods provided by default
 - Customizable
 
+---
 # Angular Dependencies
 - Angular requires jQuery
 - Must be included in the page before the angular include
@@ -126,8 +127,11 @@ layout: default
 //= require_tree .
 //= require_self
 ```
+
+---
 # Use Bower to install jQuery and Angular
-- cd to grails-app/assets directory
+- Ensure your .bowerrc file is configured to install in grails-app/assets
+- In root project folder:
   `bower install jquery`
   `bower install angular`
 - Generate bower.json file:
