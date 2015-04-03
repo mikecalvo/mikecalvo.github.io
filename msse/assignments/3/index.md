@@ -13,8 +13,8 @@ layout: default
 - Final assignment completing the sellit.com app
 - Implement the sellit.com application as a single-page app
 - Provide functional Geb tests verifying the requirements
----
 
+---
 # Single Page Requirements
 - The following screens/features must be implemented within a single page application:
 1. Show active/completed listings
