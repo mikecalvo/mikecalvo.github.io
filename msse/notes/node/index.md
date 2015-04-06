@@ -175,6 +175,7 @@ bower install bootstrap
 # Configure Bower
 - Tell bower where to install dependencies
 - Create a file called .bowerrc in your root project folder:
+
 ``` json
 {
   "directory" : "grails-app/assets/bower-components"
