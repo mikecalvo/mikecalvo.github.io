@@ -54,7 +54,7 @@ layout: default
 ### Week 12: [Angular Services](notes/ng_services) | [Angular Validation](notes/ng_validation)
 
 
-### Week 13: [Angular Directives](notes/ng_directives) | [Angular Filters](notes/ng_filters)
+### Week 13: [Angular Directives](notes/ng_directives) | [Angular Filters](notes/ng_filters) | [Jasmine and Karma](notes/karma)
 
 ### Week 14: [Messaging](notes/messaging) | [Scheduling](notes/scheduling)
 - Assignment 3 Due
