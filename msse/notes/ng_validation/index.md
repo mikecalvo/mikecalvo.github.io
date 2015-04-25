@@ -93,6 +93,7 @@ $error - detailed errors
 - As they type?
 
 ---
+
 # Example Styles
 
 ``` css
@@ -102,7 +103,8 @@ span.summary.ng-invalid { color: red; font-weight: bold; }
 span.summary.ng-valid { color: green; }
 ```
 
---
+---
+
 # Displaying messages
 - Use the automatically added validation properties on the form fields to conditionally show/hide error messages
 - Each validation has it's own property on the $error object
