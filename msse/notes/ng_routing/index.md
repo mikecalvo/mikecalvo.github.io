@@ -73,7 +73,7 @@ angular.module("app").config(function($routeProvider) {
 <table>
   <tr ng-repeat="item in cart.items">
     <td>{{ item.name }}</td>
-    <td>${{ item.price }}</td>
+    <td>{{ item.price }}</td>
     <td><input ng-model="item.quantity" /></td>
     <td><button ng-click="remove(item)">Remove</button></td>
   </tr>
