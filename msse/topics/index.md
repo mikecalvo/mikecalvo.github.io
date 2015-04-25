@@ -91,7 +91,7 @@ layout: default
 
 # Week 13
 
-- Topics: Angular Directives and Filters
+- Topics: Angular Directives and Filters, Jasmine, Karma
 - Reading: Angular Chapter 14 - 17
 
 ---
