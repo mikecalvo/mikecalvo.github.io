@@ -344,6 +344,16 @@ $httpBackend.flush();
 - Must initialize the module
 - Usually define a beforeEach to inject dependencies required for your component being tested
 
+``` javascript
+beforeEach(module('app'));
+
+beforeEach(inject(function ($injector) {
+  $controller = $injector.get('$controller');
+  $httpBackend = $injector.get('$httpBackend');
+  $scope = $injector.get('$rootScope').$new();
+}));
+```
+
 ---
 # Example Angular Jasmine Test
 
