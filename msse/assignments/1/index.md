@@ -4,61 +4,47 @@ layout: default
 ---
 
 # Assignment #1
-## sellit.com
-### Due Date: 2/27/2015
+## twtr
+### Due Date: 2/12/2016
 
 ---
 
 # Introduction
-- Implement an auction system similar to eBay
-- Project will be completed in a series of 3 assignments
+- Implement a social media platform similar to Twitter
+- Implement requirements over the course of 4 assignments
 
 ---
 # Deliverables
 1. Access to source code repository (preferrably git)
 1. Working Grails project on which I can run without error or failure:
-  - ./grailsw test-app
-  - ./grailsw run-app
-  - ./grailsw war
+  `grails test-app`
 1. All requirements implemented and tested with passing tests
 
+---
+
+# System description
+Create an application that works like a simplified Twitter.  The initial
+requirements will include storage of data to the model required to support
+accounts, messages, and account following.
+
+Messages are posted by accounts.  An account can follow another account.
+
+---
+
 # Account Requirements
-- Create web app page allowing a user to create an account
-- Account creation requires email, password, name, address
-- Password must be 8-16 characters with at least 1 number and 1 letter
-- Create web application screen to display/edit account details
-- Edit/Detail page must show date account created and last updated date
+A1. Saving an account with a valid email, password and name will succeed (unit test)
+A2. Saving an account missing any of the required values of email, password and name will fail (data-driven unit test)
+A3. Saving an account with an invalid password will fail.  Passwords must be 8-16 characters and have at least 1 number, at least one lower-case letter, at least 1 upper-case letter (data-driven unit test)
+A4. Saving account with a non-unique email address must fail (integration test)
 
 ---
-# Create Listing Requirements
-- Create a web app page allowing a user to create a listing
-- Listing is required to have a name, description, start date, listing days and starting price
-- Listing page requires a seller account to be selected
-- Listing page requires a delivery option to be selected (US Only, Worldwide, Pick Up Only)
-
----
-# Show Listings
-- A listing is complete when the current date is after the start date plus listing days has passed
-- Create a web app page showing non-expired listings
-- Listing page supports searching for a listing by name or description
-- Listing page will show 10 listings at a time and support paging
-- Listing page will allow searching for completed listings (checkbox)
-- Selecting a listing from the list page will take user to a listing detail page where the listing details are displayed
+# Message Requirements
+M1. Saving a message with a valid account and message text will succeed (unit test)
+M2. Message text is required to be non-blank and 40 characters or less (data-driven unit test)
 
 ---
 
-# Bidding Requirements
-- The listing detail page will allow for creating a bid for the listing
-- A new bid requires a bid amount and a bidder account
-- A new bid must be at list 50 cents more than the current highest bid
-- Listing page will show the current highest bid amount
-- Provide a way to show the bid history for a listing
-- When the listing completes, the highest bidder is the winner
-- For completed listings, display the winner account
-
----
-# Review Requirements
-- On completed listings pages, provide the ability to set the rating for both seller and buyer
-- Rating includes a short description (50 characters) and thumbs up or down
-- Once the rating is specified for a seller or buyer it cannot be changed
-- On the account detail page display a read-only listing of reviews for the account (both buyer and seller)
+# Follow Requirements
+You may choose to implement the follow functionality how you choose.  Prove that you can save data with your domain model that supports the following requirements:
+F1. An account may have multiple followers (integration test)
+F2. Two accounts may follow each other (integration test)

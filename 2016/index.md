@@ -21,8 +21,6 @@ layout: default
 
 ### [Assignment #3](assignments/3)
 
-### [Assignment #4](assignments/4)
-
 ---
 
 ## Lecture Notes
