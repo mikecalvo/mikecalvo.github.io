@@ -4,41 +4,28 @@ layout: default
 ---
 
 # Assignment #2
-## sellit.com
-### Due Date: 4/3/2015
+## twtr
+### Due Date: 3/11/2016
 
----
+# Assignment Overview
+- Use Grails Controllers to add HTTP request handling to twtr application
+- Implement querying of data using GORM
+- Implement functional tests that issue HTTP requests to your running server to verify requirements
 
-# Introduction
-- Add Security to web application
-- Add RESTful web services to application
-- Functional Testing
+# Account Requirements
+- A1: Create a REST endpoint that receives JSON data to create an Account
+- A2: Return an error response from the create Account endpoint if the account values are invalid
+- A3: Create a REST endpoint that returns JSON data with Account values for a user based on an account id or handle address. (data-driven test)
 
----
-# Special Instructions:
-1. Remove all generated tests from your project that are not implemented (have no test methods)
-1. Be sure to have a working test for each requirement you are implementing
-1. Functional tests means to Geb tests
-1. Create at least one test that is data-driven  (uses Spock where functionality)
+# Message Requirements
+- M1: Create a REST endpoint will create a Message given a specified Account id or handle and message text
+- M2: Return an error response rom the create Message endpoint if user is not found or message text is not valid (data-driven test)
+- M3: Create a REST endpoint that will return the most recent messages for an Account.  The endpoint must honor a limit parameter that caps the number of responses.  The default limit is 10.  (data-driven test)
+- M4: Support an offset parameter into the recent Messages endpoint to provide paged responses.
+- M5: Create a REST endpoint that will search for messages containing a specified search term.  Each response value will be a JSON object containing the Message details (text, date) as well as the Account (handle)
 
----
-
-# Security Requirements
-- Verify with functional tests the following requirements:
-  - Protect access to adding a new listing for only logged in users
-  - Create listing page will automatically set the logged in user as the seller
-  - Active listing page will automatically set the logged in user as the bidder
-  - Reviews are protected so that only sellers and winners can provide feedback
-  - View/Edit profile page is protected by account
-
----
-
-# REST API Requirements
-- Verify with functional tests providing the following requirements via a RESTful API using JSON the following end points:
-  - API endpoints creating or updating data must be secured
-  - Get listings - default active only, support parameter for completed
-  - Get bids for a listing
-  - Get/Create/Edit/Delete listing
-  - Get/Edit account
-  - Create bid
-  - Create feedback (both seller and buyer)
+# Follow Requirements
+- F1: Create a REST endpoint that will allow one account to follow another.
+- F2: For the endpoint created for requirement A3, add properties for total counts of follers and following for the account.
+- F3: Add an endpoint to get the followers for an account.  This will return the details about the followers (handle, name, email, id).  Add the limit and offset logic implemented for messages to this endpoint.
+- F4: Create a 'feed' endpoint which will return the most recent messages by Accounts being followed by an Account.  Include a response limit parameter.  Include a parameter to only look for messages after a specified date.

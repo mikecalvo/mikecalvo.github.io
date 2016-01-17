@@ -3,14 +3,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
     <link rel="stylesheet" type="text/css" href="/css/md.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/stylesheet.css">
   </head>
 
 <body>
 
-{{ content }}
-<footer>
-  (c) 2015 Mike Calvo/Citronella Software Ltd.
-  <a href="/msse">Home</a>
-</footer>
+  <div id="header_wrap" class="outer">
+      <header class="inner">
+        <h1 id="project_title">MSSE SENG 5199</h1>
+        <h2 id="project_tagline">Course Materials for the MSSE Web Application Development Course</h2>
+      </header>
+  </div>
+
+  <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        {{ content }}
+      <section>
+  </div>
+
+  <div id="footer_wrap" class="outer">
+        <footer class="inner">
+          <p class="copyright">MSSE SENG 5199 maintained by <a href="https://github.com/mikecalvo">mikecalvo</a></p>
+          <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        </footer>
+  </div>
 </body>
 </html>

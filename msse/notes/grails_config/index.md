@@ -10,27 +10,27 @@ layout: default
 ---
 
 # Overview
-- Grails provides configuration scripts for the following:
-  - Build
-  - Spring beans
-  - Database access
-  - Bootstrap functinality
-  - URL mappings
+- Review primary Grails configuration locations for:
+  - Project dependencies (build config)
+  - Spring config
+  - Database configuration
+  - URL mappings (routing of HTTP requests)
+  - Bootstrap functionality
 
 ---
 
-# Configuration Home
-- All configurations live in grails-app/conf
-- Config.groovy contains grails-specific and custom properties settings for your app
-- project_home/application.properties contains app name and version properties
+# Grails Build Config
+- New to Grails 3.0: Gradle
+  - Groovy-based build system
+- root_project_folder/build.gradle
+- [http://gradle.org](http://gradle.org)
 
 ---
 
-# Build Config
-- grails-app/conf/BuildConfig.groovy
-- Configures project dependencies
-- Configures dependency repositories
-- Configures plugin dependencies
+# gradle.properties
+- Repositories: where Gradle looks for dependencies
+- Plugins: extensions to Gradle
+- Dependencies: libraries your app requires
 
 ---
 
@@ -41,8 +41,6 @@ layout: default
 - example: `runtime 'mysql:mysql-connector-java:5.1.29'`
 - Repositories section provides the ability to add custom dependecy sources
 
-^ Show the default file
-
 ---
 
 # Maven Scopes
@@ -51,20 +49,6 @@ layout: default
 - runtime: not required at compile time
 - test: required for running and compiling tests only
 - system: similar to provided, but must be explicitly given. uncommon.
-
----
-
-# Enable Debugging
-- Important setting found in Build.Config
-  - grails.project.fork
-- Must be set to false for both test and run to allow debugger to stop at breakpoints
-
-``` groovy
-grails.project.fork = [
-  test: false
-  run: false
-]
-```
 
 ---
 
