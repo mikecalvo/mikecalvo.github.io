@@ -88,13 +88,13 @@ class Person {
 - Lists
 
 ``` groovy
-def list = [‘a’, ‘b’, ‘c’]
+def list = ['a', 'b', 'c']
 ```
 
 - Maps
 
 ``` groovy
-def map = [firstName: ‘Mike’, lastName: ‘Calvo’]
+def map = [firstName: 'Mike', lastName: 'Calvo']
 ```
 
 ---
