@@ -53,7 +53,7 @@ layout: default
 ---
 
 # A Simple Example
-```
+``` groovy
 class Person {
   String firstName
   String lastName
@@ -86,10 +86,16 @@ class Person {
 # Collections
 - Groovy provides shorthand ways of creating collections
 - Lists
+
+``` groovy
 def list = [‘a’, ‘b’, ‘c’]
+```
 
 - Maps
+
+``` groovy
 def map = [firstName: ‘Mike’, lastName: ‘Calvo’]
+```
 
 ---
 
@@ -110,7 +116,7 @@ def map = [firstName: ‘Mike’, lastName: ‘Calvo’]
 ---
 
 # Closure Examples
-```
+``` groovy
 def log = { String message -> println message }
 log('hi')
 
@@ -126,7 +132,8 @@ println adder(1,2)
 
 # _Groovy Style_
 When defined inline closures are usually passed as arguments outside the parenthesis
-```
+
+``` groovy
 // Closure is argument to eachLine
 new File('foo.txt').eachLine { println it }
 
@@ -170,7 +177,8 @@ new Thread { while(true) { sleep(500); check() } }
 ---
 
 # Example Slurping/Building
-```
+
+``` groovy
 def response = JsonSlurper.parse('{"name": "Mike", "dob": {"month": 7 }}')
 assert response.name == 'Mike'
 assert response.dob.month == 7
@@ -187,28 +195,61 @@ assert builder.toString() == '{"people":{"name":"mike", "dob":{"month": 7}}}'
 
 ---
 
-# Differences from Java
-- http://groovy.codehaus.org/Differences+from+Java
-- Default imports java.io, java.lang, java.net, java.util, groovy.lang, and groovy.util
-- in is a keyword used to define ranges
-  - for (x in 0..5)
+# Difference from Java: Imports
+- Groovy default imports the following packages:
+
+``` groovy
+import java.io
+import java.lang
+import java.net
+import java.util
+import groovy.lang
+import groovy.util
+```
+
+---
+
+# Difference from Java: in Keyword
+in is a keyword used to define ranges
+
+  ``` groovy
+  for (x in 0..5)
+  ```
+---
+
+# Difference from Java: Array Declaration
 - Arrays cannot be declared as int[] a = {1,2,3}
-  - Must be: int[] a = [1,2,3]
+
+  ``` groovy
+  int[] a = [1,2,3]
+  ```
+
+---
+
+# Complete List of Groovy/Java Differences
+- [http://groovy.codehaus.org/Differences+from+Java](http://groovy.codehaus.org/Differences+from+Java)
 
 ---
 
 # _Groovy Style_
 - Don't use semicolons
-- Use the save navigation operator (?)
-  - Example: bean?.property?.value?.method()
+- Use the safe navigation operator (?)
+
+  ``` groovy
+  bean?.property?.value?.method()
+  ```
+
 - Use operator overloads
 - Use map-based constructors
-  - Example: new Person(firstName: 'mike', dob: new Date())
+
+  ``` groovy
+  new Person(firstName: 'mike', dob: new Date())
+  ```
 
 ---
 
 # Example Operator Overloads
-```
+``` groovy
 def list = ['a', 'b']
 list += 'c'
 list << 'd'

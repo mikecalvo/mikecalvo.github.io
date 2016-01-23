@@ -30,24 +30,22 @@ layout: default
 
 ---
 
-# GVM
-- [http://gvmtool.net/](Groovy Environment Manager)
-- Helps manage version of Groovy-based tools
-- Groovy
-- Grails
-- Gradle
-- Install GVM:
-  `$ curl -s get.gvmtool.net | bash`
+# sdkman
+- [http://sdkman.io/](http://sdkman.io/)
+- Helps manage version of sdk and dev tools
+- Groovy/Grails/Gradle
+- Install sdkman on Mac/Linux:
+  `$ curl -s http://get.sdkman.io | bash`
 
 ---
 
 # Use GVM
 - Install Groovy:
-  `$ gvm install groovy`
+  `$ sdk install groovy`
 - Install Grails:
-`$ gvm install grails`
+`$ sdk install grails`
 - Confirm:
-  `$ gvm current`
+  `$ sdk current`
   `$ groovy -version`
   `$ grails -version`
 
@@ -79,7 +77,7 @@ layout: default
 - Best Grails support
 - Normally $249 developer license
 - Free license
-https://www.jetbrains.com/estore/students/academic
+[https://www.jetbrains.com/estore/students/academic](https://www.jetbrains.com/estore/students/academic)
 
 ---
 
@@ -99,7 +97,7 @@ https://www.jetbrains.com/estore/students/academic
 - Installing Git
 - Mac: Install Xcode Command Line Tools
 - Windows: Download Windows Git installer
-- Linux: `$ yum inbstall git`
+- Linux: `$ yum install git`
 
 ---
 
@@ -126,18 +124,6 @@ https://www.jetbrains.com/estore/students/academic
 - Assembla
 - Kiln
 - code.google.com
-
----
-
-# Tomcat
-- Grails comes with an embedded app server for deployment
-- Optionally install Tomcat locally
-- Confirm your installation
-- Download and unzip distribution
-- Start Tomcat:
-  - $ ./startup.sh
-
-^ Show this working locally
 
 ---
 
