@@ -65,11 +65,18 @@ class Person {
 
 # Groovy Strings
 - Basic string literals are defined by single quote
-- Double quoted Strings are called Gstrings and allow for variable substitution
-  - “${firstName} ${lastName}”
+- Double quoted Strings are called GStrings and allow for variable substitution
+
+``` groovy
+  "${firstName} ${lastName}"
+```
+
 - Triple double quotes allow for multi-line strings
-“””Name: ${firstName} ${lastName}
-          Date of Birth: ${dateOfBirth}”””
+
+``` groovy
+"""Name: ${firstName} ${lastName}
+          Date of Birth: ${dateOfBirth}"""
+```
 
 ---
 
@@ -77,9 +84,15 @@ class Person {
 - Variables are not required to be declared with a type
 - The type is given when the variable is assigned
 - Use the def keyword
-- Example: def s = ‘a string value’ // s is a string
+
+``` groovy
+def s = ‘a string value’ // s is a string
+```
 - This applies to function return types as well
-- Example: def foo() { return 0 } // foo defined to return an int
+
+``` groovy
+def foo() { return 0 } // foo defined to return an int
+```
 
 ---
 
