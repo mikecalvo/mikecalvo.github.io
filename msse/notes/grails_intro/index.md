@@ -47,7 +47,7 @@ layout: default
 # Rock-solid Foundations
 - JVM
 - Built on proven technologies
-- Familiar plugins: Quartz, Lucene, SiteMesh
+- Spring, Hibernate, Gradle, Groovy
 
 ---
 
@@ -140,6 +140,7 @@ git checkout -t origin/master
 - Don't check in generated files
 - .gitignore file will allow output files to be ignored
 - Github will create a default Grails .gitignore file for you
+- create-app creates a good default for you
 
 ---
 
@@ -233,9 +234,22 @@ class ArtistController {
 
 ---
 
+# Gradle
+- Grails 3.0 uses Gradle as the the build tool
+- Gradle is the defacto standard build tool for modern Java and Groovy projects
+- Learn more at [http://gradle.org/](http://gradle.org/)
+---
+
 # Command line
-- Use grailsw to perform many common actions
-- ./grailsw run-app
-- ./grailsw test-app
-- ./grailsw war
-- ./grailsw create-controller
+- Use `grails` command-line program to execute build and run commands
+- Interactive mode: command completed
+
+---
+
+# Example Grails commands
+```
+grails create-domain-class
+grails run-app
+grails test-app
+grails package
+```

@@ -69,12 +69,12 @@ layout: default
 
 ---
 
-# Database Config
-- grails-app/conf/DataSource.groovy
-- Configure data source: pooled database resource manager
-- Configure by settings by environment
-- By default Grails comes with Java-based RDBMS called H2
-- Hibernate settings also configured here
+# grails-app/conf/application.yml
+- Many application configuration settings
+- Application name and version
+- Default Java package name
+- Database configurations
+- Web MIME-types
 
 ---
 
@@ -87,7 +87,7 @@ layout: default
 ---
 
 # Bootstrap Functionality
-- BootStrap.groovy files in grails-app/conf get run at system startup and shutdown
+- BootStrap.groovy files in grails-app/init get run at system startup and shutdown
 - Classes can use Domain and GORM classes to persist bootstrap data
 - Code can be targeted to an environment
 - grails-app/conf/BootStrap.groovy
@@ -118,7 +118,7 @@ def init = { ServletContext ctx ->
 # URL Mappings
 - URL Mappings configures how HTTP requests are routed to controllers
 - Also defines default view mappings and error mappings
-- grails-app/conf/UrlMappings.groovy
+- grails-app/controllers/UrlMappings.groovy
 
 ---
 
