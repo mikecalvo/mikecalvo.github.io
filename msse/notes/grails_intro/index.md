@@ -238,6 +238,7 @@ class ArtistController {
 - Grails 3.0 uses Gradle as the the build tool
 - Gradle is the defacto standard build tool for modern Java and Groovy projects
 - Learn more at [http://gradle.org/](http://gradle.org/)
+
 ---
 
 # Command line
