@@ -33,7 +33,8 @@ layout: default
 ---
 
 # Environment Examples
-```
+
+``` groovy
 class BootStrap {
   def init = { servletContext ->
     environments {

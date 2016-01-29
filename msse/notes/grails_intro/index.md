@@ -243,7 +243,7 @@ class ArtistController {
 
 # Command line
 - Use `grails` command-line program to execute build and run commands
-- Interactive mode: command completed
+- Interactive mode: command completion
 
 ---
 
