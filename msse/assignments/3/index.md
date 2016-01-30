@@ -17,7 +17,6 @@ layout: default
 - L3: Invalid login will be rejected with an error message
 
 # Search Requirements
-(Note: these requirements are allowed once a user logs in)
 - S1: Provide a search box for finding messages by message poster and message contents
 - S2: Display matching results in a scrollable area below the search box
 - S3: Search result messages will display the message contents as well as the posting user.
