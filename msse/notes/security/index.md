@@ -113,6 +113,19 @@ layout: default
   - Authorization
 
 ---
+# Spring Security REST Plugin
+
+``` groovy
+compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
+```
+- [Reference Documentation](http://alvarosanchez.github.io/grails-spring-security-rest/2.0.0.M2/docs/index.html)
+- Supports Grails 3!
+
+---
+
+OLD Grails 2.X Content below:
+
+---
 # There's a Plugin For That!
 - No need to roll your own access control functionality
 - Several Grails plugin implementations exist:

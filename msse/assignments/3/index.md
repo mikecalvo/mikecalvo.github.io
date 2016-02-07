@@ -8,8 +8,11 @@ layout: default
 ### Due Date: 4/9/2016
 
 # Assignment Overview
-- Create an AngularJS single-page app for the twtr application
-- Use Geb to implement functional tests in a browser for the implemented UI features
+In this assignment you will build on the domain and controller project started in assignments 1 and 2 to create a simple single page app user interface using AngularJS.  All requirements should be verified using Geb functional tests against a running Grails application.
+
+Feel free to use your creativity to build a usable and attractive web UI.  However, points will not be subtracted for 'ugly but functional implementations'.
+
+The Navigation requirements are for providing a global way (available on every page) to navigate to commonly used screens or functionality.  Think about having a global navigation header, footer or side panel on each screen (doesn't matter which you pick).  These navigation controls can be text links, images or buttons. 
 
 # Login Requirements
 - L1: When not logged in, route user to the login screen
@@ -29,6 +32,6 @@ layout: default
 - U4: When the logged in user goes to their own detail page, they can edit their name and email
 
 # Navigation Requirements
-Provide a way (links, buttons, etc.) for the logged in user to navigate between the following screens:
-N1: Logged in user's detail page
-N2: Search box
+- N1: User's detail page
+- N2: Search box
+- N3: Logout - clicking this should bring you to the login screen and provide a helpful message 'Sorry to see you go... etc'
