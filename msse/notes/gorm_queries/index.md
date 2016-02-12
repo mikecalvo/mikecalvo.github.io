@@ -171,7 +171,7 @@ Song.withCriteria {
 ---
 
 # HQL
-- This is most familiar to Hiberate users
+- This is most familiar to Hibernate users
 - SQL-like language
 - Similar to JDBC style queries with parameters
 - Not portable non-relational stores

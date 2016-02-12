@@ -13,15 +13,52 @@ layout: default
 - Functional tests perform this verification
 - Server is running
 - Test issues an HTTP request
-- Verifies the results against actual HTML and JavaScript runner
 
 ---
 # Grails Functional Tests
-- Several plugins exist
-- Example: Geb Plugin
+- Grails includes Geb Framework
 - Geb is a Groovy-based browser testing framework
-- Wrapper over Selenium
-- Multiple web drivers exist (Chrome, Firefox, PhantomJS)
+  - Wrapper over Selenium
+- http-builder library: simplify making HTTP requests
+
+---
+# http-builder
+[https://github.com/jgritman/httpbuilder/wiki](https://github.com/jgritman/httpbuilder/wiki)
+
+build.gradle:
+
+``` groovy
+testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'
+```
+
+---
+# Example http-builder
+
+``` groovy
+import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.Method.GET
+import static groovyx.net.http.ContentType.TEXT
+
+// initialze a new builder and give a default URL
+def http = new HTTPBuilder( 'http://www.google.com/search' )
+
+http.request(GET,TEXT) { req ->
+  uri.path = '/mail/help/tasks/' // overrides any path in the default URL
+  headers.'User-Agent' = 'Mozilla/5.0'
+
+  response.success = { resp, reader ->
+    assert resp.status == 200
+    println "My response handler got response: ${resp.statusLine}"
+    println "Response length: ${resp.headers.'Content-Length'}"
+    System.out << reader // print response reader
+  }
+
+  // called only for a 404 (not found) status code:
+  response.'404' = { resp ->
+    println 'Not found'
+  }
+}
+```
 
 ---
 # Selenium
@@ -111,60 +148,6 @@ Browser.drive {
 - Many tests can reuse common page definitions
 
 ---
-# Installing Geb Grails Plugin
-- Add Geb plugins block of BuildConfig.groovy
-- Add Selenium and PhantomJS Test Driver to dependencies block
-- Add Geb spock support to dependencies block
-
----
-# BuildConfig.groovy
-
-``` groovy
-plugins {
-  test "org.grails.plugins:geb:0.10.0"
-}
-
-dependencies {
-  test "org.gebish:geb-spock:0.10.0"
-  test "org.seleniumhq.selenium:selenium-support:2.44.0"
-  test("com.github.detro.ghostdriver:phantomjsdriver:1.0.1") {
-    transitive = false
-  }
-  // Optionally install other drivers here for debugging...
-}
-```
-
----
-# Functional Test Setup
-- Functional tests will likely require data to complete
-- Each functional test should setup their own data
-- Functional tests execute outside the Grails app
-- How can we leverage domain classes easily?
-
----
-# Remote Control Plugin
-- Allows a external process to send commands to Grails app
-- Pass closures to RemoteControl instance:
-
-``` groovy
-def remote = RemoteControl()
-def count = remote {
-  // This will get run inside Grails server and returned to test!
-  return Arist.count()
-}
-```
-
----
-# Installing Remote Control Plugin
-BuildConfig.groovy:
-``` groovy
-dependencies {
-  // ... other stuff ...
-  compile ":remote-control:1.5"
-}
-```
-
----
 # Adding a Geb Test
 - Geb recommends a page-based approach to web testing
 - Each url gets its own Page class which defines the url and interesting elements
@@ -173,6 +156,7 @@ dependencies {
 
 ---
 # Exmaple Get Artist Page
+
 ``` groovy
 import geb.Page
 
@@ -190,7 +174,9 @@ class ArtistGetPage extends Page {
 
 ---
 # Example Geb Functional Test
+
 ``` groovy
+@Integration
 class ArtistFunctionalSpec extends GebSpec {
 
   // setup code...
@@ -224,13 +210,6 @@ driver = {
   new PhantomJSDriver(new DesiredCapabilities())
 }
 ```
-
----
-# Running Functional Tests
-- `grailsw test-app functional:`
-- Launches the grails app first
-- Runs all tests in tests/functional
-
 ---
 # More on Geb
 - Interact with JavaScript
