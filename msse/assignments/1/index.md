@@ -4,7 +4,9 @@ layout: default
 ---
 
 # Assignment #1
+
 ## twtr
+
 ### Due Date: 2/12/2016
 
 # Assignment Overview
