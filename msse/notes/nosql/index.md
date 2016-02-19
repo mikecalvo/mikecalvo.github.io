@@ -4,10 +4,13 @@ layout: default
 ---
 
 # NoSQL
+
 ## Mike Calvo
+
 ### mike@citronellasoftware.com
 
 ---
+
 # Case Against Relational Data
 - Transactional behavior may be too slow for extreme volumes
 - Data models a document more than relationships
@@ -15,6 +18,7 @@ layout: default
 - Tree and graph structures require too much joining to be feasible
 
 ---
+
 # Types of NoSQL Data Stores
 - Key-value store
 - Document store
@@ -22,6 +26,7 @@ layout: default
 - Column database
 
 ---
+
 # Key-value Store
 - Examples: Redis, Memcached
 - Good for:
@@ -31,6 +36,7 @@ layout: default
   - Counters
 
 ---
+
 # Document-oriented Store
 - Examples: MongoDB, CouchDB
 - Good for:
@@ -39,6 +45,7 @@ layout: default
   - Retail product data
 
 ---
+
 # Graph Database
 - Examples: Neo4J, OrientDB
 - Good for:
@@ -46,6 +53,7 @@ layout: default
   - Directory and tree structures
 
 ---
+
 # Column Database
 - Examples: HBase, Cassandra, Bigtable
 - Good for:
@@ -53,6 +61,7 @@ layout: default
   - Time series data
 
 ---
+
 # Closer Look: MongoDB
 - Database is a set of collections
   - Conceptually similar to tables
@@ -63,6 +72,7 @@ layout: default
 
 ---
 # Example MongoDB Document
+
 ```
 {
   "_id": ObjectId("5248d92ae102251e9e94eb4b"),
@@ -75,6 +85,7 @@ layout: default
 ```
 
 ---
+
 # MongoDB Features
 - Scalability
   - Clustering
@@ -84,6 +95,7 @@ layout: default
 - Command-line interactive shell
 
 ---
+
 # MongoDB Cloud Support
 - Many options exist for Mongo SAAS providers
 - Reduce the need to fully understand complex administration
@@ -93,6 +105,7 @@ layout: default
   - ObjectRocket
 
 ---
+
 # Install MongoDB Locally
 - http://www.mongodb.org/downloads
   - Unzip
@@ -102,47 +115,40 @@ layout: default
   `mongo <instance> -u user -p password`
 
 ---
+
 # Simple Mongo Commands
 - Insert a record: `db.artists.insert({name: "U2"})`
 - Get the size of a collection: `db.artists.count()`
 - Query the collection: `db.artist.find({name: "U2"})`
 
 ---
+
 # Setup MongoLab Instance
 - Let's setup a new developer instance at MongoLab and use the interactive console to connect to it
 
 ---
+
 # Grails with MongoDB
-- Install MongoDB plugin via BuildConfig.groovy:
-  ` compile ":mongodb:1.3.0"`
-- Update Config.groovy with MongoDB instance info:
+- Install Mongo library via build.gradle:
 
 ``` groovy
-grails{ mongo {
-  host = 'host'
-  port = 12345
-  databaseName = 'database'
-  }
-}
+compile "org.grails.plugins:mongodb:5.0.0.RC1"
 ```
 
----
-# Mapping Domain Class to MongoDB
-- Add this to your Domain class:
-  `static mapWith = 'mongo'`
-- Optionally add a static mapping section to specify collection, index, etc
-  `static mapping { collection = 'artists' }`
-- All normal GORM methods work (save, get, count, etc.)
+- Be sure to comment out or remove all references to hibernate in the build.gradle file
 
 ---
+
+# Mapping Domain Class to MongoDB
+- When the mongo library is added as a dependency, mongo is used as the default Domain storage strategy
+
+---
+
 # Example MongoDB Mapped Domain
 
 ``` groovy
 class Audit {
 
-  static mapWith = "mongo"
-
-  ObjectId id
   String user
   String action
   Date dateCreated
@@ -156,12 +162,7 @@ class Audit {
 ```
 
 ---
-# Special Case: Mongo Ids
-- Mongo relies on an id it assigns to improve performance and other sharing functionality
-- Allowing GORM to define a standar Long id property would break this
-- Most of the time, it is better to define the id property explicitly in a Mongo Domain class as type **org.bson.types.ObjectId**
 
----
 # Embedded Data Types
 - Hibernate and GORM support embedded relationships for types
 - An embedded relationship means that the nested class is _included_ as part of the data of the parent (rather than a separate entity)
@@ -169,6 +170,7 @@ class Audit {
   - The Address object data will be stored together with the Customer data
 
 ---
+
 # Embedded Example
 
 ``` groovy
@@ -190,52 +192,42 @@ class Address {
 ```
 
 ---
+
 # MongoDB Domain Relationships
-- Since MongoDB stores the entire document, nested relationships in MongoDB are typically modelled as embedded relationships
-- Non-embedded relationships (reference) can be used, but will reduce performance
+- GORM will include a reference to the id of the related item in Mongo
+
+``` JavaScript
+{
+    "_id" : NumberLong(13),
+    "endYear" : 2016,
+    "name" : "David Bowie",
+    "startYear" : 1966,
+    "version" : NumberLong(0)
+}
+```
 
 ---
-# Auditing Example in Action
-- Let's use our MongoLab instance and save auditing information from a GORM-mapped domain class
-- We'll automatically log a system audit event when the system boots up
 
----
 # Dynamic Attributes
 - MongoDB Domain classes allow dynamic properties to be added
 - These properties do not need to be defined in the domain class
 - When saved, MongoDB Domain class will also persist these dynamic attributes
 
 ---
-# Dynamic Attributes Example
 
-``` groovy
-class Audit {
-
-  static mapWith = "mongo"
-
-  ObjectId id
-  String user
-  String action
-  Date dateCreated
-
-}
-
-def a = new Audit(action: 'save', userId: u)
-a['hostname'] = InetAddress.getLocalHost().getHostName()
-```
-
----
 # Querying MongoDB Domains
 - Other than HQL, all GORM queries work with MongoDB Domain classes
 - Even dynamic attributes can be queried
 
 ---
+
 # Raw MongoDB Access
 - The MongoDB plugin includes a GMongo reference that can be used in any controller or service
 - This class allows lower-level, direct MongoDB query and update functionality
 - To access, declare the 'mongo' property on your controller or service
 
 ---
+
 # Mongo Resources
 - http://mongodb.org
 - GORM for Mongo:
