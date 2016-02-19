@@ -204,6 +204,16 @@ class Address {
     "startYear" : 1966,
     "version" : NumberLong(0)
 }
+
+{
+    "_id" : NumberLong(12),
+    "inspirations" : [
+        NumberLong(13)
+    ],
+    "name" : "U2",
+    "startYear" : 1978,
+    "version" : NumberLong(0)
+}
 ```
 
 ---
