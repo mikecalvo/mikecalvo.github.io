@@ -239,7 +239,7 @@ class Address {
 ---
 
 # Mongo Resources
-- http://mongodb.org
+- [http://mongodb.org](http://mongodb.org)
 - GORM for Mongo:
-  - http://grails.github.io/grails-data-mapping/mongodb/manual/index.html
+  - [http://grails.github.io/grails-data-mapping/mongodb/manual/index.html](http://grails.github.io/grails-data-mapping/mongodb/manual/index.html)
 - **MongoDB: The Definitive Guide** by Chodorow and Dirolf
