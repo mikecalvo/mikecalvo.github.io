@@ -4,10 +4,13 @@ layout: default
 ---
 
 # Web Basics
+
 ## Mike Calvo
+
 ### mike@citronellasoftware.com
 
 ---
+
 # Objective
 - Provide high-level overview of technologies involved in delivering UI over the web
   - HTTP
@@ -17,6 +20,7 @@ layout: default
 - JavaScript
 
 ---
+
 # HTTP
 - Hypertext Transfer Protocol
 - Protocol by which web browsers communicate with web servers
@@ -26,6 +30,7 @@ layout: default
   - Standard is version 1.1 published in 1999
 
 ---
+
 # HTTP Basics
 - Server listens for requests on a port
   - Default is 80
@@ -34,6 +39,7 @@ layout: default
 - Request and Response structure
 
 ---
+
 # HTTP Request Format
 - Request method
 - URI (Uniform Resource Identifier)
@@ -42,6 +48,7 @@ layout: default
 - Optional Body
 
 ---
+
 # Request Methods
 - Most commonly used methods
   - GET: Gets the resource at the URI
@@ -51,6 +58,7 @@ layout: default
   -HEAD, DELETE, OPTIONS, TRACE
 
 ---
+
 # HTTP Response Format
 - Protocol version (HTTP/1.1)
 - Status code and reason
@@ -59,6 +67,7 @@ layout: default
 - Response message body
 
 ---
+
 # Example Response Statuses
 - 200 "OK"
 - 302 "Found" (Temporary Redirect)
@@ -68,6 +77,7 @@ layout: default
 - 500 "Internal Server Error"
 
 ---
+
 # Response Headers
 - Optional based on request method and status code
 - Examples include:
@@ -77,6 +87,7 @@ layout: default
   - encoding, language, length, encryption, type, expiration
 
 ---
+
 # Response Body
 - Also known as the “Entity”
 - What the client is really requesting
@@ -86,6 +97,7 @@ layout: default
 - Encrypted or encoded data of any kind (could be RMI or IIOP data)
 
 ---
+
 # HTML
 - Hypertext Markup Language
 - A defined DTD for linked documents
@@ -95,6 +107,7 @@ layout: default
 - Links (within the document to other resources)
 
 ---
+
 # HTML Basics
 - Basic page structure
   - HTML, HEAD, BODY
@@ -102,6 +115,7 @@ layout: default
   - P, H1, H2, H3
 
 ---
+
 # HTML Formatting & Visuals
 - Layout
   - TABLE, DIV, BR
@@ -111,12 +125,14 @@ layout: default
   - IMG, HR
 
 ---
+
 # HTML Forms
 - HTML provides a mechanism for submitting (POST method) data to a server
 - The FORM element represents a block of information that is entered by the user
 - INPUT elements within the form produce input controls in the page such as Checkboxes, Text Fields, Combo boxes, Buttons
 
 ---
+
 # Example Form
 ```html
 <form action="process" method="post">
@@ -132,6 +148,7 @@ layout: default
 ```
 
 ---
+
 # Form Input Values
 - The values collected in the input fields are submitted as part of the request to the server using the input field name
 - GET method: Appended to URI after ?
@@ -139,12 +156,14 @@ Example http://myserver/process?gender=Male&firstName=Mike
 - POST method: Included as request body
 
 ---
+
 # Styling HTML
 - While HTML supports styling using style attribute it’s use is discouraged
 - Recommended approach – CSS
   - Cascading Style Sheets
 
 ---
+
 # What's Cascading?
 - Order of preference when applying styles:
 - Browser default
@@ -153,12 +172,14 @@ Example http://myserver/process?gender=Male&firstName=Mike
 - Inline
 
 ---
+
 # Applying Styles
 - Selectors are use to apply styles
 - Selectors define which element(s) should be affected by the style block
 - Selectors can be a variety of things including: tag names, ids, and class names
 
 ---
+
 # CSS Selector examples:
 
 ``` css
@@ -179,6 +200,7 @@ h1 {
 ```
 
 ---
+
 # Style Examples
 
 ```html
@@ -196,16 +218,19 @@ h1 {
 ```
 
 ---
+
 # Style Precedence
 - The closer a style is to the element it is styling the higher the precedence
 - For example: inline style overrides the same property from an internal style
 
 ---
+
 # Style Inheritance
 - Many styles cascade from parent into child elements
 - For example, a span within a paragraph that is styled to be red text will also have red text
 
 ---
+
 # CSS Terms
 - Rule => `h1 { color: blue; }`
 - Selector => `h1`
@@ -214,6 +239,7 @@ h1 {
 - Value => `blue`
 
 ---
+
 # Advanced Selectors
 - HTML Element + class
 `h1.headline { color: black; }`
@@ -223,17 +249,20 @@ Matches all h1 elements with a class attribute of “headline”
 `h1, h2, h3 {  font-family: sans-serif }`
 
 ---
+
 # Tips on CSS Properties
 - Intellisense tooling really helps here
 - IntelliJ has it
 
 ---
+
 # HTML Content
 - Originally came from files on the HTTP server
 - Placed in a special location visible to server
 - Server responds to a request by locating the corresponding file and returning its contents in the response body
 
 ---
+
 # CGI
 - Common Gateway Interface
 - Certain requests cause web server to launch external program
@@ -243,6 +272,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Result: Dynamic content
 
 ---
+
 # CGI Programs
 - Scripting languages commonly used (Perl)
 - Written to interact with database
@@ -250,6 +280,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Could interface with legacy systems to provide a web front end
 
 ---
+
 # CGI Issues
 - Scalability issues
   - Each request spawns process
@@ -257,6 +288,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Resource contention
 
 ---
+
 # Web Applications
 - CGI was OK for small things
 - Big things: Add abstraction layers
@@ -267,6 +299,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Push work to the browser
 
 ---
+
 # Web Application Abstractions
 - Request
 - Response
@@ -275,6 +308,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Context scoping
 
 ---
+
 # Requests and Responses
 - Allow programmers to
   - Access header values
@@ -284,6 +318,7 @@ Matches all h1 elements with a class attribute of “headline”
   - Store values for later processing
 
 ---
+
 # Sessions
 - Represents a conversation between a client and the web server
 - State that is maintained over several request/response sessions
@@ -293,6 +328,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Classic example: shopping cart
 
 ---
+
 # Scoping
 - Application data can be stored at various levels:
   - Page
@@ -301,6 +337,7 @@ Matches all h1 elements with a class attribute of “headline”
   - Application
 
 ---
+
 # Cookies
 - Files stored on behalf of the server by the browser on the requesting machine
 - Help preserve state between site visits
@@ -309,6 +346,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Browser cooperates by sending cookie information back when user revisits same site
 
 ---
+
 # Client-side Behavior
 - Beyond HTML formatting browsers can perform advanced application hosting features
 - Programs are sent by the server, run by browser
@@ -318,6 +356,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Provides for rich user experience
 
 ---
+
 # JavaScript
 - The most common, portable mechanism for client-side behavior is JavaScript
 - C-based programming language
@@ -325,6 +364,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Amongst the most widely used programming languages world-wide
 
 ---
+
 # JavaScript Supports
 - Respond to UI events
 - Inspect HTML DOM (Document Object Model)
@@ -334,6 +374,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Make additional HTTP requests (AJAX)
 
 ---
+
 # Adding JavaScript
 - Inline: `<script>` element
 - External file: `<script src="file_path">`
@@ -341,6 +382,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Code executed in order as found within the document
 
 ---
+
 # Element Events
 - Most HTML elements support typical UI event attributes
   - onclick, onmouseout, onmouseover, onkeydown, onkeyup
@@ -350,6 +392,7 @@ Matches all h1 elements with a class attribute of “headline”
   - onload, onunload
 
 ---
+
 # JavaScript Functions
 - Declared in SCRIPT element
 - Have a name and parameters
@@ -357,6 +400,7 @@ Matches all h1 elements with a class attribute of “headline”
 - Can have a return value
 
 ---
+
 # Validation Example
 
 ```javascript
@@ -374,6 +418,7 @@ def validate = function() {
 ```
 
 ---
+
 # Summary
 - HTTP
   - Stateless response/request protocol

@@ -4,16 +4,20 @@ layout: default
 ---
 
 # Controllers & Views
+
 ## Mike Calvo
+
 ### mike@citronellasoftware.com
 
 ---
+
 # Introduction to MVC Architecture
 - Model: data specific to your system
 - View: how your system is presented to the outside (UI or API)
 - Controller: handles user interaction and external requests
 
 ---
+
 # Servlets: The Original Controller
 - Java specification for HTTP request processing (1997)
 - Defined a web server component model for Java
@@ -22,6 +26,7 @@ layout: default
 - Tomcat was one of the first complete implementations
 
 ---
+
 # Java Web History Since
 - Abstraction layers on top of Servlets
 - JavaServerPages (JSP) - servlets in the form of HTML templates
@@ -29,6 +34,7 @@ layout: default
 - People couldn't find the silver bullet
 
 ---
+
 # Ruby on Rails
 - In December 2005 version 1.0 released
 - Based on a dynamic programming language: Ruby
@@ -37,6 +43,7 @@ layout: default
 - Huge productivity gains were observed
 
 ---
+
 # Why Was Rails Faster?
 - Project structure standard, generated, and consistent
 - Dynamic language better at dealing with string-based HTML
@@ -45,6 +52,7 @@ layout: default
 - Solved a specific problem that was very common
 
 ---
+
 # Some in Java Took Note
 - Grails 1.0 released in February 2008
 - Based on JVM language Groovy
@@ -52,6 +60,7 @@ layout: default
 - Followed patterns popularized by Ruby on Rails
 
 ---
+
 # Controllers
 - Control the flow of a web application
 - Handle inbound HTTP requests
@@ -61,6 +70,7 @@ layout: default
   - Directly render a response
 
 ---
+
 # Controller Autowiring
 - Like domain classes, controllers are provided many things automatically
 - request: The inbound HTTP request being handled
@@ -69,6 +79,7 @@ layout: default
 - services: Transactional logic for your application
 
 ---
+
 # Controllers Done Easy: Scaffolding
 - Automatically create CRUD UI for a domain class
 - Not designed to be used as a production UI
@@ -76,6 +87,7 @@ layout: default
 - Dynamic and static options
 
 ---
+
 # Dynamic Scaffolding
 - Pages and action methods created at runtime
 - No actual source exists
@@ -83,12 +95,14 @@ layout: default
 `static scaffold = true`
 
 ---
+
 # Dynamic Scaffolding Provides
 - List Page: paged, sortable table showing all instances
 - Detail Page: create, edit, detail and update page
 - Dynamically updates UI based on domain changes
 
 ---
+
 # Static Scaffolding
 - Generate the views and controller code for CRUD functionality
 - Good way to learn how Grails works and a starting point for your own UI
@@ -96,12 +110,14 @@ layout: default
 `./grailsw generate-all <domain-class>`
 
 ---
+
 # Static Scaffolding: What's Generated?
 - A controller with all crud action methods
   - show, create, save, edit, update and delete
 - A collection of view files for create, edit, list and show
 
 ---
+
 # Scaffolding: Not For Production!
 - Scaffolding is a great way to get something up and running quickly
 - Scaffolding is a great way to learn about Grails
@@ -110,9 +126,11 @@ layout: default
 - Once you become comfortable with Grails you'll develop better practices than those shown in scaffolding
 
 ---
+
 # Real Programmers: Hand Code Controllers
 
 ---
+
 # Controller Conventions
 - All controllers live in grails-app/controllers
 - Controllers are named consistently: <ControllerName>Controller
@@ -122,6 +140,7 @@ layout: default
   - See UrlMappings.groovy for this configuration
 
 ---
+
 # Crazy Simple Controller
 
 ``` groovy
@@ -174,6 +193,7 @@ Details for <span id="name">${artist.name}</span>
 ```
 
 ---
+
 # Default Controller Conventions
 - Responds to URL ending with controller name
 - Actions:
@@ -182,6 +202,7 @@ Details for <span id="name">${artist.name}</span>
   - If a property called `defaultAction` exists it is the default
 
 ---
+
 # Controller Logging
 - All controllers get a `log` member injected into them
 - This allows for logging at various levels:
@@ -190,6 +211,7 @@ Details for <span id="name">${artist.name}</span>
   `log.info "User ${userid} requested report ${reportId}"`
 
 ---
+
 # Request Processing
 - All controllers have several request related members injected into them
 - Action info: actionName, actionUri
@@ -198,6 +220,7 @@ Details for <span id="name">${artist.name}</span>
 - Request Parameters: params
 
 ---
+
 # Request Parameters
 - In addition to params they are available on request as properties
   - controller/action?userId=1 => request.userId == 1
@@ -205,6 +228,7 @@ Details for <span id="name">${artist.name}</span>
   - controller/action/1 => request.id == 1
 
 ---
+
 # Redirecting a Request
 - A request can be redirected from an action elsewhere
 - Another action: redirect(action: 'process')
@@ -213,6 +237,7 @@ Details for <span id="name">${artist.name}</span>
 - Absolute URI: redirect(url: 'http://google.com')
 
 ---
+
 # Redirect New Request
 - When redirecting to another controller in app keep in mind that request will be new
 - Parameters need to be included in the redirect if they are important:
@@ -220,6 +245,7 @@ Details for <span id="name">${artist.name}</span>
 - Alternatively, use flash scope to make things available in the redirected request
 
 ---
+
 # Why Redirect?
 - Good pattern for providing reliable reload in browser
 - Form submits via HTTP PUT or POST behave poorly when browser refreshed
@@ -228,6 +254,7 @@ Details for <span id="name">${artist.name}</span>
 
 
 ---
+
 # Controller Scopes
 - Values can be stored in several contexts with varying lifetimes
 - request - current request
@@ -237,6 +264,7 @@ Details for <span id="name">${artist.name}</span>
 - page - available within a GSP
 
 ---
+
 # Returning a Model
 - When rendering a GSP view it is common for an action to return a model
 - The model is commonly domain instances which are needed for the view
@@ -245,6 +273,7 @@ Details for <span id="name">${artist.name}</span>
   - Values are the data
 
 ---
+
 # Example Model
 
 ``` groovy
@@ -257,6 +286,7 @@ class SongController {
 ```
 
 ---
+
 # Rendering a View
 - By default Grails will look for the matching GSP view for your action
   `grails-app/views/controller/action.gsp`
@@ -265,6 +295,7 @@ class SongController {
   `render(controller:'artist', view: 'details')`
 
 ---
+
 # HTTP Method Restrictions
 - Actions can check the requested method
   `if (request.method == 'GET') ...`
@@ -272,6 +303,7 @@ class SongController {
   - Grails will return a 405 error code if accessed with improper method
 
 ---
+
 # Example HTTP Method Restriction
 
 ``` groovy
@@ -285,6 +317,7 @@ class SomeController {
 ```
 
 ---
+
 # File Uploads
 - Uploading a file requires a special HTML 'file' input:
   `<input type='file' name='upload'`
@@ -294,6 +327,7 @@ class SomeController {
   - byte[] or String
 
 ---
+
 # File Upload Example
 ```
 class FileController {
@@ -307,12 +341,14 @@ class FileController {
 ```
 
 ---
+
 # Writing Binary Responses
 - Images or other binary data may need to be returned from app
 - Response supports writing directly to the output stream
 - Content type should be supplied
 
 ---
+
 # Example Binary Response
 
 ``` groovy
@@ -330,6 +366,7 @@ class ProfileController {
 ```
 
 ---
+
 # Controller Interceptors
 
 ``` groovy
@@ -348,6 +385,7 @@ def login() {
 ```
 
 ---
+
 # GSP Code
 - Grails injects all pertinent values:
   - request, response, session, params, model objects
@@ -364,6 +402,7 @@ def login() {
   - <g:if /> <g:each /> <g: datePicker />
 
 ---
+
 # Essential Tags
 
 ``` html
@@ -380,6 +419,7 @@ def login() {
 ```
 
 ---
+
 # Link Tags
 
 ``` html
@@ -396,6 +436,7 @@ def login() {
 ```
 
 ---
+
 # Form Tags
 
 ``` html
@@ -413,6 +454,7 @@ def login() {
 ```
 
 ---
+
 # Many More Tags
 - Advanced controls
   - g:datePicker, g:currencySelect, g:paginate, g:countrySelect
@@ -430,6 +472,7 @@ def login() {
   - NameTagLib is class name
 
 ---
+
 # Example TagLib
 
 ``` groovy
@@ -445,6 +488,7 @@ In page:
 `<g:dateFromNow date="${post.created}" />`
 
 ---
+
 # TagLib Namespace
 - g: is the default namespace for Grails plugins
 - Plugins often use a different prefix for tags part of plugin
@@ -452,6 +496,7 @@ In page:
   `static namespace = 'mz'`
 
 ---
+
 # Templates
 - Reusable chunks of HTML markup
 - Defined common layouts
@@ -460,6 +505,7 @@ In page:
 - Including a template: <g:render template="X" />
 
 ---
+
 # Layouts
 - Grails uses Sitemesh to provide view layouts
 - They live in grails-app/views/layouts
@@ -468,6 +514,7 @@ In page:
   - g:layoutHead and g:layoutBody
 
 ---
+
 # Example Layout
 
 ```html
@@ -483,6 +530,7 @@ In page:
 ```
 
 ---
+
 # Triggering a Layout
 
 ```html
@@ -498,6 +546,7 @@ In page:
 ```
 
 ---
+
 # Summary
 - Controllers: respond to user interactions
 - Views: present a UI or front-end for the system
