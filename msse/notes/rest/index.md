@@ -4,10 +4,13 @@ layout: default
 ---
 
 # REST
+
 ## Mike Calvo
+
 ### mike@citronellasoftware.com
 
 ---
+
 # Defining Web Services
 - System-to-system integration using HTTP
 - Goal: cross-platform API consumption
@@ -15,12 +18,14 @@ layout: default
 - Language and system neutral
 
 ---
+
 # Old School Web Services
 - XML-Based
 - Began to emerge at the dawn of the century
 - Developed by the W3C Working Group and industry consortiums
 
 ---
+
 # Elements of XML Web Services
 - Define standard request and response XML structures
 - SOAP - Simple Object Access Protocol
@@ -28,6 +33,7 @@ layout: default
 - UDDI - Universal Description, Discovery and Integration
 
 ---
+
 # Benefits of XML Web Services
 - Good tooling support due to strict XML-schema-based protocol
 - Well-structured payloads could be validated minimizing errors
@@ -36,6 +42,7 @@ layout: default
 - Still used in many companies today
 
 ---
+
 # Problems with XML Web Services
 - XML payloads proved to be too large:
   - Excessive network load
@@ -44,10 +51,12 @@ layout: default
   - Required too much buy in from too many parties
 
 ---
+
 # REST and JSON
 ## The dynamic duo to the rescue!
 
 ---
+
 # REST
 - Representational State Transfer
 - Architectural style based strictly on HTTP and a common pattern
@@ -55,6 +64,7 @@ layout: default
 - HTTP method (verb) defines the action being requested by the client
 
 ---
+
 # Resources
 - Key concept in REST
 - Data of value at the end of a URL
@@ -63,6 +73,7 @@ layout: default
 - Think Domain classes
 
 ---
+
 # REST Constraints
 - Client-server
 - Stateless
@@ -72,12 +83,14 @@ layout: default
 - Code-On-Demand
 
 ---
+
 # Uniform Interface
 - Self-descriptive messages (MIME types)
 - Resource identifiers as an endpoint
 - HTTP methods are used to signify intent
 
 ---
+
 # HTTP Methods
 - GET - retrieve resource
 - PUT - replace (update) resource
@@ -85,6 +98,7 @@ layout: default
 - DELETE - delete resource
 
 ---
+
 # Method Characteristics
 - GET is safe
   - Calling it produces no side-effects
@@ -92,6 +106,7 @@ layout: default
   - Calling it repeatedly will produce the same result
 
 ---
+
 # URI Conventions
 - Collection: /resources/
   - GET: return a list
@@ -102,12 +117,14 @@ layout: default
   - PUT: update specific resource
 
 ---
+
 # Good URI Rules
 - Unique to a resource
 - Long-lived
   - Always point to the same resource
 
 ---
+
 # REST Data Formats
 - REST only addressed part of the problem with XML Web Services
   - Complexity
@@ -116,6 +133,7 @@ layout: default
 - To complete the move to simpler APIs implement REST with JSON
 
 ---
+
 # JSON
 - JavaScript Object Notation
 - Lightweight data format
@@ -125,6 +143,7 @@ layout: default
 - Maps nicely to REST
 
 ---
+
 # JSON Value Types
 - string
 - number
@@ -135,10 +154,11 @@ layout: default
 - false
 
 ---
+
 # JSON Object Format
 - String value mapping inside curly braces
 
-``` json
+``` javascript
 {
   'name': 'Mike',
   'age': 43,
@@ -150,15 +170,17 @@ layout: default
 ```
 
 ---
+
 # JSON List format
 - Comma-separated values inside square brackets
 
-``` json
+``` javascript
 [ 1, 2, 3, 'a', false]
 
 [{'name': 'Mike'}, {'name': 'Lars'}]
 ```
 ---
+
 # XML versus JSON
 - World is moving away from XML
 - Reduced complexity and smaller payloads is driving this
@@ -167,6 +189,7 @@ layout: default
 - Bad smell if an external system is only XML-based
 
 ---
+
 # Grails and REST
 - Grails has several features to simplify creating RESTful APIs
 - @Resource Annotation
@@ -175,6 +198,7 @@ layout: default
 - JSON and XML rendering
 
 ---
+
 # @Resource
 - Annotation for domain classes
 - Creates implicit controller responding to REST requests
@@ -188,10 +212,12 @@ class Post {
 ```
 
 ---
+
 # Muzic Song REST Resource
 - Make the Song domain class available for REST calls
 
 ---
+
 # UrlMappings/RestController Approach
 - grails-app/conf/UrlMappings.groovy contains definitions for how URLs are mapped to controllers
 - URLs can be mapped as 'resources' or 'resource' in this file:
@@ -201,16 +227,13 @@ class Post {
 - Create this controller and make it a subclass of RestfulController
 
 ---
+
 # Muzic Artist REST Resource
 - Add an Artist resource via the UrlMappings/RestController approach
 - Add a unit test for the controller verifying the REST methods work
 
 ---
-# Custom Grails REST Services
-- Like scaffolding - simple Grails REST support is great for getting things up and running
-- Like scaffolding it lacks the flexibility to be useful in most real-world situations
 
----
 # Limitations of @Resource and RestfulController Approaches
 - Updates to domain model may unintentionally break clients
 - Timeline for API changes may be different than timeline for business or domain  changes
@@ -219,13 +242,15 @@ class Post {
 - Error handling/reporting a bit generic
 
 ---
+
 # Approaches to Detaching API Payload
 - Programmatically convert domain into payload
   - Builder patterns can be useful here
-- Create seperate model for API payload (DTO approach)
+- Create separate model for API payload (DTO approach)
 - Modify the marshalling of the domain into destination format
 
 ---
+
 # Registering a JSON Marshaller
 - Code can be tied in via Bootstrap or a custom Spring bean
 
@@ -236,6 +261,7 @@ JSON.registerObjectMarshaller(Song) { Song s ->
 ```
 
 ---
+
 # Renders versus Converters
 - Both are responsible for serializing onjects to JSON or XML
 - Converters are the built-in Grails mechanism
@@ -243,6 +269,7 @@ JSON.registerObjectMarshaller(Song) { Song s ->
   - Common library for JSON serialization in Java is Jackson
 
 ---
+
 # Custom REST Controller
 - Most of the time, real-world situations require implementing your own controller to handle REST requests
 - Good news: only 4 actions required
@@ -251,6 +278,7 @@ JSON.registerObjectMarshaller(Song) { Song s ->
   - Allows for a HTTP response status to be specified
 
 ---
+
 # Return Proper Status
 - 200 : OK - response handled properly
 - 201 : Created - return after a successful POST
@@ -262,6 +290,7 @@ JSON.registerObjectMarshaller(Song) { Song s ->
 - 422 : Unprocessable Entity - failed validation
 
 ---
+
 # Protect Access to Proper HTTP Method
 - In custom controller:
 
@@ -270,6 +299,7 @@ static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "D
 ```
 
 ---
+
 # REST API Security
 - Protect access
   - Suggested: Basic HTTP Authentication
@@ -279,12 +309,14 @@ static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "D
   - Suggested: API Key
 
 ---
+
 # Basic HTTP Authentication
 - Client includes credentials in the header of every request
 - Must use HTTPS to prevent sending of plain text credentials
 - Spring Security provides an implementation of Basic HTTP Authentication
 
 ---
+
 # API Versioning
 - New data formats may break existing clients
 - Several options for solving
@@ -294,12 +326,14 @@ static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "D
     - Honor the Accept HTTP header
 
 ---
+
 # Custom Marshalling
 - Grails allows for multiple marshallers to be registered per format type
 - Perform this registration at startup (prior to any requests being processed)
 - The configuration to use can specified at response render time
 
 ---
+
 # Register Custom Marshalling Example
 
 ``` groovy
@@ -319,6 +353,7 @@ JSON.createNamedConfig('v2') { cfg ->
 ```
 
 ---
+
 # Choose Marshaller Example
 
 ``` groovy
@@ -334,6 +369,7 @@ class PostController {
 ```
 
 ---
+
 # REST Not Just for APIs
 - Single Page commonly use REST within an app
 - UIs are plain HTML and JavaScript (no server rendering)
@@ -341,6 +377,7 @@ class PostController {
 - Mobile applications also communicate with cloud components
 
 ---
+
 # Final Notes on REST
 - Use the proper HTTP methods and response status code
 - Use the header for client identification
