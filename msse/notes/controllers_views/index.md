@@ -308,7 +308,7 @@ class SongController {
 
 ``` groovy
 class SomeController {
-  def allowedMethods = [modify: 'POST', delete['POST', 'DELETE']]
+  def allowedMethods = [modify: 'POST', delete: ['POST', 'DELETE']]
 
   def modify() {}
   def retrieve {}
