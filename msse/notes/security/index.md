@@ -130,16 +130,6 @@ layout: default
 
 ---
 
-# Spring Security REST Plugin
-
-``` groovy
-compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
-```
-- [Reference Documentation](http://alvarosanchez.github.io/grails-spring-security-rest/2.0.0.M2/docs/index.html)
-- Supports Grails 3!
-
----
-
 # Security Recap
 - Security is important and complex
 - Leverage frameworks (like Grails and Spring Security)

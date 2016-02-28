@@ -14,7 +14,7 @@ Week | Topics | Reading | Example Code
 3 <br> 2/6/16  | [GORM Basics](notes/gorm_basics) / [GORM Queries](notes/gorm_queries) | [GORM Overview](http://grails.github.io/grails-doc/3.0.x/guide/GORM.html) | [GORM Example](examples/gorm)
 4 <br> 2/12/16 | [NOSQL](notes/nosql) / [Web Basics](notes/web_basics)  | &nbsp;
 5 <br> 2/20/16 | [Grails Controllers](notes/controllers_views) / [URL Mappings](notes/url_mappings) | [Grails Controllers](http://grails.github.io/grails-doc/3.0.x/guide/theWebLayer.html#controllers) <br> [URL Mappings](http://grails.github.io/grails-doc/3.0.x/guide/theWebLayer.html#urlmappings)
-6 <br> 2/26/16 | [REST](notes/rest) / [Functional Testing](notes/functional_testing/) | [Grails Web Services](http://grails.github.io/grails-doc/3.0.x/guide/webServices.html) <br> [Functional Testing](https://grails.org/single-page-documentation.html)
+6 <br> 2/26/16 | [REST](notes/rest) / [Functional Testing](notes/functional_testing/) | [Grails Web Services](http://grails.github.io/grails-doc/3.0.x/guide/webServices.html) <br> [Functional Testing](https://grails.org/single-page-documentation.html) | [REST Example](examples/rest)
 7 <br> 3/5/16  | [Security](notes/security) / [Services](notes/services) | [Grails Services](http://grails.github.io/grails-doc/3.0.x/guide/services.html)
 8 <br> 3/11/16 | [HTML and CSS](notes/html_css) / [JavaScript](notes/javascript) / [Bootstrap](notes/bootstrap) | Angular Book Ch 4, 5
  | **SPRING BREAK** |
