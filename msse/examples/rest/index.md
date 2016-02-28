@@ -1,3 +1,10 @@
+---
+title: GORM Examples
+layout: default
+---
+
+# Example @Resource REST via Domain Class
+
 ``` groovy
 // Example #1 for Grails REST Support (@Resource)
 @Resource(uri='/restaurants', formats = ['json', 'xml'])
@@ -11,8 +18,11 @@ class Restaurant {
     state inList: ['FL', 'IL', 'MN', 'WI']
   }
 }
+```
 
-// Example #2 for Grails REST Support (RestfulController)
+# Example RestfulController
+
+``` groovy
 package grails.rest
 
 class ReservationController extends RestfulController<Reservation> {
@@ -31,8 +41,11 @@ class ReservationController extends RestfulController<Reservation> {
     }.find()
   }
 }
+```
 
-// URLMappings for nested REST paths
+# URLMappings for nested REST paths
+
+``` groovy
 class UrlMappings {
 
   static mappings = {
@@ -51,8 +64,11 @@ class UrlMappings {
     "404"(view: '/notFound')
   }
 }
+```
 
-// Functional Spec for the Restaurant REST API
+# Functional Spec for the Restaurant REST API
+
+``` groovy
 package grails.rest
 
 import geb.spock.GebSpec
