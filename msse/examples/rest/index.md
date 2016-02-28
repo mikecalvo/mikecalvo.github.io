@@ -3,7 +3,7 @@ title: GORM Examples
 layout: default
 ---
 
-# Example @Resource REST via Domain Class
+## Example @Resource REST via Domain Class
 
 ``` groovy
 // Example #1 for Grails REST Support (@Resource)
@@ -20,7 +20,7 @@ class Restaurant {
 }
 ```
 
-# Example RestfulController
+## Example RestfulController
 
 ``` groovy
 package grails.rest
@@ -43,7 +43,7 @@ class ReservationController extends RestfulController<Reservation> {
 }
 ```
 
-# URLMappings for nested REST paths
+## URLMappings for nested REST paths
 
 ``` groovy
 class UrlMappings {
@@ -66,7 +66,7 @@ class UrlMappings {
 }
 ```
 
-# Functional Spec for the Restaurant REST API
+## Functional Spec for the Restaurant REST API
 
 ``` groovy
 package grails.rest
