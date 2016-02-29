@@ -6,7 +6,6 @@ layout: default
 ## Example @Resource REST via Domain Class
 
 ``` groovy
-// Example #1 for Grails REST Support (@Resource)
 @Resource(uri='/restaurants', formats = ['json', 'xml'])
 class Restaurant {
 
@@ -66,7 +65,7 @@ class UrlMappings {
 }
 ```
 
-## Functional Spec for the Restaurant REST API
+## REST Functional Spec
 
 ``` groovy
 package grails.rest
