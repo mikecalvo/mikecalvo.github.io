@@ -4,7 +4,9 @@ layout: default
 ---
 
 # Node, Bower and Grunt
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---

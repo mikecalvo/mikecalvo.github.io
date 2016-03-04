@@ -4,10 +4,13 @@ layout: default
 ---
 
 # Angular Routing
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
+
 # Rationale 1: Many Views Per App
 - Single page app does not mean single view
 - Google Mail:
@@ -17,12 +20,14 @@ layout: default
   - Settings
 
 ---
+
 # Rationale 2: Back Button
 - Users have be come accustomed to using back/forward buttons
 - Mostly on desktop browsers
 - Should be have as expected in single page apps
 
 ---
+
 # URL Routes and Templates
 - Map URLs with views within the app
 - Template is an HTML file that defines a view
@@ -31,6 +36,7 @@ layout: default
 `http://localhost/auktion/#/listings`
 
 ---
+
 #ngRoute
 - Optional module in Angular
 - 'ngRoute' module provides functionality
@@ -41,6 +47,7 @@ angular.module("app", ["ngRoute"]);
 ```
 
 ---
+
 # Configuring Router
 
 ``` javascript
@@ -58,6 +65,7 @@ angular.module("app").config(function($routeProvider) {
 ```
 
 ---
+
 # Templates
 - Plain old HTML
 - Does not include full page (HTML, HEAD, BODY)
@@ -66,6 +74,7 @@ angular.module("app").config(function($routeProvider) {
   - Including which controller feeds the view
 
 ---
+
 # Example Template
 
 ``` html
@@ -82,6 +91,7 @@ angular.module("app").config(function($routeProvider) {
 ```
 
 ---
+
 # ngView
 - Router needs to know where to put the views you've defined
 - Use the ngView directive to mark the element
@@ -97,6 +107,7 @@ OR
 
 ```
 ---
+
 # Getting to Routes
 - Use a simple HTML link:
 
@@ -105,6 +116,7 @@ OR
 ```
 
 ---
+
 # Getting to Routes in Code
 - $location service
 - Inject into your controller and specify path
@@ -120,6 +132,7 @@ angular.module("app")
 ```
 
 ---
+
 # Route Parameters
 - Parameters can be supplied to route - prefix with : in url
 
@@ -134,6 +147,7 @@ $routeProvider.when("/customerProfile/:id/:addressId*") {
 ```
 
 ---
+
 # Accessing Route Parameters
 - The $routePrarams service can be injected into controller
 - Each param defined in the route definition is a property
@@ -147,6 +161,7 @@ controller("addressController", function($scope, $routeParams) {
 ```
 
 ---
+
 # ngInclude
 - Directive to include template or snippet into a view
 - Does not require routing
@@ -155,6 +170,7 @@ controller("addressController", function($scope, $routeParams) {
 - Can be used to break up complexity size of templates
 
 ---
+
 # ngInclude example
 
 ``` html
@@ -164,6 +180,7 @@ controller("addressController", function($scope, $routeParams) {
 ```
 
 ---
+
 # Advanced Routing
 - Angular-UI Project provides an advanced router
 - Introduces sub-routes and states
@@ -171,6 +188,7 @@ controller("addressController", function($scope, $routeParams) {
 - [https://github.com/angular-ui/ui-router](https://github.com/angular-ui/ui-router)
 
 ---
+
 # Add Angular Route to Grails Project
 1. Add bower dependency for angular-route:
   `node_modules/.bin/bower install angular-route --save`
@@ -179,6 +197,7 @@ controller("addressController", function($scope, $routeParams) {
 1. Add ng-view directive into main page
 
 ---
+
 # Include Reference to Angular Route
 - Must come after main angular reference
 
@@ -191,6 +210,7 @@ angular.module('app', ['ngRoute']);
 ```
 
 ---
+
 # Create a Route Configuration
 - Good convention to put routes in their own file
 
@@ -205,6 +225,7 @@ angular.module('app').config(function($routeProvider) {
 ```
 
 ---
+
 # Page
 
 ``` html
@@ -224,6 +245,7 @@ angular.module('app').config(function($routeProvider) {
 ```
 
 ---
+
 # Add Routing to Muzic App
 - Create views for plays and artist detail
 - Add angular routing dependency
@@ -232,6 +254,7 @@ angular.module('app').config(function($routeProvider) {
 - Add controllers
 
 ---
+
 # Summary
 - Angular routes help break up a complex app
   - Simplify views
