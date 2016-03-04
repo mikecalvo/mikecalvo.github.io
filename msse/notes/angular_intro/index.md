@@ -17,6 +17,7 @@ layout: default
 - Extensible plugin-model
 
 ---
+
 # Why Single-Page Apps?
 - More responsive
 - More Interactive
@@ -34,28 +35,33 @@ layout: default
   - Respond to events
 
 ---
+
 # Angular Controllers
 - Make data available in scope for view
 - Handle user interactions: button presses, fetching data
 - Akin to Grails Controllers
 
 ---
+
 # Angular Directives
 - Components that manipulate the DOM
 - Akin to Grails tags
 
 ---
+
 # Angular Filters
 - Components that format values for display
 - Can also filter out objects that should not be displayed
 
 ---
+
 # Angular Services
 - Shared code used by multiple controllers or directive
 - If two controllers, directives or filters need the same function, put it in a service
 - Akin to Grails Services
 
 ---
+
 # Angular Resources
 - Components for easily fetching and posting REST services
 - Configure base url
@@ -63,22 +69,26 @@ layout: default
 - Customizable
 
 ---
+
 # Angular Dependencies
 - Angular requires jQuery
 - Must be included in the page before the angular include
 
 ---
+
 # Setting up Angular on Grails
 1. Update Asset Pipeline Plugin
 1. Add references to application.js
 
 ---
+
 # Install AssetPipeline Plugin
 - Edit grails-app/conf/BuildConfig.groovy
 - Edit update the asset pipeline plugin:
 `compile ":asset-pipeline:2.1.1"`
 
 ---
+
 # Asset Pipeline
 - Grails plugin to make including of web assets into pages easier
 - Included by default in Grails projects
@@ -86,6 +96,7 @@ layout: default
 - Supports javascript, css and images
 
 ---
+
 # Asset Pipeline Directives
 - Files in the assets folder can contain directives
 - Directives (special comments) instruct the file to include other files when serving this file
@@ -99,6 +110,7 @@ layout: default
 ```
 
 ---
+
 # Example Directives
 - Include a specific file:
 `//= require jquery/dist/jquery`
@@ -109,6 +121,7 @@ layout: default
 - Files in the assets folder are flattened up one level
 
 ---
+
 # Including Bower Components
 - We configured Bower to install components into assets/bower_components
 - We can now include bower assets using resources
@@ -117,6 +130,7 @@ layout: default
   - assets/stylesheets/application.css
 
 ---
+
 # Include jQuery and Angular
 - Example application.js
   - We don't need the bower_components because they are rolled up
@@ -129,6 +143,7 @@ layout: default
 ```
 
 ---
+
 # Use Bower to install jQuery and Angular
 - Ensure your .bowerrc file is configured to install in grails-app/assets
 - In root project folder:
@@ -138,6 +153,7 @@ layout: default
   `bower init`
 
 ---
+
 # Add JQuery and Angular to application.js
 - assets/javascript/application.js
 - Manifest file for including other javascript assets
@@ -149,6 +165,7 @@ layout: default
 ```
 
 ---
+
 # Grails Asset Pipeline Plugin
 - Comes as part of Grails
 - Manages static web assets in Grails applications
@@ -158,6 +175,7 @@ layout: default
 - Building war file will 'compile' assets for deployment
 
 ---
+
 # Asset Pipleline Tags:
 
 ``` html
@@ -168,12 +186,14 @@ layout: default
 ```
 
 ---
+
 # Manifests
 - Purpose: instructions for including files into your pages
 - Define included assets in one file and use <asset> tag to include that file
 - Directives provide include functionality
 
 ---
+
 # Asset Pipeline Directives
 - require: include a single file
 - require_self: include the body of the current file
@@ -181,6 +201,7 @@ layout: default
 - require_full_tree: used for including files from plugins
 
 ---
+
 # Initializing Angular App
 - Creating an Angular App with a controller:
 
@@ -190,6 +211,7 @@ app.controller('welcomeController', function($scope) {
   $scope.message = 'Welcome to the Muzic App'l
 });
 ```
+
 ---
 
 # Angular HTML
@@ -234,6 +256,7 @@ app.controller('welcomeController', function($scope) {
 ```
 
 ---
+
 # Summary
 - Angular is an opinionated web client framework
 - Controllers, Directives, Resources, Services and Filters are major components
