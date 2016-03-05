@@ -20,6 +20,7 @@ layout: default
 ---
 
 # Price of Success
+
 ## If your web app is successful - it will be attacked
 
 ---

@@ -4,7 +4,9 @@ layout: default
 ---
 
 # Introduction to Angular
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
