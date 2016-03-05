@@ -161,7 +161,7 @@ class AlbumController {
 
 # Example Service
 
-```
+``` groovy
 class PostService {
     Post createPost(String userId, String comment) {
       def user = User.findByUserId(userId)
@@ -186,7 +186,7 @@ class PostService {
 
 # Service Spec
 
-```
+``` groovy
 @TestFor(PostService)
 @Mock([User,Post])
 class PostServiceSpec extends Specification {
@@ -215,7 +215,7 @@ class PostServiceSpec extends Specification {
 # Example Without IOC
 - Class A cannot be tested without testing class B as well
 
-```
+``` groovy
 class A {
 
   A() {
@@ -229,7 +229,7 @@ class A {
 
 # Example With IOC
 
-```
+``` groovy
 class A {
 
   B b
@@ -268,7 +268,7 @@ class A {
 # Using A Service
 - Inject the service into your controller by adding a member matching your service name:
 
-```
+``` groovy
 class PostController {
   def postService
 

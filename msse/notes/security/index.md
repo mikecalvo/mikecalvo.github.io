@@ -131,6 +131,61 @@ layout: default
 
 ---
 
+# Grails Access Control
+- Interceptors
+- Security Plugins
+
+---
+
+# Grails Interceptors
+- Intercept all HTTP requests into Ser er
+- Logic can be run before or after the request is handled
+- Live in `grails-app/controllers`
+- Name ends with `Interceptor`
+- `grails create-interceptor`
+
+---
+
+# Example Interceptor
+
+``` groovy
+class SecurityInterceptor {
+    SecurityInterceptor() {
+        matchAll()
+        .except(controller:'user', action:'login')
+    }
+
+    boolean before() {
+        if (!session.user && actionName != "login") {
+            redirect(controller: "user", action: "login")
+            return false
+        }
+        return true
+    }
+
+}
+```
+
+---
+
+# Security Plugins
+- Spring Security
+  - De-facto standard for many years
+  - Not smoothly integrated with 3.x
+  - Security REST Plugin
+- Shiro
+  - Adds declarative access control to Grails Controllers
+
+---
+
+# Spring Security Rest Plugin
+- [https://grails.org/plugin/spring-security-rest](https://grails.org/plugin/spring-security-rest)
+
+``` groovy
+compile 'org.grails.plugins:spring-security-rest:2.0.0.M2'
+```
+---
+
 # Security Recap
 - Security is important and complex
 - Leverage frameworks (like Grails and Spring Security)
