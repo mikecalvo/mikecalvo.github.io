@@ -43,7 +43,7 @@ This example User domain class shows examples of several concepts:
 2. Encoding of password fields prior to insert or update of the User
 3. Spring Security requires the ability to query a User for it's granted authorities.  The getAuthorities method uses GORM to retrieve authorities for this User
 
-``` Groovy
+``` groovy
 class User {
 
   transient springSecurityService
