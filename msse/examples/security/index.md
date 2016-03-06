@@ -20,7 +20,7 @@ compile 'org.grails.plugins:spring-security-rest:2.0.0.M2'
 compile 'org.grails.plugins:spring-security-rest-gorm:2.0.0.M2'
 ```
 
-An overview of how the plugin works is shown below:
+An overview (courtesy of the plugin documentation [website](http://alvarosanchez.github.io/grails-spring-security-rest/latest/docs/)) of how the plugin works is shown below:
 ![Overview](http://alvarosanchez.github.io/grails-spring-security-rest/latest/docs/images/rest.png)
 
 ---
