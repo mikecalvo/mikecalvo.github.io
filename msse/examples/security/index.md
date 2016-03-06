@@ -84,7 +84,7 @@ class User {
 
 Plain-old Gorm classes using relationships between the entities.
 
-``` Groovy
+``` groovy
 class Role {
 
   String authority
@@ -107,7 +107,7 @@ class UserRole {
 
 The last domain class to be added is for an Authentication token.  This simply contains the username and the token granted.
 
-``` Groovy
+``` groovy
 class AuthenticationToken {
 
     String tokenValue
@@ -125,7 +125,7 @@ class AuthenticationToken {
 
 Spring Security will force HTTP calls into your Grails app to be authenticated.  This means you will need some sample users and roles from which you can authenticate as.  Don't forget to also assign users to roles.  A convenient place for this is in the `grails-app/init/Boostrap.groovy` file:
 
-``` Groovy
+``` groovy
 class BootStrap {
 
   def init = { servletContext ->
@@ -152,7 +152,7 @@ This configuration is doing several things:
 4. Defines the domain classes to be used for User, Role, UserRole and AuthenticationToken concepts
 5. Defines a map listing the required access permissions for protected endpoints
 
-``` Groovy
+``` groovy
 grails.plugin.springsecurity.filterChain.chainMap = [
 
     //Stateless chain
@@ -185,7 +185,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 
 By default Grails will use views to show error responses such as 500, 401, 403, 404.  These can be overridden.  Below is an example ErrorController that retsponds with JSON responses for these HTTP error statuses.
 
-``` Groovy
+``` groovy
 class ErrorController {
 
   def internalServerError() {
@@ -224,7 +224,7 @@ class ErrorController {
 
 The ErrorController is mapped to error codes in grails-app/controllers/UrlMappings.groovy:
 
-``` Groovy
+``` groovy
 class UrlMappings {
 
   static mappings = {
@@ -250,7 +250,7 @@ At last, a test should be written to verify that we've correctly wired up the se
 
 This test relies on the http-builder project for the REST client.  Add the dependency `testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'` to build.gradle to use this.
 
-``` Groovy
+``` groovy
 import geb.spock.GebSpec
 import grails.converters.JSON
 import grails.test.mixin.integration.Integration
