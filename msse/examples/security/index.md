@@ -177,7 +177,8 @@ grails.plugin.springsecurity.interceptUrlMap = [
     [
         [pattern: '/api/restaurants/**', access: ['ROLE_READ']]
     ]
-]```
+]
+```
 
 ---
 
