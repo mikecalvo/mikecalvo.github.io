@@ -42,7 +42,7 @@ This example User domain class shows examples of several concepts:
 1. Injection of the springSecurityService into the domain class
 2. Encoding of password fields prior to insert or update of the User
 3. Spring Security requires the ability to query a User for it's granted authorities.  The getAuthorities method uses GORM to retrieve authorities for this User
- 
+
 ``` Groovy
 class User {
 
@@ -80,7 +80,11 @@ class User {
 }
 ```
 
-``` groovy
+# Role and UserRole Examples
+
+Plain-old Gorm classes using relationships between the entities.
+
+``` Groovy
 class Role {
 
   String authority
@@ -88,3 +92,31 @@ class Role {
   static constraints = {
   }
 }
+```
+
+``` Groovy
+class UserRole {
+
+  User user
+  Role role
+
+  static constraints = {
+  }
+}
+```
+
+# Authentication Token Example
+
+The last domain class to be added is for an Authentication token.  This simply contains the username and the token granted.
+
+``` Groovy
+class AuthenticationToken {
+
+    String tokenValue
+    String username
+
+    static mapping = {
+        version false
+    }
+}
+```
