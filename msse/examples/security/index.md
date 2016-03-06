@@ -145,12 +145,13 @@ class BootStrap {
 Both Spring Security and the REST Security Plugin have a dizzying amount of configuration.  The following file should be added (or appended to an exisiting) `grails-app/conf/application.groovy` file.
 
 This configuration is doing several things:
+
 1. Enabling the stateless security chain that supports the token-based model
 2. Forces all calls under the path of '/api' to be authenticated
-2. Enables using GORM to store generated auth tokens
-3. Sets the HTTP header to be used for sending an auth token on subsequent calls
-4. Defines the domain classes to be used for User, Role, UserRole and AuthenticationToken concepts
-5. Defines a map listing the required access permissions for protected endpoints
+3. Enables using GORM to store generated auth tokens
+4. Sets the HTTP header to be used for sending an auth token on subsequent calls
+5. Defines the domain classes to be used for User, Role, UserRole and AuthenticationToken concepts
+6. Defines a map listing the required access permissions for protected endpoints
 
 ``` groovy
 grails.plugin.springsecurity.filterChain.chainMap = [
