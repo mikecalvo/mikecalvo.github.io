@@ -15,7 +15,7 @@ The Grails REST Security plugin provides token-based, stateless security for Gra
 
 To enable the Grails REST Security plugin, add this dependency to grails.config:
 
-``` Groovy
+``` groovy
 compile 'org.grails.plugins:spring-security-rest:2.0.0.M2'
 compile 'org.grails.plugins:spring-security-rest-gorm:2.0.0.M2'
 ```
