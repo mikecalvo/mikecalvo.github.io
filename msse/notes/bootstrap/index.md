@@ -43,6 +43,7 @@ layout: default
 # Mobile Friendly
 - The viewport ensures property rendering and touch zooming
 - Disabling zooming can make the site feel more like an app:
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 ```
