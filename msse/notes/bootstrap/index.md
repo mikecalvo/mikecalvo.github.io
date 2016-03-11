@@ -52,7 +52,8 @@ layout: default
 - Scales when the device/viewport size grows and shrinks
   - Columns wrap to rows at the appropriate time
 - Grid system requires a container
-  ```html
+
+```html
   <div class=container>...</div>
   <div class="container-fluid">...</div>
 ```
