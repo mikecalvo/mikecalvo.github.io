@@ -4,7 +4,9 @@ layout: default
 ---
 
 # Twitter Bootstrap
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
@@ -65,6 +67,7 @@ layout: default
 - .col-lg-[colspan] : desktop (1200px)
 
 ---
+
 # Examples of Grid System
 [http://getbootstrap.com/css/](http://getbootstrap.com/css/)
 
@@ -78,6 +81,7 @@ layout: default
 - .col-lg-[cols]
 
 ---
+
 # Beautiful CSS
 - Styling for semantic elements (Headings, paragraphs, emphasize, small ,etc)
 - Alignment classes: text-left, text-center, text-right
@@ -91,6 +95,7 @@ layout: default
 - Forms - clean labels, inline forms, placeholders, horizontal forms, validation
 
 ---
+
 # Components
 - Glyphs - icons
 - Button groups
@@ -100,10 +105,12 @@ layout: default
 - Pagination
 
 ---
+
 # Explore Components
 [http://getbootstrap.com/components/](http://getbootstrap.com/components/)
 
 ---
+
 # JavaScript
 - Rich set of interactive controls
 - Transition
@@ -112,10 +119,12 @@ layout: default
 - Tooltips
 
 ---
+
 # Explore Bootstrap JS
 [http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)
 
 ---
+
 # JavaScript Warning
 - Be sure to use the Angular UI plugin to get components that play well with Angular
 [http://angular-ui.github.io/bootstrap/](http://angular-ui.github.io/bootstrap/)
