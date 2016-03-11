@@ -43,6 +43,7 @@ console.log("This is Javascript's version of println");
 ```
 
 ---
+
 # Conditions, Arrays and Loops
 
 ``` javascript
@@ -59,6 +60,7 @@ console.log('sum = '+sum);
 ```
 
 ---
+
 # JavaScript Functions Syntax
 - Functions are created with the 'function' literal
 - Functions can be named - aids with debugging/stacks
@@ -66,6 +68,7 @@ console.log('sum = '+sum);
 - Functions can be passed as arguments (closures)
 
 ---
+
 # Example Function Syntax
 
 ``` javascript
@@ -90,6 +93,7 @@ forEach(['one', 'two', 'three'], log);
 ```
 
 ---
+
 # Objects
 - Name-value pairs
 - Values can be functions
@@ -124,6 +128,7 @@ person.zip // !!! undefined !!!
 - Use `new` or Object.create to extend another object
 
 ---
+
 # Example Javascript Inheritance
 
 ``` javascript
@@ -221,6 +226,7 @@ var obj = {
 - Convention: constructor functions are Capitalized
 
 ---
+
 # Example Constructor
 
 ``` javascript
