@@ -31,9 +31,11 @@ layout: default
 # Bootstrap Page Requirements
 - Include jQuery library before Bootstrap
 - Set the viewport:
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
+
 - Include the bootstrap css AND js files (from bower_components)
 
 ---
