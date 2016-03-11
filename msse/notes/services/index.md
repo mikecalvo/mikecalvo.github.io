@@ -122,7 +122,7 @@ layout: default
 
 # withTransaction Example
 
-```
+``` groovy
 class AlbumController {
 
   def addAlbum(String title, String artistName) {
