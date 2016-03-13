@@ -59,7 +59,7 @@ The directives are comments at the top of these files that tell the pipeline whi
 ## Example application.js
 grails-app/assets/javascripts/application.js
 
-``` JavaScript
+``` javascript
 // This is a manifest file that'll be compiled into application.js.
 //
 // Any JavaScript file within this directory can be referenced here using a relative path.
@@ -83,6 +83,20 @@ angular.module('app').controller('welcomeController', function($scope) {
 });
 ```
 
+---
+
+Create Angular application
+Create a controller
+
+``` javascript
+angular.module('app', []);
+
+// Define a controller called 'welcomeController'
+angular.module('app').controller('welcomeController', function($scope) {
+  $scope.greeting = 'Hello Stranger'
+});
+```
+
 -- Example Directives for application.css
 grails-app/assets/stylesheets/application.css
 
@@ -93,7 +107,8 @@ grails-app/assets/stylesheets/application.css
 *= require ../bower/bootstrap/css/bootstrap.css
 *= require_tree ../bower/bootstrap/css/bootstrap-theme.css
 *= encoding UTF-8
-*/ ```
+*/
+```
 
 ---
 
