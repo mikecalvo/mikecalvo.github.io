@@ -12,7 +12,7 @@ See the GitHub [repository](https://github.com/mikecalvo/grails3-angular-example
 # Add Gradle Bower Plugin
 
 See more info [here](https://github.com/craigburke/bower-installer-gradle).  Add to the plugins block of build.gradle:
-` id 'com.craigburke.bower-installer' version '2.5.1' ``
+` id 'com.craigburke.bower-installer' version '2.5.1' `
 
 # Configure Bower dependencies
 
@@ -34,7 +34,8 @@ bower {
     source 'angular-csp.css'
   }
 
-}```
+}
+```
 
 # Confirm Configuration
 Run the following gradle task to verify you've added the plugin correctly and added the bootstrap and angular dependencies.
