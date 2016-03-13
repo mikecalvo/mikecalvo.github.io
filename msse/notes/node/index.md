@@ -3,7 +3,7 @@ title: Web Application Development
 layout: default
 ---
 
-# Node, Bower and Grunt
+# Node and Bower
 
 ## Mike Calvo
 
@@ -156,7 +156,7 @@ bower install bootstrap
 
 # bower.json
 - Much like Node - bower can use a configuration file to list dependencies
-`bower init` -> bower.json
+- `bower init` will produce a bower.json file
 
 ``` javascript
 
@@ -185,7 +185,7 @@ bower install bootstrap
 
 ``` json
 {
-  "directory" : "grails-app/assets/bower-components"
+  "directory" : "grails-app/assets/bower"
 }
 ```
 
