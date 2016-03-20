@@ -4,51 +4,25 @@ layout: default
 ---
 
 # Assignment #4
-### sellit.com
+
+### twtr
+
 ### Due Date: 5/7/2016
 
 ---
 
-# Introduction
-- Final assignment completing the sellit.com app
-- Implement the sellit.com application as a single-page app
-- Provide functional Geb tests verifying the requirements
+# Assignment Overview
+In this assignment you will complete the twtr messaging application.  All requirements should be verified using Geb functional tests against a running Grails application.
+
+Feel free to use your creativity to build a usable and attractive web UI.  However, points will not be subtracted for 'ugly but functional implementations'.
 
 ---
 
-# Single Page Requirements
+# Requirements
 The following screens/features must be implemented within a single page application using AngularJS:
 
-1. Show active/completed listings
-1. Listing detail
-1. Login
-1. Create account
-1. Create listing
-1. Create bid
-1. Provide seller/buyer feedback
-1. One example of client-side validation
-  - For example, validate that the listing name and description are provided before a listing can be created.
-
----
-
-# Expectations
-Setup required data for each test
-
-- Example: create both active and completed listings before testing the listings page
-
-Test a happy path scenario for each of the items above
-
-  - Example: create a valid bid for a listing
-
-Provide functional tests that work with one of the following browsers: Firefox, Chrome, Safari, or PhantomJS
-
-  - DO NOT USE Internet Explorer
-
-Provide a README file in the root of your project with any system expectations your project requires
-
-  - Example: Chrome must be installed
-
-<strong>Strongly recommended:</strong>
-
-  - Clone the project onto a different machine than what you normally develop on and run your tests on to discover any assumed environment configurations and eliminate them (preferred) or document them in your README
-  - Deductions will be taken for any project that requires grader to hand-tweak an undocumented system configuration
+R1. Use a date picker control from the Angular UI library to filter messages after a specified date.
+R2. Use Angular validation to validate a message prior to posting it to the server via the REST API (client side validation).
+R3. Write a Jasmine test to validate the Angular controller for the feed page.  Use the $httpBackend functionality to mock calls to the server.
+R4. Create an Angular directive to display the follow button or "Following User" indicator on another user's account page. Validate this control with either a functional test or a Jasmine test.
+R5. Use the AngularJS date filter to format the date of a message in the feed in this style: `Mar 16`.  Validate with a functional test.

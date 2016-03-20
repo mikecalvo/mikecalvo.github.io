@@ -97,7 +97,7 @@ angular.module('app').controller('welcomeController', function($scope) {
 });
 ```
 
--- Example Directives for application.css
+## Example Directives for application.css
 grails-app/assets/stylesheets/application.css
 
 ``` CSS
@@ -205,5 +205,7 @@ class WelcomePageFunctionalSpec extends GebSpec {
 }
 ```
 
-- Run the test with `./gradlew check`
-  - Change the browser to chrome: `./gradlew check -Dbrowser=chrome`
+- Run the test with
+  `./gradlew check`
+- Change the browser to chrome:
+  `./gradlew check -Dbrowser=chrome`
