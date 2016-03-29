@@ -10,6 +10,7 @@ layout: default
 ### kapkema@gmail.com
 
 ---
+
 # Goal
 - Integrate a Grails app with bower packages
  - Angular && Bootstrap
@@ -66,6 +67,7 @@ bower {
 ```
 
 ---
+
 # Build and 'install'
 - `.gradlew bowerInstall` will add the mapped source files
 - You should see files in the grails-app/assets/bower folder within the angular and bootstrap folders.
@@ -81,17 +83,20 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # Grails Asset Pipeline
 - Simplifies bundling and uglifying scripts for deployment
 - Options for including assets: tags and manifests
 - Building war file will 'compile' assets for deployment
 
 ---
+
 # Grails Asset Pipeline Integration
 - Application.js and application.css are the two files that integrate with the Grails asset pipeline to bring in the required javascript/css for the page.
 - The directives are comments at the top of the file that tell the pipeline which files or trees of files should be loaded.
 
 ---
+
 # Asset Pipeline Directives
 - require: include a single file
 - require_self: include the body of the current file
@@ -110,6 +115,7 @@ clean.dependsOn bowerClean
 - Files in the assets folder are flattened up one level
 
 ---
+
 # Add the Javascript assets
 - grails-app/assets/javascripts/application.js
 
@@ -119,6 +125,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # Add the CSS assets
 - grails-app/assets/stylesheets/application.css
 
@@ -128,6 +135,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # Create Angular App view
 - Create, or replace, index.gsp with basic angular app
 - Standard html with a few special attributes
@@ -155,6 +163,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # In the `<head>`
 - `asset` elements are grails asset pipeline directives
 - `asset:javascript` maps to grails-app/assets/javascripts
@@ -166,6 +175,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # On the `<body>`
 - `ng-app` is an angular attribute directive declaring your app
 - `"app"` corresponds to the name of angular app defined in application.js
@@ -175,6 +185,7 @@ clean.dependsOn bowerClean
   ```
 
 ---
+
 # The rest
 - `ng-controller` attribute directive declares what controller is used for the scope of that element (`<div>`)
 
@@ -185,6 +196,7 @@ clean.dependsOn bowerClean
 - Lots more to discuss on Angular later
 
 ---
+
 # Functional Testing
 - Geb is a functional testing framework for creating automated UI tests.
 - It is bundled by default with Grails.
@@ -208,6 +220,7 @@ dependencies {
 - remember to run ```./gradlew idea``` when you add new dependencies
 
 ---
+
 # Tell Geb to use Firefox & Chrome
 - GebConfig.groovy is the manifest that tells Geb what browsers to use
 - By default, Geb looks in `src/test/resources/GebConfig.groovy`
@@ -222,6 +235,7 @@ driver = {
 ```
 
 ---
+
 # Write a test
 - Create functional specs in 'src/integration-test'
 - use Grails annotation `@Integration`
@@ -249,6 +263,7 @@ class WelcomePageFunctionalSpec extends GebSpec {
   }
 }
 ```
+
 ---
 
 # Run the test
@@ -258,6 +273,7 @@ class WelcomePageFunctionalSpec extends GebSpec {
  - Runs test in chrome
 
 ---
+
 # Wrap up
 -  http://mikecalvo.github.io/msse/examples/grails_angular/
 
