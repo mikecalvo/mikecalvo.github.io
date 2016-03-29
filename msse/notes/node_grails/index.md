@@ -28,12 +28,14 @@ layout: default
 ---
 
 #Add plugins to build.gradle
+
 ```gradle
 plugins {
   id "io.spring.dependency-management" version "0.5.4.RELEASE"
   id 'com.craigburke.bower-installer' version '2.5.1'
 }
 ```
+
 - run `./gradlew idea` to refresh dependencies
 
 ---
