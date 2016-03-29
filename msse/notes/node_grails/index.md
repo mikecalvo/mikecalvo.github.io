@@ -27,7 +27,7 @@ layout: default
 
 ---
 
-#Add plugins to build.gradle
+# Add plugins to build.gradle
 
 ```gradle
 plugins {
