@@ -37,6 +37,7 @@ plugins {
 - run `./gradlew idea` to refresh dependencies
 
 ---
+
 # Bower dependencies
 - Use bower to manage Javascript packages
 - Use gradle to manage bower packages like Java (i.e maven)
