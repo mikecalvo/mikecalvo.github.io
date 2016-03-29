@@ -73,6 +73,7 @@ bower {
 - You should see files in the grails-app/assets/bower folder within the angular and bootstrap folders.
 
 ---
+
 # Make it automatic
 - Update your build.gradle to make `bowerInstall` and `bowerClean` a part of every build and clean
 - Add the following right after your bower block
