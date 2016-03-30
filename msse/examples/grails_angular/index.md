@@ -151,8 +151,8 @@ Selenium provides a different jar file dependency for each browser.  Add the Fir
 dependencies {
   // Other dependencies...
 
-  testRuntime 'org.seleniumhq.selenium:selenium-firefox-driver:2.44.0'
-  testRuntime 'org.seleniumhq.selenium:selenium-chrome-driver:2.44.0'
+  testRuntime 'org.seleniumhq.selenium:selenium-firefox-driver:2.53.0'
+  testRuntime 'org.seleniumhq.selenium:selenium-chrome-driver:2.53.0'
 
 }
 ```
