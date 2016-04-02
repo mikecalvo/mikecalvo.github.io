@@ -10,19 +10,13 @@ layout: default
 ### kapkema@gmail.com
 
 ---
+
 # Goal
 - Integrate a Grails app with bower packages
- - Angular and Bootstrap
+ - Angular && Bootstrap
 - Use the Grails Asset pipeline to make bower installed dependencies available in app
 - Create a basic angular app to verify assets are correctly wired
 - Write a functional test to verify app
-
----
-
-#Setup
-- install node
-  - gives you npm
-- install bower globally `npm install -g bower`
 
 ---
 
@@ -33,16 +27,19 @@ layout: default
 
 ---
 
-#Add plugins to build.gradle
+# Add plugins to build.gradle
+
 ```gradle
 plugins {
   id "io.spring.dependency-management" version "0.5.4.RELEASE"
   id 'com.craigburke.bower-installer' version '2.5.1'
 }
 ```
+
 - run `./gradlew idea` to refresh dependencies
 
 ---
+
 # Bower dependencies
 - Use bower to manage Javascript packages
 - Use gradle to manage bower packages like Java (i.e maven)
@@ -73,11 +70,13 @@ bower {
 ```
 
 ---
+
 # Build and 'install'
 - `.gradlew bowerInstall` will add the mapped source files
 - You should see files in the grails-app/assets/bower folder within the angular and bootstrap folders.
 
 ---
+
 # Make it automatic
 - Update your build.gradle to make `bowerInstall` and `bowerClean` a part of every build and clean
 - Add the following right after your bower block
@@ -88,17 +87,20 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # Grails Asset Pipeline
 - Simplifies bundling and uglifying scripts for deployment
 - Options for including assets: tags and manifests
 - Building war file will 'compile' assets for deployment
 
 ---
+
 # Grails Asset Pipeline Integration
 - Application.js and application.css are the two files that integrate with the Grails asset pipeline to bring in the required javascript/css for the page.
 - The directives are comments at the top of the file that tell the pipeline which files or trees of files should be loaded.
 
 ---
+
 # Asset Pipeline Directives
 - require: include a single file
 - require_self: include the body of the current file
@@ -117,6 +119,7 @@ clean.dependsOn bowerClean
 - Files in the assets folder are flattened up one level
 
 ---
+
 # Add the Javascript assets
 - grails-app/assets/javascripts/application.js
 
@@ -126,6 +129,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # Add the CSS assets
 - grails-app/assets/stylesheets/application.css
 
@@ -135,6 +139,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # Create Angular App view
 - Create, or replace, index.gsp with basic angular app
 - Standard html with a few special attributes
@@ -162,6 +167,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # In the `<head>`
 - `asset` elements are grails asset pipeline directives
 - `asset:javascript` maps to grails-app/assets/javascripts
@@ -173,6 +179,7 @@ clean.dependsOn bowerClean
 ```
 
 ---
+
 # On the `<body>`
 - `ng-app` is an angular attribute directive declaring your app
 - `"app"` corresponds to the name of angular app defined in application.js
@@ -182,6 +189,7 @@ clean.dependsOn bowerClean
   ```
 
 ---
+
 # The rest
 - `ng-controller` attribute directive declares what controller is used for the scope of that element (`<div>`)
 
@@ -192,6 +200,7 @@ clean.dependsOn bowerClean
 - Lots more to discuss on Angular later
 
 ---
+
 # Functional Testing
 - Geb is a functional testing framework for creating automated UI tests.
 - It is bundled by default with Grails.
@@ -206,8 +215,8 @@ clean.dependsOn bowerClean
 dependencies {
   // Other dependencies...
 
-  testRuntime 'org.seleniumhq.selenium:selenium-firefox-driver:2.44.0'
-  testRuntime 'org.seleniumhq.selenium:selenium-chrome-driver:2.44.0'
+  testRuntime 'org.seleniumhq.selenium:selenium-firefox-driver:2.53.0'
+  testRuntime 'org.seleniumhq.selenium:selenium-chrome-driver:2.53.0'
 
 }
 ```
@@ -215,6 +224,7 @@ dependencies {
 - remember to run ```./gradlew idea``` when you add new dependencies
 
 ---
+
 # Tell Geb to use Firefox & Chrome
 - GebConfig.groovy is the manifest that tells Geb what browsers to use
 - By default, Geb looks in `src/test/resources/GebConfig.groovy`
@@ -229,6 +239,7 @@ driver = {
 ```
 
 ---
+
 # Write a test
 - Create functional specs in 'src/integration-test'
 - use Grails annotation `@Integration`
@@ -256,6 +267,7 @@ class WelcomePageFunctionalSpec extends GebSpec {
   }
 }
 ```
+
 ---
 
 # Run the test
@@ -265,6 +277,7 @@ class WelcomePageFunctionalSpec extends GebSpec {
  - Runs test in chrome
 
 ---
+
 # Wrap up
 -  http://mikecalvo.github.io/msse/examples/grails_angular/
 

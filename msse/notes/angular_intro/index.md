@@ -89,9 +89,7 @@ layout: default
 - Use in views/templates
   - `{{ expression | filter1 | filter2 | ... }}`
 - Can be used in Controllers/Services too
-  - Code smell - likely puts presentation logic where it shouldn't be
-
-  ---
+  - Be careful - this often puts presentation logic where it shoudn't be
 
 # Angular Services
 - Shared code used by multiple controllers or directive
@@ -109,7 +107,6 @@ layout: default
 ---
 # Angular Dependencies
 - Angular requires jQuery
-  - provides jqLite if no jQuery specified
 - Must be included in the page before the angular include
 
 ---
