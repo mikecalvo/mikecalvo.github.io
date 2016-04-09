@@ -4,10 +4,13 @@ layout: default
 ---
 
 # Angular Ajax and REST Support
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
+
 # Promises
 - Pattern commonly used in JavaScript for callbacks
 - Invoke a function passing it a success and optionally an error function to call when complete
@@ -15,6 +18,7 @@ layout: default
 - Call returns immediately but callback called in the future
 
 ---
+
 # Promise Example
 
 ``` javascript
@@ -26,6 +30,7 @@ layout: default
 ```
 
 ---
+
 # AJAX
 - Making calls from Javascript back to server to retrieve data
 - Data used to be all XML now is all JSON
@@ -33,6 +38,7 @@ layout: default
 - Foundation of modern web applications
 
 ---
+
 # $http
 - Core angular service that provides http request access to Angular app
 - Used to make AJAX calls
@@ -41,6 +47,7 @@ layout: default
 - Default request goes back relative to the originating server
 
 ---
+
 # $http Methods
 - get(url, config)
 - post(url, config)
@@ -49,6 +56,7 @@ layout: default
 - jsonp(url, config)
 
 ---
+
 # $http Config Options
 - data: data sent with request (for example on POST)
 - headers: HTTP request headers
@@ -56,6 +64,7 @@ layout: default
 - timeout: request timeout
 
 ---
+
 # $http Promises
 - All $http methods return a promise that has three functions:
 - success(fn)
@@ -64,6 +73,7 @@ layout: default
 - Data returned from the server is passed as the argument to the fn specified
 
 ---
+
 # Examples: $http
 
 ``` javascript
@@ -76,6 +86,7 @@ $http.get('static/data/songs.json').success(function(response) {
 ```
 
 ---
+
 # Setting Defaults
 - All HTTP request traffic can be configured to have common properties
 - Security settings
@@ -84,6 +95,7 @@ $http.get('static/data/songs.json').success(function(response) {
 - Use the $httpProvider to configure defaults
 
 ---
+
 # Example Default HTTP Settings
 
 ``` javascript
@@ -99,6 +111,7 @@ angular.module('app').config(function($httpProvider) {
 ```
 
 ---
+
 # Interceptors
 - Similar to filters in a Java Web Server
 - Intercept all requests and responses
@@ -106,8 +119,10 @@ angular.module('app').config(function($httpProvider) {
   - Provide default config values
   - Log traffic statistics to console
   - Setting breakpoints
+  - Security tokens
 
 ---
+
 # Interceptor Example
 
 ``` javascript
@@ -127,6 +142,7 @@ angular.module('app').config(function($httpProvider) {
 ```
 
 ---
+
 # Add AJAX to Muzic
 - Modify plays view to get plays from server
 - Modify plays to save plays to the server
@@ -134,6 +150,7 @@ angular.module('app').config(function($httpProvider) {
 - Add some default plays during Bootstrap
 
 ---
+
 # Connecting to REST Services
 - $resource factory provides easy access a RESTful resource
 - Provide $resource the URL path to the resource:
@@ -142,6 +159,7 @@ angular.module('app').config(function($httpProvider) {
 - Simplifies access to server with less JavaScript code
 
 ---
+
 # Resource Methods
 - Calling var Songs = $resource('songs/:id') allows for:
 
@@ -154,6 +172,7 @@ Songs.save({title: 'Loser', artist: {id: 3, name: 'Beck'}}) // POST
 ```
 
 ---
+
 # Resource Response
 - Returns object that contains a promise
 - When fulfilled the object returned is automatically populated with the response
@@ -176,6 +195,7 @@ Songs = $resource('songs/:id', {}, {
 ```
 
 ---
+
 # Resource Action Configuration
 - method: HTTP method
 - params: segment variables for call
@@ -183,6 +203,7 @@ Songs = $resource('songs/:id', {}, {
 - isArray: by default resources assume single values
 
 ---
+
 # Custom Action Examples
 
 ``` javascript
@@ -198,6 +219,7 @@ $resource("songs/:id", {}, {
 ```
 
 ---
+
 # Resource Instances
 - After retrieving resource instances, crud methods can be called directly on the instance
 - Similar to GORM style:
@@ -210,12 +232,14 @@ $scope.save = function() {
 }
 ```
 ---
+
 # Views Backed by Resources
 - Most built-in directives know how to properly respond to resources
 - For example:
   - ng-repeat will automatically refresh itself when the resource is resolved
 
 ---
+
 # Resource Conventions
 - Define a resource once and assign it to an upper case variable name
 - Gives it a calling semantic similar to GORM domain class
@@ -227,12 +251,14 @@ $scope.song = Song.get({id: routeParams.id}); // gets instance
 ```
 
 ---
+
 # Advantages of Resources
 - Simplified server access (pre-defined methods)
 - Follows REST pattern
 - Keeps client instances in sync with server responses automatically
 
 ---
+
 # Adding ng-resource Module
 - Install with bower:
 `node_modules/.bin/bower install angular-resource --save`
@@ -244,11 +270,13 @@ $scope.song = Song.get({id: routeParams.id}); // gets instance
 `angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap']);`
 
 ---
+
 # Angular Resource + Grails Resources
 - Angular and Grails play well here
 - Use both to reduce complexity on both client and server
 
 ---
+
 # Muzic: Use Angular Resource
 - Connect an Angular resource to the Grails Artist REST resouce
 1. Add ngResource to the project
@@ -256,6 +284,7 @@ $scope.song = Song.get({id: routeParams.id}); // gets instance
 3. Support add and remove for artists
 
 ---
+  
 # Summary
 - Angular includes easy access to server data via $http service
 - Advanced RESTful resource access available via the ngResource module
