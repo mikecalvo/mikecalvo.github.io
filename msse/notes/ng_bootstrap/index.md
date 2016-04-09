@@ -4,10 +4,13 @@ layout: default
 ---
 
 # Angular Bootstrap
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
+
 # Modular Components
 - Recall creating an app came from the following call that defines a module
 
@@ -20,6 +23,7 @@ angular.module('app', [ ])
 - Third-party Angular plugins/modules work this way
 
 ---
+
 # Angular UI Bootstrap Module
 - Twitter Bootstrap provides a collection of rich web UI controls
   - Examples: alerts, typeahead, modals, accordion
@@ -28,12 +32,14 @@ angular.module('app', [ ])
   - Directives and controllers
 
 ---
+
 # Adding Angular UI Bootstrap To Grails Project
 1. Use bower/grunt to install bootstrap and angular-ui
 1. Update application.js and application.css to include dependencies
 1. Add the module reference to your app module definition
 
 ---
+
 # Install Latest Version of Bootstrap and Angular UI
 - From your root directory
 `./node_modules/.bin/bower install bootstrap angular-bootstrap --save`
@@ -42,6 +48,7 @@ angular.module('app', [ ])
   - Check grails-app/assets/bower_modules
 
 ---
+
 # Update JavaScript Asset References
 - In grails-app/assets/javascripts/application.js:
 
@@ -55,6 +62,7 @@ angular.module('app', [ ])
 ```
 
 ---
+
 # Update CSS Asset References
 - In grails-app/assets/stylesheets/application.css
 
@@ -69,6 +77,7 @@ angular.module('app', [ ])
 ```
 
 ---
+
 # Upate App Module Dependencies
 - Where you define your module (likely application.js):
 
@@ -79,11 +88,13 @@ angular.module('app', ['ui.bootstrap']);
 - Run your app: make sure Angular still without errors to Javascript console
 
 ---
+
 # Control 1: Typeahead
 - Let's add a typeahead control to our edit artist name control
 - As the user types the artist name, show a list of choices that match the name
 
 ---
+
 # Typeahead: Example
 
 ``` javascript
@@ -109,6 +120,7 @@ $scope.getArtist = function (input) {
 ```
 
 ---
+
 # Control 2: Alerts
 - Alerts are highlighted areas for displaying messages
 - danger: errors
@@ -117,6 +129,7 @@ $scope.getArtist = function (input) {
 - [http://angular-ui.github.io/bootstrap/#/alert](http://angular-ui.github.io/bootstrap/#/alert)
 
 ---
+
 # Add a Confirmation Alert on Add
 ```javascript
 $scope.alerts = [];
@@ -137,6 +150,7 @@ $scope.closeAlert = function(index) {
 ```
 
 ---
+
 # Control 3: Modal Dialogs
 - Add a delete button for each play
 - Confirm the delete with a modal dialog
@@ -146,6 +160,7 @@ $scope.closeAlert = function(index) {
   - Provide handlers for close (ok) and dismiss (cancel)
 
 ---
+
 # Add New Column To Plays Table
 
 ``` html
@@ -166,6 +181,7 @@ $scope.closeAlert = function(index) {
 ```
 
 ---
+
 # Add deletePlay Behavior
 
 ```javascript
@@ -194,6 +210,7 @@ $scope.deletePlay = function (play) {
 ```
 
 ---
+
 # Create confirmDialog.html Template
 - Put this in the web-app folder so it is served up from Grails:
 
@@ -213,6 +230,7 @@ $scope.deletePlay = function (play) {
 ```
 
 ---
+
 # Add a Controller for Confirm Dialog
 
 ``` javascript
@@ -232,6 +250,7 @@ $scope.deletePlay = function (play) {
 ```
 
 ---
+
 # Explore Other Controls
 - Glyph Icons
 - [http://angular-ui.github.io/bootstrap/](http://angular-ui.github.io/bootstrap/)
