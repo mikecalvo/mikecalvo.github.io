@@ -2,48 +2,75 @@
 title: Web Application Development
 layout: default
 ---
-
-# Angular Routing
-
-## Mike Calvo
-
-## mike@citronellasoftware.com
+layout: default
+---
+### mike@citronellasoftware.com
 
 ---
 
-# Rationale 1: Many Views Per App
+# Many Views Per App
 - Single page app does not mean single view
-- Google Mail:
-  - Inbox
-  - Compose Message
-  - Read Message
-  - Settings
+- Break up monolithic web pages
+- Composition - easier to manage
+- User experience is seamless
+- Pages don't reload (usually)
+
 
 ---
 
-# Rationale 2: Back Button
-- Users have be come accustomed to using back/forward buttons
-- Mostly on desktop browsers
-- Should be have as expected in single page apps
+# Add Angular Route to Grails Project
+1. Add the following to your build.gradle
+`'angular-route'('1.5.x') {
+    source 'angular-route.js'
+  }`
+1. run bowerRefresh to push the dependency
+`./gradlew bowerRefresh`
+1. Add dependency to application.js
+1. Create a router to manage your routes
+`/routes/<your-router.js>`
+1. Add ng-view directive into main page (index.gsp)
+`<div ng-view></div>`
+
 
 ---
+# Include Reference to Angular Route
+- Must come after main angular reference
+- Make sure require_tree <your app name> in order to include all .js
 
-# URL Routes and Templates
-- Map URLs with views within the app
-- Template is an HTML file that defines a view
-  - Not a complete page
-- URL comes after the # in the single page:
-`http://localhost/auktion/#/listings`
-
+``` javascript
+//= require jquery/dist/jquery
+//= require bootstrap/dist/js/bootstrap
+//= require angular/angular
+//= require angular-route/angular-route
+//= require_tree app
+var app = angular.module('app', ['ngRoute']);
+```
 ---
 
 #ngRoute
 - Optional module in Angular
 - 'ngRoute' module provides functionality
-- Include "ng-route.js" in your page
+- Include "angular-route.js" in your page
 
 ``` javascript
 angular.module("app", ["ngRoute"]);
+```
+
+---
+
+# ngView
+- Router needs to know where to put the views you've defined
+- Use the ngView directive to mark the element
+
+``` html
+<ng-view> <!-- after route your partials go here --></ng-view>
+```
+
+OR
+
+``` html
+<div ng-view> <!-- stuff here --></div>
+
 ```
 
 ---
@@ -52,21 +79,30 @@ angular.module("app", ["ngRoute"]);
 
 ``` javascript
 angular.module("app").config(function($routeProvider) {
-  $route.when("/checkout", {
-    templateUrl: "/views/checkout.html"
-  });
-  $route.when("/products", function {
-    templateUrl: "/views/products.html"
-  });
-  $route.otherwise("/home", function {
-    templateUrl: "/views/home.html"
-  })
+  $routeProvider
+    .when('/contact', {
+      templateUrl: 'angular-router/partials/contact.html',
+      controller: 'contactController'
+    })
+    .when('/manageUser/:action/:id?', {
+      templateUrl: 'angular-router/partials/manageUser.html'
+    })
+    .otherwise({
+      redirectTo: '/home'
+    })
 });
 ```
+---
+
+# URL Routes and Partials
+- Map URLs with views within the app
+- Partial is an HTML file that defines a view
+- URL comes after the # in the single page:
+`http://localhost/auktion/#/listings`
 
 ---
 
-# Templates
+# Partials (Templates, Snippets)
 - Plain old HTML
 - Does not include full page (HTML, HEAD, BODY)
 - Contents are inserted into view placeholder
@@ -75,7 +111,22 @@ angular.module("app").config(function($routeProvider) {
 
 ---
 
-# Example Template
+# Asset pipeline configuation for templates
+1. Add the following to your build gradle under the dependencies section:
+   `assets "com.craigburke.angular:angular-template-asset-pipeline:2.2.7"`
+1. Add templates to the following directory in the format file_name.tpl.html
+  `grails-app/assets/javascripts/app/templates`
+
+---
+
+# Asset pipeline configuration continuted
+
+1. Reference the templates in router code without the tpl or templates directory
+`templateUrl : /app/file_name.html`
+
+---
+
+# Example Partial
 
 ``` html
 <div ng-controller="CartController">
@@ -89,23 +140,21 @@ angular.module("app").config(function($routeProvider) {
 </table>
 </div>
 ```
-
 ---
 
-# ngView
-- Router needs to know where to put the views you've defined
-- Use the ngView directive to mark the element
+# Route Parameters
+- Parameters can be supplied to route - prefix with : in url
 
-``` html
-<ng-view> <!-- after route your templates go here --></ng-view>
+``` javascript
+$routeProvider.when("/product:id", {
+  templateUrl: "/product.html"
+});
+
+$routeProvider.when("/customerProfile/:id/:addressId*") {
+  templateUrl: "/customerAddress.html"
+})
 ```
 
-OR
-
-``` html
-<div ng-view> <!-- stuff here --></div>
-
-```
 ---
 
 # Getting to Routes
@@ -129,21 +178,6 @@ angular.module("app")
     $location.path("/item")
   }
 });
-```
-
----
-
-# Route Parameters
-- Parameters can be supplied to route - prefix with : in url
-
-``` javascript
-$routeProvider.when("/product:id", {
-  templateUrl: "/product.html"
-});
-
-$routeProvider.when("/customerProfile/:id/:addressId*") {
-  templateUrl: "/customerAddress.html"
-})
 ```
 
 ---
@@ -174,10 +208,25 @@ controller("addressController", function($scope, $routeParams) {
 # ngInclude example
 
 ``` html
-<ng-include src="templates/item.html" ng-show="item">
+<ng-include src="partials/item.html" ng-show="item">
   <!-- contents of item.html go here (only displayed if item is truthy) -->
 </ng-include>
 ```
+
+---
+
+# Benefits of angular-router
+
+1. Minimal learning curve
+1. Less things to make sense of
+
+---
+
+# Drawbacks of angular-router
+
+1. Lack of complication makes complicated projects difficult
+1. Applications become a series of toggles
+1. Un-opinionated nature leads to less structure
 
 ---
 
@@ -189,69 +238,43 @@ controller("addressController", function($scope, $routeParams) {
 
 ---
 
-# Add Angular Route to Grails Project
-1. Add bower dependency for angular-route:
-  `node_modules/.bin/bower install angular-route --save`
-1. Include reference to angular-route in your application.js
-1. Create a route configuration
-1. Add ng-view directive into main page
+# Add ui-router to Grails Project
+1. Add the following to your build.gradle
+`'ui-router'('0.2.x')`
+1. run bowerRefresh to push the dependency
+`./gradlew bowerRefresh`
+1. Add dependency to application.js
+1. Create a router to manage your routes
+`/routes/<your-router.js>`
+1. Add ng-view directive into main page (index.gsp)
+`<div ui-view></div>`
 
 ---
 
-# Include Reference to Angular Route
-- Must come after main angular reference
-
-``` javascript
-//= require jquery/dist/jquery
-//= require bootstrap/dist/js/bootstrap
-//= require angular/angular
-//= require angular-route/angular-route
-angular.module('app', ['ngRoute']);
-```
+# Angular Router to UI Router
+1. Works similiarly to angular-router
+1. ngRoute -> state
+1. ui-sref to Navigate
+1. child views use the . notation
 
 ---
 
-# Create a Route Configuration
-- Good convention to put routes in their own file
+# Benefits of ui-router
 
-``` javascript
-angular.module('app').config(function($routeProvider) {
-  $routeProvider.when("/plays", {templateUrl: "/templates/plays.html"});
-  $routeProvider.when("/artist/:id", {templateUrl: "/templates/artist.html"});
-
-  // Default route: plays screen
-  $routeProvider.otherwise({templateUrl: "/templates/plays.html"});
-});
-```
+1. Pages have a state
+1. Simple to use for easy scenarios
+1. View nesting is powerful
+1. Can make a single pages more feature rich without sacrificing complexity
+1. Understands hash view changes
+1. Enforces more structure, can't be willy nilly
 
 ---
 
-# Page
+# Drawbacks of ui-router
 
-``` html
-<!DOCTYPE html>
-<html>
-<head>
-  <asset:stylesheet href="application.css"/>
-  <asset:javascript src="application.js"/>
-</head>
-
-<body ng-app="app">
-
-<ng-view></ng-view>
-
-</body>
-</html>
-```
-
----
-
-# Add Routing to Muzic App
-- Create views for plays and artist detail
-- Add angular routing dependency
-- Update application JS references
-- Move all views into template files
-- Add controllers
+1. Learning curve for children nesting
+1. Enforces more structure, can't be willy nilly
+1. Debugging is occasionally difficult
 
 ---
 
@@ -259,4 +282,4 @@ angular.module('app').config(function($routeProvider) {
 - Angular routes help break up a complex app
   - Simplify views
   - Simplify controllers
-- Angular routes allow browser buttons to work predictably
+- angular-router and ui-router are both decent, but for complicated apps you probably want ui-router
