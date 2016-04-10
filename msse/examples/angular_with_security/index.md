@@ -233,6 +233,6 @@ Define a view for the controller:
 <h1>Your feed!</h1>
 
 <div ng-repeat="r in restaurants">
-    <h2>{{ r.name }}</h2>
+    <h2>\{\{ r.name \}\}</h2>
 </div>
 ```
