@@ -143,32 +143,23 @@ angular.module('app').config(function($httpProvider) {
 
 ---
 
-# Add AJAX to Muzic
-- Modify plays view to get plays from server
-- Modify plays to save plays to the server
-- Deletes remove play from the database
-- Add some default plays during Bootstrap
-
----
-
 # Connecting to REST Services
 - $resource factory provides easy access a RESTful resource
-- Provide $resource the URL path to the resource:
-  `$resource('songs/:id')`
+- Provide $resource the URL path to the resource: `$resource('songs/:id')`
 - Returns an object providing methods to perform CRUD operations on the resource using REST
 - Simplifies access to server with less JavaScript code
 
 ---
 
 # Resource Methods
-- Calling var Songs = $resource('songs/:id') allows for:
 
 ``` javascript
-Songs.get({id:33}); // returns object returned from of GET at songs/33
-Songs.query(); // returns array returned from GET at songs/
-Songs.remove({id:22}) // sends a DELETE to songs/22
-Songs.delete({id:44}) // sends a DELETE to songs/22
-Songs.save({title: 'Loser', artist: {id: 3, name: 'Beck'}}) // POST
+var Song = $resource('songs/:id')
+Song.get({id:33}); // returns object returned from of GET at songs/33
+Song.query(); // returns array returned from GET at songs/
+Song.remove({id:22}) // sends a DELETE to songs/22
+Song.delete({id:44}) // sends a DELETE to songs/22
+Song.save({title: 'Loser', artist: {id: 3, name: 'Beck'}}) // POST
 ```
 
 ---
@@ -189,7 +180,7 @@ $scope.song.$promise.then(function(result) {
 - Custom resource methods can be added when creating the resource:
 
 ``` javascript
-Songs = $resource('songs/:id', {}, {
+var Song = $resource('songs/:id', {}, {
   create: {method: 'PUT'}
   });
 ```
@@ -284,7 +275,7 @@ $scope.song = Song.get({id: routeParams.id}); // gets instance
 3. Support add and remove for artists
 
 ---
-  
+
 # Summary
 - Angular includes easy access to server data via $http service
 - Advanced RESTful resource access available via the ngResource module

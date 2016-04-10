@@ -20,7 +20,7 @@ Week | Topics | Reading | Example Code
  | **SPRING BREAK** |
 9 <br> 3/26/16 | [Node and Bower](notes/node) / [Grails with Node](notes/node_grails) / [Intro to Angular](notes/angular_intro) | Angular Book Ch 2, 3 | [Grails with Angular Example](examples/grails_angular)
 10 <br> 4/1/16  | [Angular Controllers](notes/ng_controllers) / [Angular Routing](notes/ng_routing) | Angular Book Ch 6, 7, 13, 22
-11 <br> 4/9/16  |[Angular Bootstrap](notes/ng_bootstrap) / [Angular REST](notes/ng_rest) | Angular Ch 20, 21
+11 <br> 4/9/16  |[Angular Bootstrap](notes/ng_bootstrap) / [Angular REST](notes/ng_rest) | Angular Ch 20, 21 | [Angular w/Security](examples/angular_with_security)
 12 <br> 4/15/16 |[Angular Validation](notes/ng_validation) / [Angular Services](notes/ng_services) | Angular Book Ch 12, 18
 13 <br> 4/23/16 | [Angular Directives](notes/ng_directives) / [Angular Filters](notes/ng_filters) / [Jasmine and Karma](notes/karma) | Angular Book Ch 14 - 17
 | **GRADUATION** |
