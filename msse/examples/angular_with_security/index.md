@@ -143,7 +143,7 @@ angular.module('app').controller('loginController', function($scope, $location, 
 
 Use the routing rules and the securityService to prevent non-logged in users from seeing anything but the login screen:
 
-```
+``` javascript
 angular.module('app')
 
   // configure the routes
