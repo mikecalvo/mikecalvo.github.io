@@ -124,20 +124,20 @@ span.summary.ng-valid { color: green; }
 # Validation Message Examples
 
 ``` html
-Name:
-<input type="text" ng-model="user.name" name="uName" required="" />
-<br />
-<div ng-show="form.$submitted || form.uName.$touched">
-  <div ng-show="form.uName.$error.required">Tell us your name.</div>
-</div>
+  Name:
+  <input type="text" ng-model="user.name" name="uName" required="" />
+  <br />
+  <div ng-show="form.$submitted || form.uName.$touched">
+    <div ng-show="form.uName.$error.required">Tell us your name.</div>
+  </div>
 
-E-mail:
-<input type="email" ng-model="user.email" name="uEmail" required="" />
-<br />
-<div ng-show="form.$submitted || form.uEmail.$touched">
-  <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
-  <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-</div>
+  E-mail:
+  <input type="email" ng-model="user.email" name="uEmail" required="" />
+  <br />
+  <div ng-show="form.$submitted || form.uEmail.$touched">
+    <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+    <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+  </div>
 ```
 
 ---
