@@ -125,24 +125,25 @@ angular.module('app')
 ---
 
 # Example Built-in Services
-$anchorScroll - scroll browser window
-$animate - animate content transitions
-$compile - process HTML fragment with directives
-$document - DOM window.document access
-$exceptionHandler - handle exceptions in the app
-$http - AJAX
-$q - Create your own promises
-$resource - REST access
+
+- $anchorScroll - scroll browser window
+- $animate - animate content transitions
+- $compile - process HTML fragment with directives
+- $document - DOM window.document access
+- $exceptionHandler - handle exceptions in the app
+- $http - AJAX
+- $q - Create your own promises
+- $resource - REST access
 
 ---
 
 # More Built-in Services
-$rootElement - top level DOM element
-$rootScope - top level scope
-$route - change the view
-$routeParams - parameters to the view
-$swipe - swipe gestures
-$timeout - enhanced setTimeout function
-$window - DOM window object
+- $rootElement - top level DOM element
+- $rootScope - top level scope
+- $route - change the view
+- $routeParams - parameters to the view
+- $swipe - swipe gestures
+- $timeout - enhanced setTimeout function
+- $window - DOM window object
 
 ---
