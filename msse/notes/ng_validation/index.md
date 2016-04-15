@@ -154,6 +154,7 @@ E-mail:
 [https://docs.angularjs.org/guide/forms](https://docs.angularjs.org/guide/forms)
 
 ---
+
 # Summary
 - Angular validation leverages HTML 5 field validations
 - Use CSS to define feedback styles for validation failures
