@@ -39,9 +39,9 @@ layout: default
 - Example:
 
 ``` javascript
-angular.module('app').factory('Song', function($resource) {
+angular.module('app').factory('Song', ['$resource', function($resource) {
   return $resource('songs/:id', {}, {create: {method:'PUT'}});
-});
+}]);
 ```
 
 ---
