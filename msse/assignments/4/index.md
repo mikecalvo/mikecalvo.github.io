@@ -21,8 +21,8 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
 # Requirements
 The following screens/features must be implemented within a single page application using AngularJS:
 
-R1. Use a date picker control from the Angular UI library to filter messages after a specified date.
-R2. Use Angular validation to validate a message prior to posting it to the server via the REST API (client side validation).
-R3. Write a Jasmine test to validate the Angular controller for the feed page.  Use the $httpBackend functionality to mock calls to the server.
-R4. Create an Angular directive to display the follow button or "Following User" indicator on another user's account page. Validate this control with either a functional test or a Jasmine test.
-R5. Use the AngularJS date filter to format the date of a message in the feed in this style: `Mar 16`.  Validate with a functional test.
+- R1. Use a date picker control from the Angular UI library to filter messages after a specified date.
+- R2. Use Angular validation to validate a message prior to posting it to the server via the REST API (client side validation).
+- R3. Write a Jasmine test to validate the Angular controller for the feed page.  Use the $httpBackend functionality to mock calls to the server.
+- R4. Create an Angular directive to display the follow button or "Following User" indicator on another user's account page. Validate this control with either a functional test or a Jasmine test.
+- R5. Use the AngularJS date filter to format the date of a message in the feed in this style: `Mar 16`.  Validate with a functional test.
