@@ -148,9 +148,70 @@ E-mail:
 
 ---
 
+# Model Update Triggers
+- Models are updated by default on any change
+- Alternatively, they can be updated when the user leaves the field (blur) or different events
+
+``` html
+<input ng-model="name" ng-model-options="{ updateOn: 'blur' }" />
+<input ng-model="phone" ng-model-options="{ updateOn: 'mousedown blur' }" />
+```
+
+---
+
+# Debounce
+- Non-immediate model updates
+- Good for searching and typeahead functionality
+- Provide wait period of inactivity before model is updated
+
+``` html
+<input ng-model="state" ng-model-options="{ debounce: 500 }">
+```
+
+----
+
+# Custom Validation
+- Define a directive
+- Access the control (input field) `$validators` property
+- Add a new property matching the name of the validator used on the input field
+- Assign it to a function that does the validation
+
+---
+
+# Example Custom Validation
+
+``` html
+<input ng-model="firstName" startsWithUpper />
+```
+
+``` javascript
+var FIRST_LETTER_UPPER = /^[A-Z].+/;
+app.directive('startsWithUpper', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$validators.startsWithUpper = function(modelValue, viewValue) {
+        if (ctrl.$isEmpty(modelValue)) {
+          // consider empty models to be valid
+          return true;
+        }
+
+        if (FIRST_LETTER_UPPER.test(viewValue)) {
+          // it is valid
+          return true;
+        }
+
+        // it is invalid
+        return false;
+      };
+    }
+  };
+});
+```
+
+---
+
 # More on Form Validation
-- Custom model update triggers
-- Custom validation
 [https://docs.angularjs.org/guide/forms](https://docs.angularjs.org/guide/forms)
 
 ---
