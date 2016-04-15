@@ -65,11 +65,11 @@ layout: default
 ---
 
 # Form Validation Variables
-$prisine - true if user has not interacted
-$dirty - true if user has interacted
-$valid - true if valid
-$invalid - true if not valid
-$error - detailed errors
+- $prisine - true if user has not interacted
+- $dirty - true if user has interacted
+- $valid - true if valid
+- $invalid - true if not valid
+- $error - detailed errors
 
 ---
 
