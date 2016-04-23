@@ -4,7 +4,9 @@ layout: default
 ---
 
 # Jasmine and Karma
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
