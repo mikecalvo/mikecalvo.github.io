@@ -21,6 +21,7 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
 # Requirements
 The following screens/features must be implemented within a single page application using AngularJS:
 
+- R0. Allow for the logged in user to post a new message.
 - R1. Use a alert control from the Angular UI library to display an info message saying 'Message Posted!'.
 - R2. Use Angular validation to validate a message prior to posting it to the server via the REST API (client side validation).
 - R3. Write a Jasmine test to validate the Angular controller for the feed page.  Use the $httpBackend functionality to mock calls to the server.

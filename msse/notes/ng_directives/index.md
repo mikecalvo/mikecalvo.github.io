@@ -4,14 +4,18 @@ layout: default
 ---
 
 # Angular Directives
+
 ## Mike Calvo
+
 ## mike@citronellasoftware.com
 
 ---
+
 # Angular Opinion
 - To manipulate the DOM thou must use a directive
 
 ---
+
 # Built-in Directives
 - ng-repeat
 - ng-model
@@ -20,6 +24,7 @@ layout: default
 - ng-click and ng-change
 
 ---
+
 # Third Party Directives
 - Angular ui: typeahead, alerts, popups, accordion
 - Data Table
@@ -27,18 +32,21 @@ layout: default
 - Sortable: drag and drop
 
 ---
+
 # Reasons to Create Directives
 - Reduce duplicative markup in views
 - New UI metaphors unique to your application
 - Share components between projects
 
 ---
+
 # Observations
 - Working with Angular will most likely involve creating directives
 - It can be challenging
 - Expect things to take longer that you would think
 
 ---
+
 # Directive Types
 - Element
 `<alert>`
@@ -47,6 +55,7 @@ layout: default
 `<div ng-show="realDeal()">`
 
 ---
+
 # Naming Directives
 - Every directive has a name (used as either attribute or element)
 - To avoid collisions, Angular recommends prefixing directives
@@ -54,6 +63,7 @@ layout: default
 - Angular ui directives start with ui-
 
 ---
+
 # Matching Directives
 - Angular looks for directive names by HTML tag or attribute names
 - The following characters are removed and trigger camelCasing: `: - _`
@@ -63,6 +73,7 @@ layout: default
 - ui-accordion resolves to uiAccordion
 
 ---
+
 # Directive Parameters
 - scope
   - The scope for the directive.  Each directive gets its own
@@ -72,6 +83,7 @@ layout: default
   - The DOM element attributes
 
 ---
+
 # Creating a Directive
 - Similar to creating controllers and filters
 - Define a factory for directive using Angular module:
@@ -83,6 +95,7 @@ angular.module('app').directive('prefixName', function() {
 ```
 
 ---
+
 # Template-expanding Directive
 - Most simple directive to create
 - Return markup that will be inserted into view where your directive lives
@@ -90,6 +103,7 @@ angular.module('app').directive('prefixName', function() {
 - Template can be provided inline or as a url reference
 
 ---
+
 # Example Template-expanding
 
 ``` javascript
@@ -112,6 +126,7 @@ angular.module('docsSimpleDirective', [])
 ```
 
 ---
+
 # Restricting Directive Use
 - Return a 'restrict' value to limit how the directive can be used:
 - 'A' : Attribute name
@@ -126,12 +141,14 @@ return {
 ```
 
 ---
+
 # Recommendations on Restricting
 - Use element when directive completely controls the contents
 - Use attribute when decorating an existing element with new functionality
 - Never use class directives
 
 ---
+
 # Scope Isolation
 - Directive can specify characteristics of it's scope
 - Define directive scope values from element attributes
@@ -147,12 +164,14 @@ return {
 ```
 
 ---
+
 # Scope Isolation Best Practices
 - Isolating scope makes your directive more reusable
 - Each directive can have it's own data
 - Keep In Mind: isolate scope means the only values in the directive scope are the ones defined in the directive
 
 ---
+
 # DOM-Manipulating Directive
 - Directives can also work with jQuery-like functionality to add elements to the DOM
 - These directives define a link function which accepts the following arguments:
@@ -161,6 +180,7 @@ return {
   - attrs - normalized element attributes (dashes converted to camelCase)
 
 ---
+
 # Example DOM Directive
 
 ``` javascript
@@ -189,6 +209,7 @@ angular.module('app').directive('currentTime', function($interval, dateFilter) {
 ```
 
 ---
+
 # Creating DOM elements
 - Use the function angular.element() to create new elements
   Example: `var listElem = angular.element("<ul>")`
@@ -196,6 +217,7 @@ angular.module('app').directive('currentTime', function($interval, dateFilter) {
   Example: `element.append(listElem)`
 
 ---
+
 # Directives that Wrap Content
 - Set the 'transclude' property to true
 - This will render elements inside the directive element as normal
@@ -203,6 +225,7 @@ angular.module('app').directive('currentTime', function($interval, dateFilter) {
 - Best for creating directives that wrap arbitrary content
 
 ---
+
 # Example Transcluded Directive
 
 ``` javascript
@@ -224,6 +247,7 @@ angular.module('app').directive('boxedContent', function() {
 ```
 
 ---
+
 # jqLite
 - Element in link function is a jqLite element
 - It is a reduced-functionality version of jQuery
@@ -231,6 +255,7 @@ angular.module('app').directive('boxedContent', function() {
 - Full jQuery can be used - simply include jQuery in your page
 
 ---
+
 # Example of jqLite functions
 - find(selector) - find child elements using a CSS selector
 - append(element), prepend(element)
@@ -239,11 +264,13 @@ angular.module('app').directive('boxedContent', function() {
 - on(events, handler), off(events, handler), triggerHandler(event)
 
 ---
+
 # Directive Controllers
 - A directive can define a controller that responds to user events and exposes behaviors just like regular controllers
 - Complex directives will often have a controller
 
 ---
+
 # Requiring Other Directives
 - Directives can use other directives
 - For example your directive enhances the input field but requires the 2-way binding provided by the ngModel directive
@@ -251,6 +278,7 @@ angular.module('app').directive('boxedContent', function() {
 - The controller for required directives are injected into the link function
 
 ---
+
 # Example Required Directive
 
 ``` javascript
@@ -280,6 +308,7 @@ angular.module('app').directive('blacklist', function() {
 ```
 
 ---
+
 # Notes On Required Directives
 - Directives can be required on the element OR in a parent somewhere
   - Prefix the directive name with a '^'
