@@ -24,7 +24,7 @@ Week | Topics | Reading | Example Code
 12 <br> 4/15/16 |[Angular Validation](notes/ng_validation) / [Angular Services](notes/ng_services) | Angular Book Ch 12, 18
 13 <br> 4/23/16 | [Angular Directives](notes/ng_directives) / [Angular Filters](notes/ng_filters) / [Jasmine and Karma](notes/karma) | Angular Book Ch 14 - 17
 | **GRADUATION** |
-14 <br> 5/7/16  | Alternatives to Grails and Angular | &nbsp;
+14 <br> 5/7/16  | [Alternatives](notes/alternatives) / [Course Recap](notes/course_recap) | &nbsp;
 
 ## Assignments
 
