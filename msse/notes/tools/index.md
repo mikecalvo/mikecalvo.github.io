@@ -39,22 +39,19 @@ layout: default
 
 ---
 
-# Use GVM
+# Install Groovy and Spring
 - Install Groovy:
   `$ sdk install groovy`
-- Install Grails:
-`$ sdk install grails`
+- Install SpringBoot:
+`$ sdk install spring`
 - Confirm:
   `$ sdk current`
   `$ groovy -version`
-  `$ grails -version`
-
-^ go out to command line and show gvm in action
+  `$ spring --version`
 
 ---
 
 # Groovy
-- Groovy install not required for grails
 - Groovy Console
 - Handy interactive debugging tool
 `$ groovyConsole`
@@ -63,8 +60,8 @@ layout: default
 
 ---
 
-# Grails
-- Use the grails command line application to:
+# SpringBoot CLI
+- Use the SpringBoot CLI to:
 - Create a new project
 - Build your project
 - Run your project tests
@@ -74,7 +71,7 @@ layout: default
 
 # IDE Options
 - Strongly recommend IntelliJ IDEA
-- Best Grails support
+- Best Java and Groovy support
 - Normally $249 developer license
 - Free license
 [https://www.jetbrains.com/estore/students/academic](https://www.jetbrains.com/estore/students/academic)

@@ -8,10 +8,15 @@ layout: default
 
 ---
 
+# Course Instructors
+- Adam Keyser
+- Marc Kapke
+- Mike Calvo
+
 # About Me
 - 1999 MSSE Graduate
 -- Instructor since 2000
-- Engineering Manager @ Target
+- Engineering Director @ Target
 
 ---
 
@@ -37,21 +42,25 @@ layout: default
 
 # Technologies
 - Groovy: dynamic language based on the JVM
-- Grails: RAD web platform (inspired by Ruby on Rails)
+- SpringBoot: Java-based framework for simplified web deployments
 - JavaScript: the language of the web
-- AngularJS: popular single page application framework
-  -- Created by Google
+- ReactJS: popular single page application framework by Facebook
 - Twitter Bootstrap: CSS and JavaScript library for responsive web UI
 
 ---
 
-# Why Groovy/Grails?
-- Easy transition for Java developers
-- Based on many tried and true technologies
-  -- Hibernate
-  -- Spring
-- Significantly easier than building Java-based web application
-- Dynamic languages are dominating the web
+# Why SpringBoot?
+- Spring is popular Java library
+- Integrates with many popular frameworks
+- Simple deployments
+- Testibility
+
+---
+
+# Why Groovy?
+- Dynamic languages are dominating the web (JavaScript, Ruby)
+- Java is verbose and clumsy
+- Great for parsing JSON
 
 ---
 
@@ -60,16 +69,19 @@ layout: default
 - People realized it's not going anywhere
 - Great frameworks and patterns emerged
 - Single-page apps are what people expect
-- AngularJS is the most widely adopted single-page app framework today
+- Latest in an evolution of single-page app frameworks
 
 ---
 
 # Many Other Options
 - Node
 - Rails
+- Grails
 - PHP
 - .NET
 - Backbone
+- Angular
+- Ember
 _I welcome comparisons and discussion especially from those with direct experience_
 
 ---
