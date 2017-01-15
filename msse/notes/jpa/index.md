@@ -3,17 +3,26 @@ title: Web Application Development
 layout: default
 ---
 
-# JPA
+# JPA and Spring Data
 ## Mike Calvo
 ### mike@citronellasoftware.com
 
 ---
 
-#ORM
+# ORM
 - Object Relational Mapping
 - Your program is a collection of objects
 - Your data is relational
 - Allow your program to treat data like objects
+
+---
+
+# ORM Benefits
+- Prevent context switching between SQL and Objects
+- Create abstraction layer for persistence functions
+- CRUD operations
+- Query operations
+
 ---
 
 # JPA
@@ -83,22 +92,21 @@ layout: default
 ---
 
 # Fetch
-Fetch mode
-Lazy
-Eager – disable lazy loading
-Mode can be configured on each relationship
-Consider performance and use when configuring fetch
+- Fetch mode
+  - Lazy
+  - Eager: disable lazy loading
+- Mode can be configured on each relationship
+  - Consider performance and use when configuring fetch
 
 ---
 
 # Cascade
-Tells Hibernate whether to follow the path of the relationship on
-Insert
-Update
-Delete
-All
-Hibernate adds options
-Delete All Orphans
+- Tells JPA whether to follow the path of the relationship on
+  - Insert
+  - Update
+  - Delete
+  - Delete all orphans
+  - All of the above
 
 ---
 
@@ -130,3 +138,140 @@ Delete All Orphans
 - Should be very comfortable for those familiar with SQL
 - JPAQL is a subset of HQL
 - Hibernate implementation will support both
+
+---
+
+# Spring Data
+- Utility support for interacting with data sources
+- Supports JPA and Mongo sources
+- Data Repositories
+
+---
+
+# Repositories
+- Typed Interfaces: domain class + id
+- Support CRUD operations and queries
+- Typically do not require implementations
+- Added by SpringBoot as beans by default
+
+---
+
+# Repository Types
+- Repository
+- CrudRepository
+- PagingAndSortingRepository
+- JpaRepository
+---
+
+# Example Repository
+
+``` groovy
+interface UserRepository extends JpaRepository<User, Long> {
+}
+```
+---
+
+# Finder Syntax
+- Find methods provide querying by method name convention
+
+``` groovy
+@Entity class Person {
+  @Id Long id
+  String firstName
+  String lastName
+}
+
+interface PersonRepository<Person, Long> {
+  List<Person> findByFirstName(String firstName)
+  List<Person> findByFirstNameAndLastName(String firstName, String lastName)
+}
+```
+---
+
+# Custom Queries
+- Use the `@Query` annotation to define a query
+
+``` groovy
+public interface UserRepository extends JpaRepository<User, Long> {
+
+  @Query("select u from User u where u.firstname like %?1")
+  List<User> findByFirstnameEndsWith(String firstname);
+}
+```
+
+---
+
+# Projections
+- Retrieve a subset of the properties of the domain
+- Define an interface with getter methods for the projected properties
+- Return the interface from your Repository find method
+- Projections can also contain combinations of properties
+
+---
+
+# Projection Interface Example
+
+``` groovy
+interface FullNameAndCountry {
+
+  @Value("#{target.firstName} #{target.lastName}")
+  String getFullName();
+
+  @Value("#{target.address.country}")
+  String getCountry();
+}
+```
+
+---
+
+# Criteria Queries
+- Define a criteria object that specifies the query
+- Repository should extend JpaSpecificationExecutor
+- Adds `List<T> findAll(Specification<T> spec)` to Repository
+
+---
+
+# Example specification
+
+``` groovy
+public class CustomerSpecs {
+
+  public static Specification<Customer> isLongTermCustomer() {
+    return new Specification<Customer>() {
+      public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query,
+            CriteriaBuilder builder) {
+
+         LocalDate date = new LocalDate().minusYears(2)
+         return builder.lessThan(root.get(_Customer.createdAt), date)
+      }
+    };
+  }
+}
+
+List<Customer> customers = customerRepository.findAll(CustomerSpecs.isLongTermCustomer());
+```
+
+---
+
+# Example Queries
+- Specify an example domain object to match in the datastore
+- Repository extends QueryByExampleExecutor
+- Adds `<S extends T> S findOne(Example<S> example)` to Repository
+
+---
+
+# Query By Example
+
+``` groovy
+Person person = new Person(firstName: 'Dave')                       
+
+Example<Person> example = Example.of(person);
+```
+
+---
+
+# Adding Spring Data to Spring Boot
+
+``` groovy
+compile('org.springframework.boot:spring-boot-starter-data-jpa')
+```

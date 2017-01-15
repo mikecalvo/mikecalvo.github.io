@@ -11,7 +11,7 @@ Week | Topics | Reading | Instructor | Example Code
 :---:|--------|-------- | :----------: | ------------
 1 <br> 1/21/17 | [Introduction](notes/introduction/) / [Tools](notes/tools/) / [Groovy](notes/groovy/)          | &nbsp; | Mike | &nbsp;
 2 <br> 1/27/17 | [Spring Boot Intro](notes/spring_boot_intro/) / [Testing](notes/testing) / [Spock](notes/spock) | &nbsp; | Adam | &nbsp;
-3 <br> 2/4/17  | [Spring Boot Data](notes/spring_boot_data) / [NOSQL](notes/nosql)| &nbsp; | Mike | &nbsp;
+3 <br> 2/4/17  | [Spring Data and JPA](notes/jpa) / [NOSQL](notes/nosql) | [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/) | Mike | &nbsp;
 4 <br> 2/10/17 | [Web Basics](notes/web_basics)  | &nbsp; | Mike | &nbsp;
 5 <br> 2/18/17 | [Spring Boot REST](notes/spring_boot_rest) | &nbsp; | Adam | &nbsp;
 6 <br> 2/25/17 | [REST](notes/rest) / [Functional Testing](notes/functional_testing/) | &nbsp; | Marc | &nbsp;
