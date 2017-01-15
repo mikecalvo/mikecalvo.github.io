@@ -44,7 +44,7 @@ layout: default
 - Groovy: dynamic language based on the JVM
 - SpringBoot: Java-based framework for simplified web deployments
 - JavaScript: the language of the web
-- ReactJS: popular single page application framework by Facebook
+- AngularJS: popular single page application framework by Google
 - Twitter Bootstrap: CSS and JavaScript library for responsive web UI
 
 ---

@@ -9,20 +9,20 @@ layout: default
 
 Week | Topics | Reading | Instructor | Example Code
 :---:|--------|-------- | :----------: | ------------
-1 <br> 1/21/17 | [Introduction](notes/introduction/) / [Tools](notes/tools/) / [Groovy](notes/groovy/)          | TBD | Mike | TBD
-2 <br> 1/27/17 | [Spring Boot Intro](notes/spring_boot_intro/) / [Testing](notes/testing) / [Spock](notes/spock) | TBD | Adam | TBD
-3 <br> 2/4/17  | [Spring Boot Data](notes/spring_boot_data) / [NOSQL](notes/nosql)| TBD | Mike | TBD
-4 <br> 2/10/17 | [Web Basics](notes/web_basics)  | TBD | Mike | TBD
-5 <br> 2/18/17 | [Spring Boot REST](notes/spring_boot_rest) | TBD | Adam | TBD
-6 <br> 2/25/17 | [REST](notes/rest) / [Functional Testing](notes/functional_testing/) | TBD | Marc | TBD
-7 <br> 3/4/17  | [Security](notes/security) | TBD | Marc | [Security Example](examples/security)
-8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | TBD | Adam | TBD
+1 <br> 1/21/17 | [Introduction](notes/introduction/) / [Tools](notes/tools/) / [Groovy](notes/groovy/)          | &nbsp; | Mike | &nbsp;
+2 <br> 1/27/17 | [Spring Boot Intro](notes/spring_boot_intro/) / [Testing](notes/testing) / [Spock](notes/spock) | &nbsp; | Adam | &nbsp;
+3 <br> 2/4/17  | [Spring Boot Data](notes/spring_boot_data) / [NOSQL](notes/nosql)| &nbsp; | Mike | &nbsp;
+4 <br> 2/10/17 | [Web Basics](notes/web_basics)  | &nbsp; | Mike | &nbsp;
+5 <br> 2/18/17 | [Spring Boot REST](notes/spring_boot_rest) | &nbsp; | Adam | &nbsp;
+6 <br> 2/25/17 | [REST](notes/rest) / [Functional Testing](notes/functional_testing/) | &nbsp; | Marc | &nbsp;
+7 <br> 3/4/17  | [Security](notes/security) | &nbsp; | Marc | &nbsp;
+8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | &nbsp; | Adam | &nbsp;
  | **SPRING BREAK** |
-9 <br> 3/25/17 | [Node and Gulp](notes/node) / [React Intro](notes/react_intro) | TBD | Marc | TBD
-10 <br> 3/31/17| [React and Redux Controllers](notes/react_controllers)         | TBD | Marc | TBD
-11 <br> 4/8/17  |[React More](notes/react_more) | TBD | Marc | TBD
-12 <br> 4/14/17 |[Automation Testing with Geb](notes/geb) | TBD | Mike | TBD
-13 <br> 4/22/17 | [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | TBD | Adam | TBD
+9 <br> 3/25/17  | [Intro to Angular](notes/angular_intro) / [Node and Gulp](notes/node) / [Jasmine and Karma](notes/karma) | &nbsp; | Marc | &nbsp;
+10 <br> 3/31/17 | [Angular Controllers](notes/ng_controllers) / [Angular Routing](notes/ng_routing) | &nbsp; | Marc | &nbsp;
+11 <br> 4/8/17  | [Angular Bootstrap](notes/ng_bootstrap) / [Angular REST](notes/ng_rest) | &nbsp; | Marc | &nbsp;
+12 <br> 4/14/17 | [Angular Validation](notes/ng_validation) / [Angular Services](notes/ng_services) / [Angular Directives](notes/ng_directives) / [Angular Filters](notes/ng_filters) | &nbsp; | Mike | &nbsp;
+13 <br> 4/22/17 | [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | &nbsp; | Adam | &nbsp;
 | **GRADUATION** |
 14 <br> 5/6/17  | Alternatives to SpringBoot and ReactJS | &nbsp; | Mike | &nbsp;
 
@@ -30,7 +30,7 @@ Week | Topics | Reading | Instructor | Example Code
 
 Due Date                   |  Details
 ---------------------------|---------------------
-[2/12/2016](assignments/1) | Grails, GORM, Domain
-[3/11/2016](assignments/2) | Grails Controllers & REST
-[4/9/2016](assignments/3)  | Security & Angular Basics
-[5/7/2016](assignments/4)  | Angular Validation, Bootstrap, Resources
+[2/10/2016](assignments/1) | Grails, GORM, Domain
+[3/10/2016](assignments/2) | Grails Controllers & REST
+[4/8/2016](assignments/3)  | Security & Angular Basics
+[5/6/2016](assignments/4)  | Angular Validation, Bootstrap, Resources
