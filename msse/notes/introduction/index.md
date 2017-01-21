@@ -13,6 +13,8 @@ layout: default
 - Marc Kapke
 - Mike Calvo
 
+---
+
 # About Me
 - 1999 MSSE Graduate
 -- Instructor since 2000
@@ -73,16 +75,21 @@ layout: default
 
 ---
 
-# Many Other Options
+# Other Server Options
 - Node
 - Rails
 - Grails
 - PHP
 - .NET
-- Backbone
-- Angular
+
+---
+
+# Other Client Options
+- ReactJS
 - Ember
-_I welcome comparisons and discussion especially from those with direct experience_
+- VueJS
+- Meteor
+- Backbone
 
 ---
 
@@ -106,10 +113,6 @@ _I welcome comparisons and discussion especially from those with direct experien
 # Recommendations
 - IntelliJ IDEA
 -- Get an [academic license](https://www.jetbrains.com/estore/students/)
-- Develop on Unix
--- Mac
--- Cygwin
--- Linux
 - Get familiar with Git
 - Pick a partner today
 
