@@ -5,31 +5,32 @@ layout: default
 
 # Assignment #1
 
-## twtr
+## playlist
 
-### Due Date: 2/12/2016
+### Due Date: 2/10/2017
 
 # Assignment Overview
-- Implement a social media platform similar to Twitter
-- Implement the domain model and persistence of the model using Grails Domain classes
-- Write Grails unit and integration tests to verify that you've implemented the requirements
+- Implement the domain model for a music playlist system
+- Use JPA and SpringBoot
+- Use Spock to test persistence requirements
+
 
 # Deliverables
-1. Access to source code repository (preferrably git)
-1. Working Grails project on which I can run without error or failure:
-  `grails test-app`
+1. Access to source code repository
+1. Working SpringBoot project should build with passing tests:
+  `./gradlew clean build`
 1. All requirements implemented and tested with passing tests
 
 # System Description
-Create an application that works like a simplified Twitter.  The initial
-requirements will include storage of data to the model required to support
-accounts, messages, and account following.
+Create an application that allows a user to create a playlist of songs.  The songs will be saved in the database along with their release and artist information.
 
-Messages are posted by accounts.  An account can follow another account.
+# Chicken Feet Diagram
+`Account -< Playlist -< Songs >- Release >- Artist`
+
+# Recommended Implementation
+Use JPA annotations to define your domain model on Groovy classes.  Use the JPA repository functionality in Spring Data to interact with the data store.
 
 # Testing Requirements
-For each requirement below, the type of required test is specified.  Unit tests are Grails unit tests (they do not require Grails to be running).  These should use the DomainClassUnitTestMixin annotation to provide mocking of Grails-provided domain methods.  Integration tests are Grails integration tests that require the Grails application to be running.  These will interact with the running database instance within your Grails app.
-
 Some requirements need to be verified using data-driven tests.  These should be Spock tests that use the `where` directive.  For example:
 
 ```
@@ -49,16 +50,20 @@ def 'test adding: #description'() {
 ```
 
 # Account Requirements
-- A1. Saving an account with a valid handle, email, password and name will succeed (unit test)
-- A2. Saving an account missing any of the required values of handle email, password and name will fail (data-driven unit test)
+- A1. Accounts with valid required properties will save: email, password, name
+- A2. Saving an account missing any of the required values of  email, password and name will fail (data-driven unit test)
 - A3. Saving an account with an invalid password will fail.  Passwords must be 8-16 characters and have at least 1 number, at least one lower-case letter, at least 1 upper-case letter (data-driven unit test)
 - A4. Saving account with a non-unique email or handle address must fail (integration test)
+- A5. Password must be saved as encrypted data - not plain text
 
-# Message Requirements
-- M1. Saving a message with a valid account and message text will succeed (unit test)
-- M2. Message text is required to be non-blank and 40 characters or less (data-driven unit test)
+# Playlist Requirements
+- P1. A valid playlist requires a name and related account
+- P2. A playlist is related to an ordered list of songs
 
-# Follow Requirements
-- You may choose to implement the follow functionality how you choose.  Prove that you can save data with your domain model that supports the following requirements:
-- F1. An account may have multiple followers (integration test)
-- F2. Two accounts may follow each other (integration test)
+# Song Requirements
+- S1. Song require a title and a Release to be saved
+- S2. Release requires a title, related artist and a release type (single, album, compilation)
+- S3. Release can have an optional date field
+- S4. Artist can be saved with a required name field
+- S5. An artist can be related to many releases
+- S6. Search for song by title with wildcard (`*Love*`)
