@@ -30,7 +30,7 @@ Week | Topics | Reading | Instructor | Example Code
 
 Due Date                   |  Details
 ---------------------------|---------------------
-[2/10/2016](assignments/1) | Grails, GORM, Domain
-[3/10/2016](assignments/2) | Grails Controllers & REST
-[4/8/2016](assignments/3)  | Security & Angular Basics
-[5/6/2016](assignments/4)  | Angular Validation, Bootstrap, Resources
+[2/10/2017](assignments/1) | SpringBoot and JPA
+[3/10/2017](assignments/2) | Spring Controllers & REST
+[4/8/2017] TBD  | Security & Angular Basics
+[5/6/2017] TBD | Angular Validation, Bootstrap, Resources
