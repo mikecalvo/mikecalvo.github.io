@@ -2,10 +2,10 @@
 title: Web Application Development
 layout: default
 ---
+autoscale: true
+theme: Next, 3
 
 # Spock Testing Framework
-## Mike Calvo
-### mike@citronellasoftware.com
 
 ---
 
@@ -221,28 +221,24 @@ def 'bad things happen'() {
 
 ``` groovy
 @Unroll('#description')
-def 'supports count parameter'() {
-  given:
-  for (int i = 1; i <= count; i++) {
-    new Artist(name: "Artist #${i}").save()
+  def 'list size matches'() {
+    given:
+    def list = []
+
+    when:
+    for (int i = 1; i <= count; i++) {
+      list << [creationIndex: count]
+    }
+
+    then:
+    list.size() == expectedReturned
+
+    where:
+    description  | count | expectedReturned
+    'Zero'       | 0     | 0
+    'Two'        | 2     | 2
+    'Ten'        | 10    | 10
   }
-  params.count = count
-
-  when:
-  controller.index()
-  def returned = parser.parseText(response.text)
-
-  then:
-  returned.size() == expectedReturned
-
-  where:
-  description  | count | expectedReturned
-  'Zero'       | 0     | 0
-  'Two'        | 2     | 2
-  'Ten'        | 10    | 10
-  'Cap at ten' | 30    | 10
-  }
-}
 ```
 
 ---
@@ -275,6 +271,7 @@ when: 'the account is credited $10'
 then: "the account's balance ins $10"
 // ...
 ```
+---
 
 # Spock Extensions
 - @Timeout - provide a timeout for spec or fixture
@@ -284,13 +281,43 @@ then: "the account's balance ins $10"
 
 ---
 
+## Spock with Spring Boot
+### Add the spock-spring library to your project
+
+- build.gradle -> dependencies {}
+
+
+``` groovy
+testCompile('org.spockframework:spock-spring:1.1-groovy-2.4-rc-3')
+
+testCompile("org.spockframework:spock-core:${groovyVersion}") {
+    exclude module: 'groovy-all'
+  }
+```
+
+---
+## Spring Annotations for testing (class level)
+
+- Load up Spring context for dependency injection:
+
+``` groovy
+@ContextConfiguration
+```
+- Load only the JPA libraries - useful to avoid full server startup:
+
+``` groovy
+@DataJpaTest
+```
+- Start the entire server, should only be used for functional tests:
+
+``` groovy
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+```
+---
+
 # Try Spock Out
 - Web Console
 
-http://meetspock.appspot.com/?id=9001
+[http://meetspock.appspot.com/?id=9001](http://meetspock.appspot.com/?id=9001)
 
 ---
-
-# Spock with Grails
-- Grails 3 comes with Spock support built in
-[https://grails.github.io/grails-doc/latest/guide/testing.html](https://grails.github.io/grails-doc/latest/guide/testing.html)
