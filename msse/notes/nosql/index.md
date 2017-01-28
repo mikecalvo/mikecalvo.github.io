@@ -2,6 +2,7 @@
 title: Web Application Development
 layout: default
 ---
+slidenumbers: true
 
 # NoSQL
 
@@ -128,113 +129,54 @@ layout: default
 
 ---
 
-# Grails with MongoDB
-- Install Mongo library via build.gradle:
+# Enabling Mongo in Spring Boot
+[https://spring.io/guides/gs/accessing-data-mongodb/](https://spring.io/guides/gs/accessing-data-mongodb/)
+
+- Gradle Dependency:
+`compile("org.springframework.boot:spring-boot-starter-data-mongodb")`
+
+- Spring Data Repositories work with Mongo
+
+---
+
+# Mapping Classes to Mongo Collections
+- Use `@Document` to mark a class as persist-able to Mongo
+- Use `@Id` to mark a field as the id property
+- Classes can contain both `@Entity` and `@Document`
+
+---
+
+# Mixed JPA/Mongo
+- Annotate your Config class:
+``` groovy  
+@EnableJpaRepositories(basePackages = "com.acme.repositories.jpa")
+@EnableMongoRepositories(basePackages = "com.acme.repositories.mongo")
+```
+
+---
+
+# Configuring MongoDB
+- application.properties:
 
 ``` groovy
-compile "org.grails.plugins:mongodb:5.0.0.RC1"
+# MONGODB (MongoProperties)
+spring.data.mongodb.authentication-database= # Authentication database name.
+spring.data.mongodb.database=test # Database name.
+spring.data.mongodb.field-naming-strategy= # Fully qualified name of the FieldNamingStrategy to use.
+spring.data.mongodb.grid-fs-database= # GridFS database name.
+spring.data.mongodb.host=localhost # Mongo server host.
+spring.data.mongodb.password= # Login password of the mongo server.
+spring.data.mongodb.port=27017 # Mongo server port.
+spring.data.mongodb.repositories.enabled=true # Enable Mongo repositories.
+spring.data.mongodb.uri=mongodb://localhost/test # Mongo database URI. When set, host and port are ignored.
+spring.data.mongodb.username= # Login user of the mongo server.
 ```
-
-- Be sure to comment out or remove all references to hibernate in the build.gradle file
-
----
-
-# Mapping Domain Class to MongoDB
-- When the mongo library is added as a dependency, mongo is used as the default Domain storage strategy
-
----
-
-# Example MongoDB Mapped Domain
-
-``` groovy
-class Audit {
-
-  String user
-  String action
-  Date dateCreated
-
-  static mapping = {
-    collection 'audits'
-    database 'muzic'
-    version: false
-  }
-}
-```
-
----
-
-# Embedded Data Types
-- Hibernate and GORM support embedded relationships for types
-- An embedded relationship means that the nested class is _included_ as part of the data of the parent (rather than a separate entity)
-- Example: Customer->Address
-  - The Address object data will be stored together with the Customer data
-
----
-
-# Embedded Example
-
-``` groovy
-class Customer {
-  String name
-  String email
-  Address address
-  List<Address> otherAddresses
-
-  static embedded = ['address', 'otherAddresses']
-}
-
-class Address {
-  String line1
-  String city
-  String state
-  String zip
-}
-```
-
----
-
-# MongoDB Domain Relationships
-- GORM will include a reference to the id of the related item in Mongo
-
-``` JavaScript
-{
-    "_id" : NumberLong(13),
-    "endYear" : 2016,
-    "name" : "David Bowie",
-    "startYear" : 1966,
-    "version" : NumberLong(0)
-}
-
-{
-    "_id" : NumberLong(12),
-    "inspirations" : [
-        NumberLong(13)
-    ],
-    "name" : "U2",
-    "startYear" : 1978,
-    "version" : NumberLong(0)
-}
-```
-
----
-
-# Dynamic Attributes
-- MongoDB Domain classes allow dynamic properties to be added
-- These properties do not need to be defined in the domain class
-- When saved, MongoDB Domain class will also persist these dynamic attributes
 
 ---
 
 # Querying MongoDB Domains
-- Other than HQL, all GORM queries work with MongoDB Domain classes
+- Other than HQL, all JPA queries work with MongoDB Domain classes
 - Even dynamic attributes can be queried
-
----
-
-# Raw MongoDB Access
-- The MongoDB plugin includes a GMongo reference that can be used in any controller or service
-- This class allows lower-level, direct MongoDB query and update functionality
-- To access, declare the 'mongo' property on your controller or service
 
 ---
 
