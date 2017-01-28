@@ -25,7 +25,7 @@ layout: default
 Create an application that allows a user to create a playlist of songs.  The songs will be saved in the database along with their release and artist information.
 
 # Chicken Feet Diagram
-`Account -< Playlist -< Songs >- Release >- Artist`
+`Account -< Playlist >-< Songs >- Release >- Artist`
 
 # Recommended Implementation
 Use JPA annotations to define your domain model on Groovy classes.  Use the JPA repository functionality in Spring Data to interact with the data store.
@@ -59,6 +59,7 @@ def 'test adding: #description'() {
 # Playlist Requirements
 - P1. A valid playlist requires a name and related account
 - P2. A playlist is related to an ordered list of songs
+- P3. A song can be included in multiple playlists
 
 # Song Requirements
 - S1. Song require a title and a Release to be saved
