@@ -2,6 +2,7 @@
 title: Web Application Development
 layout: default
 ---
+slidenumbers: true
 
 # JPA and Spring Data
 ## Mike Calvo
@@ -46,7 +47,7 @@ layout: default
 ---
 
 # JPA Annotation Rules
-- Any persistent class must be annotated with `@Entity` (or inherit from a class that does)
+- Any persistent class must be annotated with `@Entity`
 - All persistent classes must have a field annotated by `@Id` signifying the primary key
 - All instance fields in a persistent class are assumed to be mapped to columns with the same name as the field
 - `@Transient` will remove a field from mapping
@@ -141,6 +142,56 @@ layout: default
 
 ---
 
+# Example JPAQL
+`select s from Song where s.title = ?`
+
+`SELECT p FROM Player p WHERE p.name LIKE ’Mich%’`
+
+`SELECT p FROM Player p WHERE p.teams IS EMPTY`
+
+`SELECT DISTINCT a FROM Author a INNER JOIN a.books b WHERE b.publisher.name = 'XYZ Press'`
+
+---
+
+# JPAQL Supports Writes
+`UPDATE Player p
+SET p.status = 'inactive'
+WHERE p.lastPlayed < :inactiveThresholdDate`
+`DELETE
+FROM Player p
+WHERE p.status = 'inactive'
+AND p.teams IS EMPTY`
+
+---
+
+# Constraints via Java Validation
+- JPA works with the javax.validation libraries
+- Provide common validations on fields using annotations:
+  - Email
+  - Size
+  - NotNull
+  - NotBlank
+
+---
+
+# Example Constraints
+
+``` groovy
+@Entity
+class Account {
+  @Id
+  Long id
+
+  @NotNull @Email @Column(unique=true)
+  String Email
+
+  @NotNull @NotBlank
+  String password
+}
+```
+
+---
+
 # Spring Data
 - Utility support for interacting with data sources
 - Supports JPA and Mongo sources
@@ -161,6 +212,7 @@ layout: default
 - CrudRepository
 - PagingAndSortingRepository
 - JpaRepository
+
 ---
 
 # Example Repository
