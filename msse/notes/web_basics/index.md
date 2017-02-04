@@ -2,6 +2,7 @@
 title: Web Application Development
 layout: default
 ---
+slidenumbers: true
 
 # Web Basics
 

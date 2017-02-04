@@ -29,7 +29,7 @@ slidenumbers: true
 ---
 
 # Key-value Store
-- Examples: Redis, Memcached
+- Examples: Redis, Memcached, Couchbase
 - Good for:
   - Persistent hash tables
   - Session tokens
@@ -39,7 +39,7 @@ slidenumbers: true
 ---
 
 # Document-oriented Store
-- Examples: MongoDB, CouchDB
+- Examples: MongoDB, CouchDB, Couchbase
 - Good for:
   - User profile data
   - Questionnaire data
@@ -135,7 +135,19 @@ slidenumbers: true
 - Gradle Dependency:
 `compile("org.springframework.boot:spring-boot-starter-data-mongodb")`
 
-- Spring Data Repositories work with Mongo
+---
+
+# Mongo Repositories
+- MongoRepository
+
+``` groovy
+import org.bson.types.ObjectId
+import org.springframework.data.mongodb.repository.MongoRepository
+
+interface ReviewNoteRepository extends MongoRepository<ReviewNote, ObjectId> {
+  List<ReviewNote> findByRelease(Release release)
+}
+```
 
 ---
 
@@ -143,6 +155,15 @@ slidenumbers: true
 - Use `@Document` to mark a class as persist-able to Mongo
 - Use `@Id` to mark a field as the id property
 - Classes can contain both `@Entity` and `@Document`
+
+---
+
+# MongoDb IDs
+- Does not support long integers
+- Supported Types:
+  - java.lang.String
+  - java.math.BigInteger
+  - org.bson.types.ObjectId
 
 ---
 
@@ -171,12 +192,6 @@ spring.data.mongodb.repositories.enabled=true # Enable Mongo repositories.
 spring.data.mongodb.uri=mongodb://localhost/test # Mongo database URI. When set, host and port are ignored.
 spring.data.mongodb.username= # Login user of the mongo server.
 ```
-
----
-
-# Querying MongoDB Domains
-- Other than HQL, all JPA queries work with MongoDB Domain classes
-- Even dynamic attributes can be queried
 
 ---
 
