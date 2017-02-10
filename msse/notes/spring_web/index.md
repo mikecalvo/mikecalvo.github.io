@@ -116,13 +116,58 @@ void handle(@PathVariable String version, @PathVariable String extension) {
   - `@PathVariable('otherName')`
 
 ---
+# Advanced Route Mapping
+- Headers
+  - `@GetMapping(path = "/pets", headers = "myHeader=myValue")`
+- Parameters
+  - `@GetMapping(path = "/pets/{petId}", params = "myParam=myValue")`
+- Response Media Type
+  - `@GetMapping(path = "/pets/{petId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)`
+
+---
+# Route Method Arguments
+- The following are supported as parameters that will be populated by Spring:
+- WebRequest, HttpServletRequest, HttpServletResponse, HttpMethod
+- Locale, TimeZone, ZoneId
+- InputStream, Reader, OutputStream, Writer
+- Principal
+- `@RequestParam`, `@RequestHeader`, `@RequestBody`
+
+---
+# Route Method Return Types
+- ModelAndView, Model, Map, View, String
+  - These are specific to SpringMVC view approaches
+  - Example: String is name of the view to show
+- `@ResponseBody`: Returned string is the response
+- `@ModelAttribute`: Returned value is available in model
+
+---
+# RestControllers
+- `@RestController` Class annotation
+- Provides basic Rest behavior for persisting and retrieving domain instances
+- Combines `@Controller` with `@ResponseBody`
+
+---
+# Example RestController
+
+``` groovy
+@RestController
+public class UserController {
+
+  @Autowired
+  UserRepository userRepository
+
+  @GetMapping("/user/{id}")
+  public User getUser(@PathVariable String id) {
+      return userRepository.findOne(Integer.parseInt(id))
+  }
+}
+```
+
+---
 # Spring Web Services
 - Support for SOAP/XML-based web services
 - Contract-first approach
   - Define a WSDL first
 - Data Contracts
   - DTD and Schemas
-
----
-# Web Service Endpoints
-- `@Endpoint`
