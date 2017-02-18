@@ -2,13 +2,10 @@
 title: Web Application Development
 layout: default
 ---
-slidenumbers: true
+autoscale: true
+theme: Next, 3
 
 # HTTP Basics
-
-## Mike Calvo
-
-### mike@citronellasoftware.com
 
 ---
 
@@ -48,6 +45,22 @@ slidenumbers: true
 
 ---
 
+# Http Request Example
+
+GET /v1/pdp/tcin/31173465 HTTP/1.1
+Host: someserver.com
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, sdch, br
+Accept-Language: en-US,en;q=0.8
+Cookie: adpakalb=p_csp1usw2;
+
+---
+
 # Request Methods
 - Most commonly used methods
   - GET: Gets the resource at the URI
@@ -64,6 +77,26 @@ slidenumbers: true
 - Response headers
   - Meta-information about response
 - Response message body
+
+---
+
+# Example Response
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Headers: X-Auth-Token, Content-Type, X-Requested-With
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=0, no-cache, no-store
+Content-Encoding: gzip
+Vary: Accept-Encoding
+X-Response-Time: 6.00000
+Content-Length: 6881
+Date: Sun, 10 Feb 2017 19:45:11 GMT
+Connection: keep-alive
+Content-Type: application/json
+
+...Insert Response Body...
 
 ---
 
@@ -226,10 +259,10 @@ slidenumbers: true
 
 ---
 
-# The Future: H2
+# The Future: Http 2
 - Binary protocol
-- Multiplexed (vs Ordered and Blocking)
-- Parallelism within connection
+- Multiplexed over TCP
+- Asynchronous pipelining
 - Header compression to reduce overhead
 - Supports push responses to clients
 - Requires TLS (Transfer Layer Security)
@@ -272,7 +305,7 @@ slidenumbers: true
   - Safari
   - Chrome
   - Firefox
-  
+
 ---
 
 # Summary
@@ -280,4 +313,7 @@ slidenumbers: true
   - Stateless response/request protocol
 - Programming models for the web involve abstraction layers above HTTP
 - JavaScript provides support for dynamic behavior
-- HTTP 2 is the future
+- HTTP 2 is ~~the future~~ here
+- Still needs lots of adoption
+  - Lots of server support now (requires extra configuration)
+  - Limited client support (Netty, OkHttp, .. ?)

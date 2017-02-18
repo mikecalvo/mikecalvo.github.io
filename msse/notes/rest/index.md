@@ -2,12 +2,10 @@
 title: Web Application Development
 layout: default
 ---
+autoscale: true
+theme: Next, 3
 
 # REST
-
-## Mike Calvo
-
-### mike@citronellasoftware.com
 
 ---
 
@@ -38,7 +36,6 @@ layout: default
 - Good tooling support due to strict XML-schema-based protocol
 - Well-structured payloads could be validated minimizing errors
 - First viable attempt at cross platform interoperability
-  - In comparison to CORBA
 - Still used in many companies today
 
 ---
@@ -53,7 +50,6 @@ layout: default
 ---
 
 # REST and JSON
-## The dynamic duo to the rescue!
 
 ---
 
@@ -125,6 +121,8 @@ layout: default
 
 ---
 
+
+
 # REST Data Formats
 - REST only addressed part of the problem with XML Web Services
   - Complexity
@@ -160,11 +158,11 @@ layout: default
 
 ``` javascript
 {
-  'name': 'Mike',
-  'age': 43,
-  'nerd': true,
-  'address': {
-    'country': 'USA'
+  "name": "Bill",
+  "age": 66,
+  "golfer": true,
+  "address": {
+    "country": "USA"
   }
 }
 ```
@@ -177,69 +175,62 @@ layout: default
 ``` javascript
 [ 1, 2, 3, 'a', false]
 
-[{'name': 'Mike'}, {'name': 'Lars'}]
+[{"name": "Mike"}, {"name": "Lars"}]
 ```
----
-
-# XML versus JSON
-- World is moving away from XML
-- Reduced complexity and smaller payloads is driving this
-- XML is a pain to process in just about every language
-- XML still exists in the wild but primarily in legacy systems
-- Bad smell if an external system is only XML-based
 
 ---
 
-# Grails and REST
-- Grails has several features to simplify creating RESTful APIs
-- @Resource Annotation
-- Controller actions
-- Custom Url Mappings
-- JSON and XML rendering
+# Richardson Maturity Model
+- Popular talk delivered at QCon
+- Described how an organization should mature their rest model
 
 ---
 
-# @Resource
-- Annotation for domain classes
-- Creates implicit controller responding to REST requests
-- Actions mapped to the standard REST HTTP methods
+![inline](images/rmm.png)
 
-``` groovy
-@Resource(uri='/posts')
-class Post {
+---
 
+# RMM Explained
+- Level 0 - POX (Plain old xml)
+  - Using HTTP without any meaningful use of the web (RPC)
+- Level 1 - Resources/Multiple endpoints
+- Level 2 - HTTP Verbs / GET/POST etc.
+- Level 3 - Resouces describe actions you can take on a resource instead of just the resource
+
+[https://martinfowler.com/articles/richardsonMaturityModel.html](https://martinfowler.com/articles/richardsonMaturityModel.html)
+
+---
+
+## HATEOS (Hypertext As The Engine Of Application State)
+
+```
+{
+  createdDate: "2017-02-16T12:46:48.769",
+  modifiedDate: "2017-02-16T12:46:48.769",
+  email: "franklin@franksinternet.com",
+  handle: "franklin",
+    _links: {
+        self: {
+          href: "http://localhost:8080/users/1"
+        },
+        user: {
+          href: "http://localhost:8080/users/1"
+        },
+        posts: {
+          href: "http://localhost:8080/users/1/posts"
+        }
+      }
 }
 ```
 
 ---
 
-# Muzic Song REST Resource
-- Make the Song domain class available for REST calls
-
----
-
-# UrlMappings/RestController Approach
-- grails-app/conf/UrlMappings.groovy contains definitions for how URLs are mapped to controllers
-- URLs can be mapped as 'resources' or 'resource' in this file:
-  `"/api/artists"(resources: 'artistRest')` multiple values
-  `"/api/config"(resource: 'configRest')` single value
-- Specify the controller name for the resource
-- Create this controller and make it a subclass of RestfulController
-
----
-
-# Muzic Artist REST Resource
-- Add an Artist resource via the UrlMappings/RestController approach
-- Add a unit test for the controller verifying the REST methods work
-
----
-
-# Limitations of @Resource and RestfulController Approaches
+# REST Considerations
 - Updates to domain model may unintentionally break clients
 - Timeline for API changes may be different than timeline for business or domain  changes
 - May not want to expose all fields of domain model to clients
-- Includes implementation-specific fields like the Groovy Type
 - Error handling/reporting a bit generic
+- Parent child representation can be challenging
 
 ---
 
@@ -248,34 +239,6 @@ class Post {
   - Builder patterns can be useful here
 - Create separate model for API payload (DTO approach)
 - Modify the marshalling of the domain into destination format
-
----
-
-# Registering a JSON Marshaller
-- Code can be tied in via Bootstrap or a custom Spring bean
-
-``` groovy
-JSON.registerObjectMarshaller(Song) { Song s ->
-  return [ id: s.id, title: s.title, artist: s.artist.name ]
-}
-```
-
----
-
-# Renders versus Converters
-- Both are responsible for serializing onjects to JSON or XML
-- Converters are the built-in Grails mechanism
-- Renderers are external libraries or custom approaches
-  - Common library for JSON serialization in Java is Jackson
-
----
-
-# Custom REST Controller
-- Most of the time, real-world situations require implementing your own controller to handle REST requests
-- Good news: only 4 actions required
-- Handy method: respond
-  - Renders the argument to the response
-  - Allows for a HTTP response status to be specified
 
 ---
 
@@ -288,15 +251,6 @@ JSON.registerObjectMarshaller(Song) { Song s ->
 - 404 : Not Found - item requested is missing
 - 415 : Unsupported Media Type - data not in correct format
 - 422 : Unprocessable Entity - failed validation
-
----
-
-# Protect Access to Proper HTTP Method
-- In custom controller:
-
-``` groovy
-static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "DELETE"]
-```
 
 ---
 
@@ -327,54 +281,10 @@ static allowedMethods = [save: "POST", update: "PUT", patch: "PATCH", delete: "D
 
 ---
 
-# Custom Marshalling
-- Grails allows for multiple marshallers to be registered per format type
-- Perform this registration at startup (prior to any requests being processed)
-- The configuration to use can specified at response render time
-
----
-
-# Register Custom Marshalling Example
-
-``` groovy
-JSON.createNamedConfig('v1') { cfg ->
-  cfg.registerObjectMarshaller(Post) { Post p ->
-    return { message: p.content, user: p.user.loginId }
-  }
-}
-JSON.createNamedConfig('v2') { cfg ->
-  cfg.returnObjectMarsaller(Post) { Post p ->
-    return [
-      message: p.content,
-      user: [id: p.user.loginId, name: p.user.name]
-    ]
-  }
-}
-```
-
----
-
-# Choose Marshaller Example
-
-``` groovy
-class PostController {
-  def index(String v) {
-    assert !v || v == '1' || v == '2'
-    def config = 'v' + (v ?: 1) // v1, v2, etc..
-    JSON.use(config) {
-      response Post.list()
-    }
-  }
-}
-```
-
----
-
 # REST Not Just for APIs
 - Single Page commonly use REST within an app
 - UIs are plain HTML and JavaScript (no server rendering)
 - Server sends/receives data from browser via REST
-- Mobile applications also communicate with cloud components
 
 ---
 
@@ -383,3 +293,17 @@ class PostController {
 - Use the header for client identification
 - All parameters (other than id) should be specified as query parameters
 - Use Postman (Chrome plugin) to quick test/debug non GET calls
+- REST/JSON competitors exist and are becoming popular
+
+---
+
+# Alternatives to REST/JSON
+
+- Alternatives exist to go back to the RPC style of things
+- Most offer backwards versioning and similar/better compression over HTTP
+- Examples
+  - Protocol Buffers (Google)
+  - Thrift (Facebook)
+  - Avro (Apache)
+
+- [gRPC](https://github.com/grpc/grpc) Google's RPC exchange over HTTP2 (using protobufs)

@@ -45,11 +45,23 @@ theme: Next, 3
 ## How it works
   1. Classpath scanning
   1. Create objects with defined annotations
-  1. Two important types:
-    - Prototype (new instance)
-    - Singleton (only one instance)
   1. Objects are placed into container (Application Context)
   1. Servlet tie in to Application Context (Web Application Context)
+
+---
+
+## Spring Bean lifetime types
+- Prototype (new instance)
+- Singleton (only one instance)
+- When in doubt, Singleton
+
+---
+
+## Spring Bean Stereotypes
+- @Component - Generic
+- @Repository - Data Access
+- @Service - Service Layer
+- @Controller - Controller Layer
 
 ---
 
@@ -110,7 +122,7 @@ theme: Next, 3
 
 ---
 
-## Spring Boot Internally
+## Spring Boot Internals
 - @SpringBootApplication is comprised of:
   1. @ComponentScan
   1. @EnableAutoConfiguartion
