@@ -136,6 +136,8 @@ void handle(@PathVariable String version, @PathVariable String extension) {
   - `@PathVariable('otherName')`
 - Request Parameters -> @RequestParam
 
+---
+
 ```groovy
 //http://localhost:8080/pathParam?myQueryParam=foo
 @GetMapping(/{pathParam})
@@ -171,6 +173,7 @@ public Object getObject(@PathParam String pathParm, @RequestParam String myQuery
 - InputStream, Reader, OutputStream, Writer
 - Principal
 - `@RequestParam`, `@RequestHeader`, `@RequestBody`
+- Create your own - `HandlerMethodArgumentResolver`
 
 ---
 # Route Method Return Types
@@ -223,6 +226,54 @@ public class UserController {
 }
 ```
 
+---
+
+# Spring Data Rest
+
+---
+
+# Richardson Maturity Model
+- Popular talk delivered at QCon
+- Described how an organization should mature their rest model
+
+---
+
+![inline](images/rmm.png)
+
+---
+
+# RMM Explained
+- Level 0 - POX (Plain old xml)
+  - Using HTTP without any meaningful use of the web (RPC)
+- Level 1 - Resources/Multiple endpoints
+- Level 2 - HTTP Verbs / GET/POST etc.
+- Level 3 - Resouces describe actions you can take on a resource instead of just the resource
+
+[https://martinfowler.com/articles/richardsonMaturityModel.html](https://martinfowler.com/articles/richardsonMaturityModel.html)
+
+---
+
+## HATEOS (Hypertext As The Engine Of Application State)
+
+```
+{
+  createdDate: "2017-02-16T12:46:48.769",
+  modifiedDate: "2017-02-16T12:46:48.769",
+  email: "franklin@franksinternet.com",
+  handle: "franklin",
+    _links: {
+        self: {
+          href: "http://localhost:8080/users/1"
+        },
+        user: {
+          href: "http://localhost:8080/users/1"
+        },
+        posts: {
+          href: "http://localhost:8080/users/1/posts"
+        }
+      }
+}
+```
 ---
 
 # Spring Data Rest
