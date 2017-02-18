@@ -10,7 +10,7 @@ layout: default
 Week | Topics | Reading | Instructor | Example Code
 :---:|--------|-------- | :----------: | ------------
 1 <br> 1/21/17 | [Introduction](notes/introduction/) / [Tools](notes/tools/) / [Groovy](notes/groovy/)          | [Groovy Getting Started](http://www.groovy-lang.org/documentation.html#gettingstarted) | Mike | &nbsp;
-2 <br> 1/27/17 | [Spring Boot Intro](notes/spring_boot_intro/) / [Testing](notes/testing) / [Spock](notes/spock) | Spring Boot in Action Ch 1-2, [Spock Reference](http://spockframework.org/spock/docs/1.1-rc-3/index.html) | Adam | &nbsp;
+2 <br> 1/27/17 | [Spring Boot Intro](notes/spring_boot_intro/) / [Testing](notes/testing) / [Spock](notes/spock) | Spring Boot in Action Ch 1-2, [Spock Reference](http://spockframework.org/spock/docs/1.1-rc-3/index.html) | Adam | [week2 git](https://github.umn.edu/keys0013/week2)&nbsp;
 3 <br> 2/4/17  | [Spring Data and JPA](notes/jpa) | [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/) | Mike | &nbsp;
 4 <br> 2/10/17 | [NOSQL](notes/nosql) / [Spring Services](notes/spring_services) | &nbsp; | Mike | &nbsp;
 5 <br> 2/18/17 | [HTTP Basics](notes/http_basics) / [Spring Web](notes/spring_web) / [REST](notes/rest) | [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) [Spring Data Rest](http://docs.spring.io/spring-data/rest/docs/current/reference/html/) | Adam | [week5 git](https://github.umn.edu/keys0013/week5)&nbsp;
