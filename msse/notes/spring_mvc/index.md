@@ -48,7 +48,7 @@ theme: Next, 3
 ---
 
 ### MVC interaction
-![inline](images/mvc.png)
+![inline](mvc.jpg)
 
 ---
 

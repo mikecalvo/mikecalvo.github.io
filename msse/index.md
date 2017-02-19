@@ -13,9 +13,9 @@ Week | Topics | Reading | Instructor | Example Code
 2 <br> 1/27/17 | [Spring Boot Intro](notes/spring_boot_intro/) / [Testing](notes/testing) / [Spock](notes/spock) | Spring Boot in Action Ch 1-2, [Spock Reference](http://spockframework.org/spock/docs/1.1-rc-3/index.html) | Adam | [week2 git](https://github.umn.edu/keys0013/week2)&nbsp;
 3 <br> 2/4/17  | [Spring Data and JPA](notes/jpa) | [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/) | Mike | &nbsp;
 4 <br> 2/10/17 | [NOSQL](notes/nosql) / [Spring Services](notes/spring_services) | &nbsp; | Mike | &nbsp;
-5 <br> 2/18/17 | [HTTP Basics](notes/http_basics) / [Spring Web](notes/spring_web) / [REST](notes/rest) | [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) [Spring Data Rest](http://docs.spring.io/spring-data/rest/docs/current/reference/html/) | Adam | [week5 git](https://github.umn.edu/keys0013/week5)&nbsp;
-6 <br> 2/25/17 | Security / REST Functional Testing | &nbsp; | Marc | &nbsp;
-7 <br> 3/4/17  | Http Clients / Cache | &nbsp; | Marc | &nbsp;
+5 <br> 2/18/17 | [HTTP Basics](notes/http_basics) / [REST](notes/rest) | &nbsp; | Adam | [week5 git](https://github.umn.edu/keys0013/week5)&nbsp;
+6 <br> 2/25/17 |  [Spring MVC](notes/spring_mvc) / [MockMVC & Functional Testing](notes/spring_testing) / [Spring Data Rest](notes/spring_data_rest) | [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) / [Spring Data Rest](http://docs.spring.io/spring-data/rest/docs/current/reference/html/) / [Spring Integration Testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/integration-testing.html) | Marc | &nbsp;
+7 <br> 3/4/17  | Security / Http Clients / Caching | &nbsp; | Marc | &nbsp;
 8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | &nbsp; | Adam | &nbsp;
  | **SPRING BREAK** |
 9 <br> 3/25/17  | [Intro to Angular](notes/angular_intro) / [Node and Gulp](notes/node) / [Jasmine and Karma](notes/karma) | &nbsp; | Marc | &nbsp;
