@@ -3,238 +3,234 @@ title: Web Application Development
 layout: default
 ---
 
-# Functional Testing
+## Integration & Functional Testing
 
-## Mike Calvo
+---
 
-### mike@citronellasoftware.com
+# Integration testing
+- Unit tests validate a single component in isolation
+- Integration tests validate how components interact when grouped into 'subsystems'.
+- Building block approach
+  - verified 'subsystems' are again grouped and integration tested
+  - repeat until the last grouping tested represents the whole system
+
+---
+
+# Integration testing - Pros
+- Pros
+  - Edge cases can be tested easily
+  - Less overhead then a functional test
+  - Can leverage mocking
+  - Can validate specific internal behaviors and state
+
+---
+
+# Integration testing - Cons  
+  - Cons
+    - Complex setup to initialize 'subsystem' with correct components and mocks
+    - Dependent on defining mock behavior to match actual
 
 ---
 
 # Functional Tests
-- Testing the view requires an end-to-end style approach
-- Functional tests perform this verification
-- Server is running
-- Test issues an HTTP request
+- Black box testing
+  - Server is running
+  - No mocks, no internals
+  - Validate the response
+- End to end tests from boundaries of system
+- Tests issue an HTTP request
+
+---
+# Functional Tests
+- Pros
+  - Testing real interaction
+  - Can exercise and validate a lot of code in a single test
+- Cons
+  - Slowest tests to run
+  - Hard to infer what codes being tested
+  - Edge cases are hard to provoke without access to internals
 
 ---
 
-# Grails Functional Tests
-- Grails includes Geb Framework
-- Geb is a Groovy-based browser testing framework
-  - Wrapper over Selenium
-- http-builder library: simplify making HTTP requests
+# Why Integration & Functional Tests?
+- Fully automated, repeatable
+- Great for detecting regressions in unexpected parts of system
+- Run reasonably fast, but slower then unit tests
+  - Server startup and shutdown overhead
+- Run under the same harness as unit tests
 
 ---
 
-# http-builder
-[https://github.com/jgritman/httpbuilder/wiki](https://github.com/jgritman/httpbuilder/wiki)
+# Integration/Functional Test Design
+- Similar to a unit test
+  - Consider Positive and Negative test cases
+  - Inputs determine expected result
+    - Choose input values based on types (String, Integer, List, etc..)
+  - Validate ```actual == expected```
 
-build.gradle:
+---
+
+# Spring Integration testing
+- Test Spring infrastructure interaction with your system's components
+- Use actual Spring configuration
+- Validate specific internal state and behavior
+  - Data model
+  - Error Handlers
+  - etc...
+
+---
+
+# MockMVC
+- Provided by Spring MVC Test
+- Isolates the web layer
+  - allows you to easily test interaction between DispatcherServlet and Controllers  
+- Several Annotations and builders included
+
+---
+
+# MockMVC - Autowired
+- Use `@WebMVCTest` annotation to specify controller under test
+- Spring Starts container, limits class scanning to:
+  - @Controller, @ControllerAdvice, @JsonComponent
+- Convenient and no setup
+- Mocking with Spock is a bit more cumbersome
+- Might load unused components found during class scanning
+
+---
+
+# MockMVC - Builders
+- Only loads minimum required infrastructure for DispatcherServlet to serve requests
+- No additional class scanning
+- Full control over the instantiation and initialization of controllers
+- Isolate and test one controller at a time.
+- Can use Spock Mocks directly
+
+---
+# Example MockMVC Builder test
 
 ``` groovy
-testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'
+def "add valid user"() {
+   setup:
+   def mockUserService = Mock(UserService)
+   UserController userController = new UserController(userService: mockUserService)
+
+   def user = new User(email: "foo", handle: "bar")
+   def userBody = ObjectMapper.newInstance().writeValueAsString(user)
+
+   def mockMvc = MockMvcBuilders.standaloneSetup(userController).build()
+
+   when:
+   mockMvc.perform(post("/users").content(userBody).contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk()).andDo(print())
+          .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+          .andExpect(content().json(userBody, false))
+
+   then:
+   1 * mockUserService.addUser(user) >> user
+ }
 ```
 
 ---
 
-# Example http-builder
+# Spring Boot Functional Tests
+- SpringBootTest annotation  makes functional testing easy
+- Spring Boot includes TestRestTemplate: simplifies making HTTP requests
 
-``` groovy
-import groovyx.net.http.HTTPBuilder
-import static groovyx.net.http.Method.GET
-import static groovyx.net.http.ContentType.TEXT
+---
 
-// initialze a new builder and give a default URL
-def http = new HTTPBuilder( 'http://www.google.com/search' )
+# SpringBootTest
+- All required test harness wiring is handled by single annotation - ```@SpringBootTest```
+- Determines what server to run for test by scanning for ```@SpringBootApplication``` annotation
+- Provides support for starting a fully running server on a random port.
+- Registers a TestRestTemplate bean for use in functional tests.
 
-http.request(GET,TEXT) { req ->
-  uri.path = '/mail/help/tasks/' // overrides any path in the default URL
-  headers.'User-Agent' = 'Mozilla/5.0'
+---
 
-  response.success = { resp, reader ->
-    assert resp.status == 200
-    println "My response handler got response: ${resp.statusLine}"
-    println "Response length: ${resp.headers.'Content-Length'}"
-    System.out << reader // print response reader
-  }
+# TestRestTemplate
+- Autowired service available in all ```@SpringBootTest``` annotated tests
+- Provides simple API for executing REST requests against running server
+ - Easily automate GET, POST, PUT, DELETE requests
+- Map responses to model objects for easy verification
 
-  // called only for a 404 (not found) status code:
-  response.'404' = { resp ->
-    println 'Not found'
-  }
+---
+
+# TestRestTemplate method types
+- ```getForObject()``` : `*forObject` methods return the body only.
+- ```postForEntity()``` :  `*forEntity` methods return response object with body
+  - allows you to validate response headers, and status codes.
+
+---
+
+# Basic POST for entity Example
+```java
+@ContextConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class UserFunctionalTests extends Specification {
+
+  @Autowired
+  private TestRestTemplate restTemplate
+
+  def "/users - POST adds user"() {
+      when:
+      ResponseEntity<User> response = this.restTemplate.postForEntity("/users", new User(email: "foo@gmail.com", handle: "bar"), User.class)
+
+      then:
+      response.statusCodeValue == 200
+      response.headers.getContentType() == MediaType.APPLICATION_JSON_UTF8
+      User actual = response.body
+      actual.email == "foo@gmail.com"
+      actual.handle == "bar"
+    }
 }
 ```
 
 ---
 
-# Selenium
-- Browser automation tools and frameworks
-- Automate running web applications
-- Primarily use for testing
-- Web-based administration tasks
+# Bootstrapping data
+- Some tests require pre-existing data
+- use test setup to add data to get to your expected starting state
+- Interact directly with the repository when adding setup data, don't rely on service code
+- If your data source is persisted, be sure to use test cleanup to remove all data added
 
 ---
 
-# Selenium WebDriver
-- Language-specific bindings to drive a browser
-- Desktop browsers: Chrome, Firefox, IE, Safari
-- Mobile browsers: Android
-- Headless: PhantomJS, HtmlUnit
-- Languages: C#, Java, JavaScript, Objective-C, Ruby
+# Example Boostrapped test
+```java
+@ContextConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class PostFunctionalTests extends Specification {
+  @Autowired
+  TestRestTemplate testRestTemplate
 
----
+  @Autowired
+  PostRespository postRespository
 
-# Example Selenium Java Test
+  @Autowired
+  UserRepository userRepository
 
-``` groovy
-WebDriver driver = new FirefoxDriver();
-driver.get(myAppUrl);
-driver.findElement(By.id('textInput')).sendKeys('U2');
-driver.findElement(By.id('submitBtn')).click();
-assert driver.findElement(By.id('bandNameHeading')).getText() == 'U2';
-```
+  def "get posts"() {
+    setup:
+    def user = new User(email: "foo@gmail.com", handle: "foo")
+    userRepository.save(user)
+    postRespository.save(new Post(user: user, message: "hello!"))
 
----
-
-# Geb
-- Groovy layer built on top of Selenium WebDriver
-- Content DSL
-  `assert title == 'Welcome to Muzic'`
-- jQuery style content inspection model:
-  `$("#submitBtn").click();`
-
----
-
-# Geb DSL Example
-
-``` groovy
-import geb.Browser
-
-Browser.drive {
-  go "http://google.com/ncr"
-
-  // make sure we actually got to the page
-  assert title == "Google"
-
-  // enter wikipedia into the search field
-  $("input", name: "q").value("wikipedia")
-
-  // wait for the change to results page to happen
-  // (google updates the page dynamically without a new request)
-  waitFor { title.endsWith("Google Search") }
-
-  // is the first link to wikipedia?
-  def firstLink = $("li.g", 0).find("a.l")
-  assert firstLink.text() == "Wikipedia"
-
-  // click the link
-  firstLink.click()
-
-  // wait for Google's javascript to redirect to Wikipedia
-  waitFor { title == "Wikipedia" }
-}
-```
-
----
-
-# More Geb Details
-- Functional tests live under test/functional
-- Geb works with Spock
-- Geb tests are running outside the Grails app
-- Cannot directly use GORM, Controllers, or Services
-- Provides jQuery style element lookup within Groovy
-
----
-
-# Page Object Pattern
-- Geb encourages a page-oriented approach
-- Define Page objects that represent the key interaction elements of a page
-- Pages are placed, by convention, in a sub-package called pages
-- The test or specification tells the driver to navigate to a page
-- Elements exposed by Page are available to the test or spec
-
----
-
-# Benefits of Page Object Pattern
-- All page-specific details are contained in the page Object
-- Create logical representations of the page that remain more consistent than DOM
-- Many tests can reuse common page definitions
-
----
-
-# Adding a Geb Test
-- Geb recommends a page-based approach to web testing
-- Each url gets its own Page class which defines the url and interesting elements
-- The Geb test navigates to the page and verifies the results and interacts with the page
-- Pages typically live in a pages package under the test package
-
----
-
-# Exmaple Get Artist Page
-
-``` groovy
-import geb.Page
-
-class ArtistGetPage extends Page {
-
-  static url = 'artist/get'
-
-  static content = {
-    id { $("#id") }
-    name { $("#name") }
-  }
-
-}
-```
-
----
-
-# Example Geb Functional Test
-
-``` groovy
-@Integration
-class ArtistFunctionalSpec extends GebSpec {
-
-  // setup code...
-
-  def "gets artist details"() {
     when:
-    to ArtistGetPage, id: artistId
+    ResponseEntity<Map> responseEntity = testRestTemplate.getForEntity("/posts", Map)
 
     then:
-    name.text() == 'U2'
-    id.text() == "Id: ${artistId}"
+    responseEntity.statusCode == HttpStatus.OK
+    Map actual = responseEntity.body
+
+    actual.totalElements == 1
+
+    def posts = actual.content as List
+    posts.size() == 1
+
+    def post = posts.get(0)
+    post.message == "hello!"
+    post.id == 1
   }
 }
 ```
 
 ---
-
-# Configuring Geb
-- Geb needs to know which test drivers to use
-- Create a file called GebConfig.groovy in the root of tests/functional
-- Define one or more configurations
-- Type of drivers
-- Browser size, behaviors, etc
-
----
-
-# Simple GebConfig.groovy
-``` groovy
-import org.openqa.selenium.phantomjs.PhantomJSDriver
-import org.openqa.selenium.remote.DesiredCapabilities
-
-driver = {
-  new PhantomJSDriver(new DesiredCapabilities())
-}
-```
----
-
-# More on Geb
-- Interact with JavaScript
-- Interact with HTML form elements
-- Test file downloading
-- Much more:
-  - [http://www.gebish.org/manual/current/index.html](http://www.gebish.org/manual/current/index.html)
-  - [http://www.gebish.org/manual/current/testing.html](http://www.gebish.org/manual/current/testing.html)
