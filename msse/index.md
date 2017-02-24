@@ -14,7 +14,7 @@ Week | Topics | Reading | Instructor | Example Code
 3 <br> 2/4/17  | [Spring Data and JPA](notes/jpa) | [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/) | Mike | &nbsp;
 4 <br> 2/10/17 | [NOSQL](notes/nosql) / [Spring Services](notes/spring_services) | &nbsp; | Mike | &nbsp;
 5 <br> 2/18/17 | [HTTP Basics](notes/http_basics) / [REST](notes/rest) | &nbsp; | Adam | [week5 git](https://github.umn.edu/keys0013/week5)&nbsp;
-6 <br> 2/24/17 | [Spring MVC / Spring Data Rest](notes/spring_web) / [Integration & Functional Testing](notes/functional_testing) | [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) / [Spring Data Rest](http://docs.spring.io/spring-data/rest/docs/current/reference/html/) / [Spring Integration Testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/integration-testing.html) | Adam / Marc | &nbsp;
+6 <br> 2/24/17 | [Spring MVC / Spring Data Rest](notes/spring_web2) / [Integration & Functional Testing](notes/functional_testing) | [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) / [Spring Data Rest](http://docs.spring.io/spring-data/rest/docs/current/reference/html/) / [Spring Integration Testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/integration-testing.html) | Adam / Marc | &nbsp;
 7 <br> 3/4/17  | Security / Http Clients / Caching | &nbsp; | Marc | &nbsp;
 8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | &nbsp; | Adam | &nbsp;
  | **SPRING BREAK** |
