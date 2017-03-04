@@ -300,7 +300,6 @@ class PasswordValidator implements ConstraintValidator<Password, String> {
 # Authentication - Basic Authentication
 
 - Default behavior in Spring Security
-- Enforced on every endpoint by default once includes
 - Session based Authentication
   - Server managed authentication
   - Doesn't scale - client must communicate with same server going forward
