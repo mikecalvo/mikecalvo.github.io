@@ -3,96 +3,39 @@ title: Web Application Development
 layout: default
 ---
 
-# Web and Grails Security
+## REST Api Security
 
-## Mike Calvo
+### Marc Kapke
 
-### mike@citronellasoftware.com
+#### kapkema@gmail.com
 
 ---
 
 # Disclaimers
 - I am not an expert
 - There's an entire course on this topic
+- People dedicate entire careers to this topic
 - It's super important
 - No such thing as completely secure/safe
 
 ---
 
-# Price of Success
-
-## If your web app is successful - it will be attacked
-
----
-
-# Forms of Attack
-- Gaining unauthorized access to sensitive data
-- Denial of service: overload the system to bring it down
-- Code injection
-  - Submit data to server in a way that it will unknowingly be run
-  - SQL injection, XSS, CSRF, invalid redirects and forwards
+# Forms of Vulnerability
+- There are many forms of vulnerability
+- Always evolving
+- Know your attack surfaces
 
 ---
 
-# Grails Provides Help
-- Access to database is scraped to prevent SQL injection attacks
-- Default scaffolding HTML escapes all data fields before display
-- Tags producing links escapes markup to prevent code injection
-- Standard codecs for rendering of escaped data directly from controllers
-- Command objects allow constrained form submission of data
+# Gaining unauthorized access to sensitive data
+- Physical access to network, DB, or server
+- Unsecured endpoints
 
 ---
 
-# Grails Safer Data Access
-- Dynamic finders
-- Where queries
-- Criteria API
-- Static HQL with parameters
-- Less Safe:
-  - Constructing HQL/SQL via concatenation
-
----
-
-# Command Objects
-- Reusable components used for passing parameters to controllers
-- Support validation
-- Testable
-- Decouples the input from the data
-  - Prevents unintended binding of request parameters to database fields
-
----
-
-# Validate User Input
-- Don't trust the user/request
-- Always place limits on queries
-- Scrub inputs from things that might be code
-
----
-
-# Client Versus Server Validation
-- Developers balk at doing same work in two places
-- Server must validate
-  - Nothing prevents a hacker from sending a raw request to app
-- Client validation optional
-  - Provides a better/crisper user experience
-
----
-
-# Escaping Output
-- Any data specified by users must be considered inherently unsafe to display directly
-- Example:
-  Hotel review includes some javascript code which launches a popup to a porn website displaying when any user of the travel review site visits that hotel
-- Solution: HTML escape values before displaying them
-
----
-
-# HTML Escaping
-- Code in HTML must exist within a `<script>` element
-- Replace every `<`, `>` character with the HTML escaped equivalent
-  - `&lt;`
-  - `&gt;`
-- Code will now safely show up as a strange comment
-- Grails escapes all dynamic content in GSP pages
+# Denial of service
+  - Overload the system to bring it down
+  - Distributed Denial of Service (DDOS)
 
 ---
 
@@ -101,15 +44,6 @@ layout: default
 - The code and markup submit a form request to a real site
 - Because the request is coming from your browser, it includes a cookie for the real site
 - That request can look valid to the real site
-
----
-
-# Preventing CSRF
-- Include a unique token with the form for your application
-- When a form request is processed, the token is compared against the expected token
-- Grails CSRF support
-  - `useToken` attribute on the `<g:form>` tag adds the token
-  - withForm controller block includes an invalidToken method for placing CSRF token mismatch logic
 
 ---
 
@@ -122,6 +56,216 @@ layout: default
 
 ---
 
+# Code injection
+- Submit data to server in a way that it will unknowingly be run
+- SQL injection, XSS, CSRF, invalid redirects and forwards
+
+---
+
+# Spring Boot Provides Help
+- Access to Database through Repositories and JPA
+ - Prevent SQL injection
+ - Controls what DB internals are exposed
+- Spring Security provides necessary interfaces to handle Authentication and Authorization
+- Validators provides input validation
+- Controllers standardize server access (GET/POST/etc..)
+
+---
+
+# Prevent SQL Injection - JPA Data access
+- Built-in repository methods escape inputs correctly
+     - `findAll()`, `findOne()`, etc...
+- Custom JPA queries (JPQL/SQL) need to use EntityManager and Parameter binding
+
+---
+
+# Constructing JPQL/SQL via String concatenation
+### **DON'T do this**
+- Technically still valid
+- Vulnerable to injection issues
+- Use EntityManager instead
+
+``` groovy
+List results = entityManager.createQuery("Select user from Users user where user.id = " + userId).getResultList();
+List results = entityManager.createNativeQuery("Select * from Users where email_address = " + email).getResultList();
+int resultCode = entityManager.createNativeQuery("Delete from Users where id = " + userId).executeUpdate();
+```
+
+---
+
+# Entity Manager query building
+- Build queries using EntityManager
+    - supports JPQL queries,
+    - loading JPQL stored procedures
+    - native SQL queries
+
+---
+
+# Entity Manager examples
+- JPQL query
+
+``` groovy
+Query jpqlQuery = entityManager.createQuery("Select user from Users user where user.emailAddress='foo@gmail.com'")
+```
+
+- JPQL stored procedure
+
+``` groovy
+Query jpqlQuery = entityManager.createNamedQuery("allUsers");
+```
+
+- Native SQL
+
+``` groovy
+Query sqlQuery = entityManager.createNativeQuery("Select * from Users where email_address='foo@gmail.com", User.class)
+```
+
+---
+
+# Parameter Binding
+- via `setParameter` pattern
+    - set via positional parameters
+    - or via named parameters    
+- JDBC Driver will escape parameters automatically prior to executing query
+- Even unvalidated user input will only ever end up as data since its being escaped and not code
+
+---
+
+# Parameter Binding examples
+- By position
+
+``` groovy
+Query jpqlQuery = entityManager.createQuery("Select user from Users user where user.emailAddress=?1")
+List results = jpqlQuery.setParameter(1, "foo@gmail.com").getResultList();
+```
+
+- By name
+
+``` groovy
+Query jpqlQuery = entityManager.createQuery("Select user from Users user where user.emailAddress=:email")
+List results = jpqlQuery.setParameter("email, "foo@gmail.com").getResultList();
+```
+
+---
+
+# Spring Controllers
+- Prevents unintended binding of request parameters to database fields
+- Support validation
+- Testable
+- Decouples the input from the data
+
+---
+
+# Validate User Input
+- Don't trust the user/request
+- Always place limits on queries
+- Scrub inputs from things that might be code
+
+---
+
+# Server side validation
+- Server *must* validate inputs
+- Nothing prevents requests from outside Client
+
+---
+
+# Server Side Validation - Validators
+- Use Validators to validate domain object inputs
+- Several built-in annotations for common validations
+  - `@NotEmpty`, `@NotNull`, `@Email`, `@Size`, `@Pattern`, etc..
+- Build custom validators for others
+- Independent, easily testable
+
+---
+
+# Validators - examples
+``` groovy
+class AccountCredentials {
+  @Size(min = 2, max=25)
+  String username
+
+  @Password
+  String password
+}
+```
+---
+
+# Validator - Custom
+``` groovy
+class PasswordValidator implements ConstraintValidator<Password, String> {
+  private Pattern pattern
+  private Matcher matcher
+  private static final String PASSWORD_PATTERN = '((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})'
+
+  PasswordValidator() {
+    pattern = Pattern.compile(PASSWORD_PATTERN)
+  }
+
+  //...
+
+  @Override
+  boolean isValid(String value, ConstraintValidatorContext context) {
+    if(!value){
+      return false
+    }
+
+    matcher = pattern.matcher(value)
+    return matcher.matches()
+  }
+}
+```
+
+---
+
+# Validator - Custom annotation
+- Provide annotation to use custom Validator
+``` groovy
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = PasswordValidator.class)
+@interface Password  {
+  String message() default "Password does not meet the minimum requirements"
+
+  Class<?>[] groups() default []
+
+  Class<? extends Payload>[] payload() default []
+}
+```
+---
+
+# Client Side Validation
+- Client validation optional
+- Provides a better/crisper user experience
+
+---
+
+# Escaping Output
+- Any data specified by users must be considered inherently unsafe to display directly
+- Example:
+  Hotel review includes some javascript code which launches a popup to a phishing website displaying when any user of the travel review site visits that hotel
+- Solution: HTML escape values before displaying them
+
+---
+
+# HTML Escaping
+- Code in HTML must exist within a `<script>` element
+- Replace every `<`, `>` character with the HTML escaped equivalent
+  - `&lt;`
+  - `&gt;`
+- Code will now safely show up as a strange comment
+- Spring provides `HtmlUtils` to do this.
+- `@SafeHtml` annotation on model properties will do this automatically
+
+---
+
+# Preventing CSRF in Spring
+- Include a unique token with the form for your application
+- When a form request is processed, the server validates the token is the expected token
+- Spring CSRF support
+  - Spring MVC with `@EnableWebSecurity` will automatically include CSRF Token in your form
+  - Uses the `CsrfRequestDataValueProcessor`
+
+---
 # Access Control
 - Two key parts
 - Is the user the person they say they are?
@@ -131,62 +275,168 @@ layout: default
 
 ---
 
-# Grails Access Control
-- Interceptors
-- Security Plugins
+# Authentication - Basic Authentication
+
+- Default behavior in Spring Security
+- Enforced on every endpoint by default once includes
+- Session based Authentication
+  - Server managed authentication
+  - Doesn't scale - client must communicate with same server going forward
 
 ---
 
-# Grails Interceptors
-- Intercept all HTTP requests into Ser er
-- Logic can be run before or after the request is handled
-- Live in `grails-app/controllers`
-- Name ends with `Interceptor`
-- `grails create-interceptor`
+# Authentication - Json Web Token (JWT)
+- Provides Stateless Authentication
+- Encrypted JSON payloads
+- Requires client to get JWT first
+- Include JWT with each authenticated request
+- Not tied to a session
+- Scales because the token is valid on any server instance
 
 ---
 
-# Example Interceptor
+# Authorization
+- Assign users to roles (admin,superuser,etc...)
+- Use roles to authorize access to certain parts of application
+
+---
+
+# Spring Boot - Access Control
+- Use Web config to define access control rules by endpoint
+  - Explicitly define public endpoints
+  - All others default to secure
+- `Authentication` implementation defines system specific authentication behavior
+- Use Filters for Authentication and Authorization
+
+---
+
+# Example Spring Web Security config
 
 ``` groovy
-class SecurityInterceptor {
-    SecurityInterceptor() {
-        matchAll()
-        .except(controller:'user', action:'login')
-    }
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+  // disable caching
+  http.headers().cacheControl()
 
-    boolean before() {
-        if (!session.user && actionName != "login") {
-            redirect(controller: "user", action: "login")
-            return false
-        }
-        return true
-    }
-
+  http.csrf().disable()
+      .authorizeRequests()
+      .antMatchers("/").permitAll()
+      .antMatchers(HttpMethod.POST, "/login").permitAll()
+      .antMatchers("/admin/**").hasRole("ADMIN")
+      .anyRequest().authenticated()
+      .and()
+  .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+  .addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 }
 ```
 
 ---
 
-# Security Plugins
-- Spring Security
-  - De-facto standard for many years
-  - Not smoothly integrated with 3.x
-  - Security REST Plugin
-- Shiro
-  - Adds declarative access control to Grails Controllers
+# Spring Boot Filters
+- Intercept all HTTP requests into server
+- Logic can be run before or after the request is handled
 
 ---
 
-# Spring Security Rest Plugin
-- [https://grails.org/plugin/spring-security-rest](https://grails.org/plugin/spring-security-rest)
+# Example Authentication Filter
 
 ``` groovy
-compile 'org.grails.plugins:spring-security-rest:2.0.0.M2'
+class JWTAuthenticationFilter extends GenericFilterBean{
+
+  @Override
+  void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+    Authentication authentication = new TokenAuthenticationService().parseAndValidateToken((HttpServletRequest)request)
+
+    SecurityContextHolder.getContext().setAuthentication(authentication)
+    filterChain.doFilter(request,response)
+  }
+}
 ```
 ---
 
-# Security Recap
-- Security is important and complex
-- Leverage frameworks (like Grails and Spring Security)
-- Code reviews help
+# Example Login Filter
+
+``` groovy
+class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
+
+  private TokenAuthenticationService tokenAuthenticationService
+
+  JWTLoginFilter(String url, AuthenticationManager authenticationManager) {
+    super(new AntPathRequestMatcher(url))
+    setAuthenticationManager(authenticationManager)
+    tokenAuthenticationService = new TokenAuthenticationService()
+  }
+
+  @Override
+  Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
+      throws AuthenticationException, IOException, ServletException {
+    AccountCredentials credentials = new ObjectMapper().readValue(httpServletRequest.getInputStream(), AccountCredentials.class)
+    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credentials.username, credentials.password)
+    return getAuthenticationManager().authenticate(token)
+  }
+
+  @Override
+  protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication)
+      throws IOException, ServletException {
+    String name = authentication.name
+    tokenAuthenticationService.createAndAddTokenToResponse(response, name)
+  }
+}
+```
+
+---
+
+# Spring Boot Security
+- `compile('org.springframework.boot:spring-boot-starter-security')`
+
+---
+
+# JWT with Spring Security
+- add to build.gradle
+- `compile('io.jsonwebtoken:jjwt:0.6.0')`
+
+---
+
+# JWT Token Service
+- Issues and validates tokens
+- Wire up to Spring's Authentication Processing
+
+---
+
+# JWT Token Service - Issue Token
+``` groovy
+  private long EXPIRATIONTIME = 1000 * 60 * 60 * 24 * 10 // 10 days
+  private String secret = "ThisIsASecret"
+  private String tokenPrefix = "Bearer"
+  private String headerString = "Authorization"
+
+  void createAndAddTokenToResponse(HttpServletResponse response, String username) {
+    String JWT = Jwts.builder()
+                     .setSubject(username)
+                     .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+                     .signWith(SignatureAlgorithm.HS512, secret)
+                     .compact()
+    response.addHeader(headerString, tokenPrefix + " " + JWT)
+  }
+```
+
+---
+
+# Json Token Service - Validate token
+
+``` groovy
+Authentication parseAndValidateToken(HttpServletRequest request) {
+   String token = request.getHeader(headerString)
+   if (token != null) {
+     // parse the token.
+     String username = Jwts.parser()
+                        .setSigningKey(secret)
+                        .parseClaimsJws(token)
+                        .getBody()
+                        .getSubject()
+
+     return username ? new AuthenticatedUser(username) : null
+   }
+   return null
+ }
+ ```
