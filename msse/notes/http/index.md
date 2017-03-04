@@ -69,7 +69,7 @@ layout: default
 
 ---
 
-# Configruable and Injectable
+# Configurable and Injectable
 - Add RestTemplate bean to Autowire
 - Add `ClientHttpRequestFactory` when building `RestTemplate` to configure
 
