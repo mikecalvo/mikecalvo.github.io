@@ -275,6 +275,28 @@ class PasswordValidator implements ConstraintValidator<Password, String> {
 
 ---
 
+# Authentication
+- Mechanism for validating a user is who the say they are
+- Usually User/Password validation
+
+---
+
+# Authentication - Common patterns
+  - Session
+    - Server stores session
+    - Cookie in client tracks session
+  - Stateless
+    - Encrypted Token (Social login, JWT, etc..)
+    - Token validated at request time
+
+---
+
+# Authorization
+- Assign users to roles (admin,superuser,etc...)
+- Use roles to authorize access to certain parts of application
+
+---
+
 # Authentication - Basic Authentication
 
 - Default behavior in Spring Security
@@ -295,9 +317,72 @@ class PasswordValidator implements ConstraintValidator<Password, String> {
 
 ---
 
-# Authorization
-- Assign users to roles (admin,superuser,etc...)
-- Use roles to authorize access to certain parts of application
+# JWT Token
+- Comprised of 3 parts
+- Header, Payload and Signature
+- Format:
+  - [header].[payload].[signature]
+- Base64Url encoded, hashed and signed with secret
+
+---
+
+# JWT Token - header
+- consists of two parts:  
+  - the type of the token, which is JWT,
+  - and the hashing algorithm being used, such as HMAC SHA256 or RSA.
+  - Gets Base64Url encoded
+
+``` json
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+---
+
+# JWT Payload
+- Contains claims about entity (User/Account)
+- Reserved claims - issuer, expiration, subject, audience
+- Public claims - anything custom json about entity
+- Private claims - custom claims created to share information between parties that agree on using them
+- Base64Url encoded
+
+---
+
+# JWT Payload - Example
+- Reserved and Public claims
+
+``` json
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true
+}
+```
+
+---
+
+# JWT Payload Signature
+- encoded header + encode payload
+- Use secret and algorithm specified in the header to sign
+
+``` groovy
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret)
+```
+
+---
+
+# Spring Boot Security
+- `compile('org.springframework.boot:spring-boot-starter-security')`
+
+---
+
+# JWT with Spring Security
+- `compile('io.jsonwebtoken:jjwt:0.6.0')`
 
 ---
 
@@ -383,17 +468,6 @@ class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
   }
 }
 ```
-
----
-
-# Spring Boot Security
-- `compile('org.springframework.boot:spring-boot-starter-security')`
-
----
-
-# JWT with Spring Security
-- add to build.gradle
-- `compile('io.jsonwebtoken:jjwt:0.6.0')`
 
 ---
 
