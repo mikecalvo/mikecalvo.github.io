@@ -139,29 +139,29 @@ private static ClientHttpRequestFactory getClientHttpRequestFactory() {
 
 ``` groovy
 @Autowired
-  RestTemplate restTemplate
+RestTemplate restTemplate
 
-  @Autowired
-  TestRestTemplate testRestTemplate
+@Autowired
+TestRestTemplate testRestTemplate
 
-  MockRestServiceServer mockServer
+MockRestServiceServer mockServer
 
-  def "get articles"() {
-    setup:
-    mockServer = MockRestServiceServer.createServer(restTemplate)
+def "get articles"() {
+  setup:
+  mockServer = MockRestServiceServer.createServer(restTemplate)
 
-    mockServer.expect(requestTo(new StringContains("/svc/mostpopular/v2/mostviewed/food/1.json"))).andExpect(method(HttpMethod.GET))
-              .andRespond(withSuccess("{}", MediaType.APPLICATION_JSON_UTF8))
+  mockServer.expect(requestTo(new StringContains("/svc/mostpopular/v2/mostviewed/food/1.json"))).andExpect(method(HttpMethod.GET))
+            .andRespond(withSuccess("{}", MediaType.APPLICATION_JSON_UTF8))
 
-    when:
-    def responseEntity = testRestTemplate.getForEntity("/articles/food/1", Map)
+  when:
+  def responseEntity = testRestTemplate.getForEntity("/articles/food/1", Map)
 
-    then:
-    mockServer.verify()
+  then:
+  mockServer.verify()
 
 
-    responseEntity.body == [:]
-    responseEntity.statusCode == HttpStatus.OK
-  }
+  responseEntity.body == [:]
+  responseEntity.statusCode == HttpStatus.OK
+}
 
 ```
