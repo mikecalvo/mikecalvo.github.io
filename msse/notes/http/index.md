@@ -133,6 +133,8 @@ private static ClientHttpRequestFactory getClientHttpRequestFactory() {
     - Setup Mock responses to return during test execution
     - Returned just like actual response
 
+---
+
 # Example Test
 
 ``` groovy
