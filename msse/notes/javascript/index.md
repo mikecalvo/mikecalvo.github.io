@@ -3,7 +3,7 @@ title: Web Application Development
 layout: default
 ---
 
-# Javascript
+# Javascript &amp; TypeScript
 
 ## Mike Calvo
 
@@ -401,3 +401,229 @@ parse_number.test('192.168.1.1'); // false
 - 'Eloquent JavaScript' by Haverbeke
 - 'Functional JavaScript' by Fogus
 - 'JavaScript Design Patterns' by Osmani
+
+---
+
+# Typescript
+
+- Developed and maintained by Microsoft
+- First release: 2012
+- Superset of Javascript
+- Created by Anders Hejlsberg (C#)
+
+---
+
+# Typescript is a Transpiler
+
+- All Typescript is turned into Javascript to be run in the browser
+  - Java -> bytecode
+  - Typescript -> Javascript
+- Allows functionality to be developed without waiting for browser support
+  - Typescript already supports some EMCA 7 features
+
+---
+
+# Features
+
+- Support for optional typing
+  - Compile time type checking
+- Inheritance
+- Generics
+- Classes
+- Modules
+
+---
+
+# Optional typing
+
+- Can detect bad typing
+- Can define strictness in compiler config for typescript (tsconfig.json)
+  - Will still generate javascript - but will give IDE errors
+
+---
+
+# Basic TypeScript types
+- Boolean
+- Number
+- String
+- Array
+- Tuple
+- Enum
+- Any
+
+---
+
+# Type Assertions
+- Casting or forcing a variable to a type
+
+``` TypeScript
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length;
+let anotherLength: number = (someValue as string).length;
+```
+
+---
+
+# Defining types
+
+- Variable level
+
+```javascript
+let greeting : string;
+```
+
+- Function level
+
+```javascript
+function sum(x : number, y : number) : number {
+  return x + y;
+};
+```
+
+---
+
+# Type inference
+
+```javascript
+function sum(x, y : number) : number {
+  return x + y;
+};
+```
+
+- Typescript determines `x` has to be a number
+- No error unless `"noImplicitAny": true`
+- Changing to `x : string` produces an error
+
+---
+# Interfaces
+- Abstract types
+- Can have properties
+  - Optional and readonly
+- Can describe function signatures
+  - Return types and parameters
+
+---
+
+# Interface Example
+
+``` TypeScript
+
+interface Person {
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  readonly age: number;
+}
+
+function greeter(person: Person) {
+  return "Hello, "+person.firstName+" "+person.lastName;
+}
+
+document.body.innerHTML = greeter({firstName: 'Joe', lastName: 'Smith'});
+```
+
+---
+# Function Type Example
+
+``` TypeScript
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+    let result = source.search(subString);
+    return result > -1;
+}
+```
+
+---
+# TypeScript Classes
+- User defined types
+- Properties
+- Methods
+- Constructors
+- Visibility: private, public, protected
+- Inheritance
+- Static
+
+---
+
+# Class Example
+
+``` TypeScript
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+}
+
+let greeter = new Greeter("world");
+```
+
+---
+# Class Accessors
+
+``` TypeScript
+class Employee {
+    private _fullName: string;
+
+    get fullName(): string {
+        return this._fullName;
+    }
+
+    set fullName(newName: string) {
+        if (passcode && passcode == "secret passcode") {
+            this._fullName = newName;
+        }
+        else {
+            console.log("Error: Unauthorized update of employee!");
+        }
+    }
+}
+```
+
+---
+
+# Modules
+- Proper include functionality
+
+greet.ts:
+
+``` TypeScript
+export function sayHello(name: string) {
+    return `Hello from ${name}`;
+}
+```
+
+main.ts:
+
+``` TypeScript
+import { sayHello } from "./greet";
+
+console.log(sayHello("TypeScript"));
+```
+
+---
+
+# Let, Var and Const
+- Declare variables using `let`, `var`, and `const`
+- var: Define a global variable
+- let: block-scoped variable
+- const: block-scoped constant variable
+
+---
+
+# Spread Operator
+- Extract the values of an array
+
+``` TypeScript
+let first = [1, 2];
+let second = [3, 4];
+let bothPlus = [0, ...first, ...second, 5];
+// bothPlus = [0, 1, 2, 3, 4, 5]
+```

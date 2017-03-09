@@ -16,7 +16,7 @@ Week | Topics | Reading | Instructor | Example Code
 5 <br> 2/18/17 | [HTTP Basics](notes/http_basics) / [REST](notes/rest) | &nbsp; | Adam | [week5 git](https://github.umn.edu/keys0013/week5)&nbsp;
 6 <br> 2/24/17 | [Spring MVC / Spring Data Rest](notes/spring_web2) / [Integration & Functional Testing](notes/functional_testing) | [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) / [Spring Data Rest](http://docs.spring.io/spring-data/rest/docs/current/reference/html/) / [Spring Integration Testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/integration-testing.html) | Adam / Marc | &nbsp;
 7 <br> 3/4/17  | [Security](notes/security) / [Http Clients](notes/http)  | [Spring Security](http://docs.spring.io/spring-security/site/docs/4.2.3.BUILD-SNAPSHOT/reference/htmlsingle/) / [RESTTemplate](http://docs.spring.io/spring/docs/current/javadoc-api//org/springframework/web/client/RestTemplate.html) / [JWT](https://jwt.io/) | Marc | [Week 7](https://github.umn.edu/kapk0003/week7)
-8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | &nbsp; | Adam | &nbsp;
+8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | &nbsp; | Mike | &nbsp;
  | **SPRING BREAK** |
 9 <br> 3/25/17  | [Intro to Angular](notes/angular_intro) / [Node and Gulp](notes/node) / [Jasmine and Karma](notes/karma) | &nbsp; | Marc | &nbsp;
 10 <br> 3/31/17 | [Angular Controllers](notes/ng_controllers) / [Angular Routing](notes/ng_routing) | &nbsp; | Marc | &nbsp;
