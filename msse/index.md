@@ -21,7 +21,7 @@ Week | Topics | Reading | Instructor | Example Code
 9 <br> 3/25/17  | [Intro to Angular](notes/angular_intro) / [Node and Gulp](notes/node) / [Jasmine and Karma](notes/karma) | &nbsp; | Marc | &nbsp;
 10 <br> 3/31/17 | [Angular Controllers](notes/ng_controllers) / [Angular Routing](notes/ng_routing) | &nbsp; | Marc | &nbsp;
 11 <br> 4/8/17  | [Angular Bootstrap](notes/ng_bootstrap) / [Angular REST](notes/ng_rest) | &nbsp; | Marc | &nbsp;
-12 <br> 4/14/17 | [Angular Validation](notes/ng_validation) / [Angular Services](notes/ng_services) / [Angular Directives](notes/ng_directives) / [Angular Filters](notes/ng_filters) | &nbsp; | Mike | &nbsp;
+12 <br> 4/14/17 | [Angular Validation](notes/ng_validation) / [Angular Services](notes/ng_services) / [Angular Directives](notes/ng_directives) / [Angular Filters](notes/ng_filters) | &nbsp; | Adam | &nbsp;
 13 <br> 4/22/17 | MicroServices / [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | &nbsp; | Adam | &nbsp;
 | **GRADUATION** |
 14 <br> 5/6/17  | Alternatives to SpringBoot and AngularJS | &nbsp; | Mike | &nbsp;
