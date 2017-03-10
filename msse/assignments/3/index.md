@@ -29,10 +29,10 @@ The Navigation requirements are for providing a global way (available on every p
 
 # Search by Song
 - S1: Search by Song screen allows users to query against Spotify search API for songs
-  - Spotify API Reference: https://developer.spotify.com/web-api/search-item/
-  - Search by Track: https://api.spotify.com/v1/search?q=abba&type=track
+  - [Spotify API Reference](https://developer.spotify.com/web-api/search-item/)
+  - [Search by Track](https://api.spotify.com/v1/search?q=abba&type=track)
 - S2: Search results are displayed as list
 - S3: Individual search result displays Artist name, song title and release date
   - Use Spotify API to retrieve additional required track/artist details about individual search results
-  - API call for details: https://api.spotify.com/v1/albums/0C36RlW2Fa0C7n1JnWBBMP
+  - [API call for details](https://api.spotify.com/v1/albums/0C36RlW2Fa0C7n1JnWBBMP)
 - S4: Search screen shows the currently logged in user
