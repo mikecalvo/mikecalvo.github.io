@@ -34,9 +34,5 @@ The Navigation requirements are for providing a global way (available on every p
 - S2: Search results are displayed as list
 - S3: Individual search result displays Artist name, song title and release date
   - Use Spotify API to retrieve additional required track/artist details about individual search results
-  - API call for details: https://api.spotify.com/v1/albums/0C36RlW2Fa0C7n1JnWBBMP 
-
-# Navigation Requirements
-- N1: Search by Song
-- N2: Navigation section shows the currently logged in user
-- N3: Logout - clicking this should bring you to the login screen and provide a helpful message 'Sorry to see you go... etc'
+  - API call for details: https://api.spotify.com/v1/albums/0C36RlW2Fa0C7n1JnWBBMP
+- S4: Search screen shows the currently logged in user
