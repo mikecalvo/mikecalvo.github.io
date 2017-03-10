@@ -18,16 +18,6 @@ layout: default
 
 ---
 
-# Installing Bootstrap
-- `bower install bootstrap`
-- Adds bower_components/bootstrap
-- Resources to include are in 'dist' folder
-  - CSS
-  - JavaScripts
-  - Glyph icons
-
----
-
 # Bootstrap Page Requirements
 - Include jQuery library before Bootstrap
 - Set the viewport:
@@ -36,7 +26,8 @@ layout: default
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-- Include the bootstrap css AND js files (from bower_components)
+- Include the bootstrap css AND js files
+  - Download from getboostrap.com
 
 ---
 
