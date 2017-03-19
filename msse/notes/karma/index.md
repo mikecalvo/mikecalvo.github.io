@@ -5,9 +5,9 @@ layout: default
 
 # Jasmine and Karma
 
-## Mike Calvo
+## Marc Kapke
 
-## mike@citronellasoftware.com
+## kapkema@gmail.com
 
 ---
 # Unit Testing Angular Code
@@ -260,7 +260,7 @@ config.set({
 ```
 
 ---
-# Integrating Karma and Grails
+# Integrating Karma and Gradle
 - Install Karma test runner grails plugin:
 
 In Build.Config:
