@@ -18,10 +18,10 @@ Week | Topics | Reading | Instructor | Example Code
 7 <br> 3/4/17  | [Security](notes/security) / [Http Clients](notes/http)  | [Spring Security](http://docs.spring.io/spring-security/site/docs/4.2.3.BUILD-SNAPSHOT/reference/htmlsingle/) / [RESTTemplate](http://docs.spring.io/spring/docs/current/javadoc-api//org/springframework/web/client/RestTemplate.html) / [JWT](https://jwt.io/) | Marc | [Week 7](https://github.umn.edu/kapk0003/week7)
 8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | [TypeScript Quick Start](https://www.typescriptlang.org/docs/tutorial.html) | Mike | [TypeScript Examples](https://github.umn.edu/calvo001/typescript_examples)
  | **SPRING BREAK** |
-9 <br> 3/25/17  | [Intro to Angular](notes/angular_overview) / [Gradle and NPM](notes/gradle_angular) / [Angulare Testing](notes/angular_testing) | [Angular Docs](https://angular.io/docs/ts/latest/) / [Angular Testing](https://angular.io/docs/ts/latest/guide/testing.html) | Marc | [Week 09](https://github.umn.edu/kapk0003/week09)
-10 <br> 3/31/17 | [Angular Controllers](notes/ng_controllers) / [Angular Routing](notes/ng_routing) | &nbsp; | Marc | &nbsp;
-11 <br> 4/8/17  | [Angular Bootstrap](notes/ng_bootstrap) / [Angular REST](notes/ng_rest) | &nbsp; | Marc | &nbsp;
-12 <br> 4/14/17 | [Angular Validation](notes/ng_validation) / [Angular Services](notes/ng_services) / [Angular Directives](notes/ng_directives) / [Angular Filters](notes/ng_filters) | &nbsp; | Adam | &nbsp;
+9 <br> 3/25/17  | [Intro to Angular](notes/angular_overview) / [Gradle and NPM](notes/gradle_angular) / [Angular Testing](notes/angular_testing) | [Angular Docs](https://angular.io/docs/ts/latest/) / [Angular Testing](https://angular.io/docs/ts/latest/guide/testing.html) | Marc | [Week 09](https://github.umn.edu/kapk0003/week09)
+10 <br> 3/31/17 | Angular Components / Angular Routing | &nbsp; | Marc | &nbsp;
+11 <br> 4/8/17  | Angular Bootstrap / Angular REST | &nbsp; | Marc | &nbsp;
+12 <br> 4/14/17 | Angular Validation / Angular Services / Angular Directives / Angular Filters | &nbsp; | Adam | &nbsp;
 13 <br> 4/22/17 | MicroServices / [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | &nbsp; | Adam | &nbsp;
 | **GRADUATION** |
 14 <br> 5/6/17  | Alternatives to SpringBoot and AngularJS | &nbsp; | Mike | &nbsp;
