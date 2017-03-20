@@ -22,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/msse/index.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="144" lean-forward="false" selection-start-line="20" selection-start-column="144" selection-end-line="20" selection-end-column="144" />
+              <caret line="20" column="272" lean-forward="false" selection-start-line="20" selection-start-column="272" selection-end-line="20" selection-end-column="272" />
               <folding />
             </state>
           </provider>
@@ -342,12 +342,12 @@
       <workItem from="1487541722823" duration="643000" />
       <workItem from="1487616594355" duration="709000" />
       <workItem from="1487947830277" duration="4000" />
-      <workItem from="1489943088558" duration="1705000" />
+      <workItem from="1489943088558" duration="1755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3209000" />
+    <option name="totallyTimeSpent" value="3259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1413" extended-state="6" />
@@ -439,7 +439,7 @@
     <entry file="file://$PROJECT_DIR$/msse/index.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="144" lean-forward="false" selection-start-line="20" selection-start-column="144" selection-end-line="20" selection-end-column="144" />
+          <caret line="20" column="272" lean-forward="false" selection-start-line="20" selection-start-column="272" selection-end-line="20" selection-end-column="272" />
           <folding />
         </state>
       </provider>
