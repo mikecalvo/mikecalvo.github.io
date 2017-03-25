@@ -23,7 +23,7 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
 
 # Search by Song
 - SS1: Search results display each song as artist name, song title and release date
-  - - [Search by Track](https://api.spotify.com/v1/search?q=abba&type=track)
+  - [Search by Track](https://api.spotify.com/v1/search?q=abba&type=track)
 - SS2: Clicking an individual song takes to the Album details its a part of.
 
 # Search by Artist Results
