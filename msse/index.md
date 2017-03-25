@@ -20,8 +20,8 @@ Week | Topics | Reading | Instructor | Example Code
  | **SPRING BREAK** |
 9 <br> 3/25/17  | [Intro to Angular](notes/angular_overview) / [Gradle and NPM](notes/gradle_angular) / [Angular Testing](notes/angular_testing) | [Angular Docs](https://angular.io/docs/ts/latest/) / [Angular Testing](https://angular.io/docs/ts/latest/guide/testing.html) | Marc | [Week 09](https://github.umn.edu/kapk0003/week09)
 10 <br> 3/31/17 | Angular Components / Angular Routing | &nbsp; | Marc | &nbsp;
-11 <br> 4/8/17  | Angular Bootstrap / Angular REST | &nbsp; | Marc | &nbsp;
-12 <br> 4/14/17 | Angular Validation / Angular Services / Angular Directives / Angular Filters | &nbsp; | Adam | &nbsp;
+11 <br> 4/8/17  | Angular Bootstrap / Angular Services / Angular Directives | &nbsp; | Marc | &nbsp;
+12 <br> 4/14/17 | Angular Forms / Angular Validation /  Angular Filters | &nbsp; | Adam | &nbsp;
 13 <br> 4/22/17 | MicroServices / [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | &nbsp; | Adam | &nbsp;
 | **GRADUATION** |
 14 <br> 5/6/17  | Alternatives to SpringBoot and AngularJS | &nbsp; | Mike | &nbsp;
