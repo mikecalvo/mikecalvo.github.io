@@ -294,7 +294,7 @@ npm_run_start.dependsOn npm_run_build
 - Define what to do when `clean` runs
 - Remove all non-source required to build
 
-``` 
+```
 clean {
 	final def webDir = "${project.projectDir}"
 	delete "${webDir}/node"
@@ -303,3 +303,41 @@ clean {
 	delete "${webDir}/coverage"
 }
 ```
+
+---
+
+# Enable proxy calls to Spring Boot
+- Add `proxy.config.json` in same directory as `package.json`
+
+``` javascript
+{
+  "/api/*": {
+    "target": "http://localhost:8080/",
+    "secure": false
+  }
+}
+```
+
+---
+
+# Update `npm start`
+- Include proxy.config when running `npm start`
+- This is defined in `package.json`
+
+```
+"scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.config.json",
+    "build": "ng build",
+    "test": "ng test --watch false",
+    "test-watcher": "ng test"
+  },
+```
+
+
+---
+
+# Putting it all together
+- Run(Debug) your SpringBoot server
+- From your root directory run `./gradlew npm_run_start`
+- Access front-end from `http://localhost:4200`

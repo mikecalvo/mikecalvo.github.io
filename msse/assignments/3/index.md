@@ -22,9 +22,9 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
 - S3: Search results are displayed as list
 
 # Search by Song
-- SS1: Search results display each song as artist name, song title and release date
+- SS1: Search results display each song as artist name, album name and song title
   - [Search by Track](https://api.spotify.com/v1/search?q=abba&type=track)
-- SS2: Clicking an individual song takes to the Album details its a part of.
+- SS2: Clicking an individual song takes you to the Album details its a part of.
 
 # Search by Artist Results
 - SA1: Search results display each artist as Artist name, and related image
