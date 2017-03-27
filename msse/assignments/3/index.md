@@ -20,6 +20,7 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
 - S2: Query against Spotify search API by selected type and search term.
   - [Spotify API Reference](https://developer.spotify.com/web-api/search-item/)
 - S3: Search results are displayed as list
+- S4: Search results can be paged through
 
 # Search by Song
 - SS1: Search results display each song as artist name, album name and song title
