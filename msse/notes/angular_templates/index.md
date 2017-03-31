@@ -191,7 +191,7 @@ slidenumbers: true
 ---
 
 # NgClass
-- NgClass accepts map of cssClassName:[true|false]
+- NgClass accepts map of cssClassName:`[true|false]`
 
 ``` javascript
 // CSS classes: added/removed per current state of component properties
