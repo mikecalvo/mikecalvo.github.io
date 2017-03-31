@@ -19,8 +19,8 @@ Week | Topics | Reading | Instructor | Example Code
 8 <br> 3/10/17 | [HTML and CSS](notes/html_css) / [JavaScript and TypeScript](notes/javascript) / [Bootstrap](notes/bootstrap) | [TypeScript Quick Start](https://www.typescriptlang.org/docs/tutorial.html) | Mike | [TypeScript Examples](https://github.umn.edu/calvo001/typescript_examples)
  | **SPRING BREAK** |
 9 <br> 3/25/17  | [Intro to Angular](notes/angular_overview) / [Gradle and NPM](notes/gradle_angular) / [Angular Testing](notes/angular_testing) | [Angular Docs](https://angular.io/docs/ts/latest/) / [Angular Testing](https://angular.io/docs/ts/latest/guide/testing.html) | Marc | [Week 09](https://github.umn.edu/kapk0003/week09)
-10 <br> 3/31/17 | Angular Components / Angular Routing | &nbsp; | Marc | &nbsp;
-11 <br> 4/8/17  | Angular Bootstrap / Angular Services / Angular Directives | &nbsp; | Marc | &nbsp;
+10 <br> 3/31/17 | [Angular Components](notes/angular_components) / [Angular Routing](notes/angular_routing) / [Angular Templates](notes/angular_templates) | &nbsp; | Marc | [Week 10](https://github.umn.edu/kapk0003/week10)
+11 <br> 4/8/17  | Angular Bootstrap / Functional Testing | &nbsp; | Marc | &nbsp;
 12 <br> 4/14/17 | Angular Forms / Angular Validation /  Angular Filters | &nbsp; | Adam | &nbsp;
 13 <br> 4/22/17 | MicroServices / [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | &nbsp; | Adam | &nbsp;
 | **GRADUATION** |
