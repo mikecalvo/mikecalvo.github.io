@@ -155,6 +155,48 @@ describe('ArticleDetailSimpleComponent', () => {
 
 ---
 
+
+# TestBed
+-  `TestBed` is a testing `@NgModule`
+-  Specialized root module designed to run component under test
+
+---
+
+# `configureTestingModule()`
+- Initialize TestBed in a `beforeEach`
+- This will reset component before each spec in suite
+
+``` javascript
+beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ MyComponent ]
+    });
+  })
+```
+
+---
+
+# TestBed - createComponent
+- Create an instance of the component under test
+- Do this in beforeEach as well.
+- `TestBed.createComponent(MyComponent)` returns a ComponentFixture
+
+---
+
+# `ComponentFixture`
+
+- Provides access to the component itself
+- Access to `DebugElement` - which is component's DOM element
+- Query the `DebugElement` to access template state
+
+---
+
+# `detectChanges()`
+- detectChanges will trigger data binding
+- You must do this when you want the view to reflect model
+
+---
+
 # Example tests
 
 ``` javascript
