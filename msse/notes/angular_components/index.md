@@ -147,7 +147,7 @@ describe('ArticleDetailSimpleComponent', () => {
 
 ---
 
-# Second 'beforeEach'
+# Second `beforeEach`
 - Synchronous test Setup
 - happens only after async setup completes
 - This is where fixture and component are created.
