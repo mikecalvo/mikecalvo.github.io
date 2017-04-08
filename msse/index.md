@@ -20,7 +20,7 @@ Week | Topics | Reading | Instructor | Example Code
  | **SPRING BREAK** |
 9 <br> 3/25/17  | [Intro to Angular](notes/angular_overview) / [Gradle and NPM](notes/gradle_angular) / [Angular Testing](notes/angular_testing) | [Angular Docs](https://angular.io/docs/ts/latest/) / [Angular Testing](https://angular.io/docs/ts/latest/guide/testing.html) | Marc | [Week 09](https://github.umn.edu/kapk0003/week09)
 10 <br> 3/31/17 | [Angular Components](notes/angular_components) / [Angular Routing](notes/angular_routing) / [Angular Templates](notes/angular_templates) | &nbsp; | Marc | [Week 10](https://github.umn.edu/kapk0003/week10)
-11 <br> 4/8/17  | Angular Bootstrap / Functional Testing | &nbsp; | Marc | &nbsp;
+11 <br> 4/8/17  | [Angular Bootstrap](notes/ng_bootstrap) / [Functional Testing](notes/geb_testing) | [ng-bootsrap](https://ng-bootstrap.github.io/#/home) / [Geb](http://www.gebish.org/manual/current/#navigator) | Marc | [Week 11](https://github.umn.edu/kapk0003/week11)
 12 <br> 4/14/17 | Angular Forms / Angular Validation /  Angular Filters | &nbsp; | Adam | &nbsp;
 13 <br> 4/22/17 | MicroServices / [Docker](notes/docker) / [Cloud Deployments](notes/cloud_deploy) | &nbsp; | Adam | &nbsp;
 | **GRADUATION** |

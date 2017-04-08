@@ -5,252 +5,250 @@ layout: default
 
 # Angular Bootstrap
 
-## Mike Calvo
+## Marc Kapke
 
-## mike@citronellasoftware.com
-
----
-
-# Modular Components
-- Recall creating an app came from the following call that defines a module
-
-``` javascript
-angular.module('app', [ ])
-```
-
-- The second argument is the list of modules the new module depends on
-- You can break up your functionality into libraries of modules that can be reused between applications
-- Third-party Angular plugins/modules work this way
+## kapkema@gmail.com
 
 ---
 
 # Angular UI Bootstrap Module
-- Twitter Bootstrap provides a collection of rich web UI controls
-  - Examples: alerts, typeahead, modals, accordion
-- [http://angular-ui.github.io/bootstrap/](http://angular-ui.github.io/bootstrap/)
-- The Angular UI module makes these available in an Angular friendly way:
-  - Directives and controllers
+- Angular Bootstrap provides a collection of rich web UI controls
+  - Examples: carousel, accordion, typeahead, modals
+- Controls built with Twitter bootstrap styling
+- [https://ng-bootstrap.github.io/#/home](https://ng-bootstrap.github.io/#/home)
+- The Angular UI module makes these available in an Angular friendly way
+
 
 ---
 
-# Adding Angular UI Bootstrap To Grails Project
-1. Use bower/grunt to install bootstrap and angular-ui
-1. Update application.js and application.css to include dependencies
-1. Add the module reference to your app module definition
+# Adding Angular UI Bootstrap To Project
+1. Use npm to install ng-bootstrap, bootstrap@4.0.0-alpha.6, jquery, tether
+1. Update `.angular-cli.json` to include bootstrap
+1. Import `NgbModule.forRoot()` in root module
+1. Import `NbgModule` into sub-modules
 
 ---
 
 # Install Latest Version of Bootstrap and Angular UI
 - From your root directory
-`./node_modules/.bin/bower install bootstrap angular-bootstrap --save`
-- Verify:
-  - Check bower.json
-  - Check grails-app/assets/bower_modules
+- `./gradlew npm_install_--save_@ng-bootstrap/ng-bootstrap`
+- `./gradlew npm_install_--save_bootstrap@4.0.0-alpha.6`
+- `./gradlew npm_install_--save_jquery`
+- `./gradlew npm_install_--save_tether`
+
 
 ---
 
-# Update JavaScript Asset References
-- In grails-app/assets/javascripts/application.js:
+# Update `.angular-cli` styles block
+
+``` json
+"styles": [
+  "styles.css", "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+],
+
+```
+
+---
+
+# Update App Module Imports
 
 ``` javascript
-//= require jquery/dist/jquery
-//= require bootstrap/dist/js/bootstrap
-//= require angular/angular
-//= require angular-bootstrap/ui-bootstrap-tpls
-//= require_self
-//= require_tree .
+@NgModule({
+  declarations: [
+    AppComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule,
+    NgbModule.forRoot(),
+    ArticleModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 ---
 
-# Update CSS Asset References
-- In grails-app/assets/stylesheets/application.css
-
-``` css
-/*
-*= require bootstrap/dist/css/bootstrap
-*= require bootstrap/dist/css/bootstrap-theme
-*= require main
-*= require mobile
-*= require_self
-*/
-```
+# Carousel control
+- Slideshow for cycling through a series of content
+- Built with CSS 3D transforms and JavaScript.
+- Can be a series of images, text, or custom markup.
+- Includes support for previous/next controls and indicators.
 
 ---
 
-# Upate App Module Dependencies
-- Where you define your module (likely application.js):
-
-``` javascript
-angular.module('app', ['ui.bootstrap']);
-```
-
-- Run your app: make sure Angular still without errors to Javascript console
-
----
-
-# Control 1: Typeahead
-- Let's add a typeahead control to our edit artist name control
-- As the user types the artist name, show a list of choices that match the name
-
----
-
-# Typeahead: Example
-
-``` javascript
-$scope.getArtist = function (input) {
-  var results = [];
-  input = input.toLowerCase();
-  var plays = $scope.plays;
-  for (var i = 0; i < plays.length && results.length < 8; i++) {
-    var artist = plays[i].artist;
-    if (artist && artist.name.toLowerCase().indexOf(input) !== -1) {
-      results.push(artist.name);
-    }
-  }
-
-  return results;
-}
-```
+# Carousel control
 
 ``` html
-<input placeholder="Artist"
-                 ng-model="newPlay.artist.name"
-                 typeahead="artist for artist in getArtist($viewValue)"/>
-```
-
----
-
-# Control 2: Alerts
-- Alerts are highlighted areas for displaying messages
-- danger: errors
-- success: confirmation
-- info: plain messages
-- [http://angular-ui.github.io/bootstrap/#/alert](http://angular-ui.github.io/bootstrap/#/alert)
-
----
-
-# Add a Confirmation Alert on Add
-```javascript
-$scope.alerts = [];
-
-$scope.savePlay = function () {
-  $scope.plays.push($scope.newPlay);
-  $scope.alerts.push({type: 'success', msg: 'Song play added'});
-  delete $scope.newPlay;
-};
-
-$scope.closeAlert = function(index) {
-  $scope.alerts.splice(index, 1);
-}
-```
-
-```html
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-```
-
----
-
-# Control 3: Modal Dialogs
-- Add a delete button for each play
-- Confirm the delete with a modal dialog
-- Bootstrap Modal control
-  - Supply a template for the modal (view)
-  - Supply a controller for the modal
-  - Provide handlers for close (ok) and dismiss (cancel)
-
----
-
-# Add New Column To Plays Table
-
-``` html
-<table>
-  <thead>
-  <tr>
-    <td>Title</td><td>Artist</td><td>Date/Time</td><td></td>
-  </tr>
-  </thead>
-  <tr ng-repeat="play in plays">
-    <td>{{ play.song.title }}</td>
-    <td>{{ play.artist.name }}</td>
-    <td>{{ play.time | date :'medium' }}</td>
-    <td>
-      <button ng-click="deletePlay(play)"><i class="glyphicon glyphicon-trash"></i></button>
-    </td>
-  </tr>
-```
-
----
-
-# Add deletePlay Behavior
-
-```javascript
-angular.module('app').controller('songPlaysController', function ($scope, $modal) {
-  ...
-$scope.deletePlay = function (play) {
-  var modalInstance = $modal.open({
-    templateUrl: 'confirmDialog.html',
-    size: 'lg',
-    controller: 'confirmDialogController',
-    resolve: {
-      message: function () {
-        return 'Are you sure you want to delete "' + play.song.title + '" by ' + play.artist.name + '?'
-      },
-      title: function () {
-        return 'Confirm Play Delete';
-      }
-    }
-  });
-
-  modalInstance.result.then(function () {
-    $scope.plays.splice($scope.plays.indexOf(play), 1);
-    $scope.alerts.push({type: 'success', msg: 'Song play removed'});
-  });
-}
-```
-
----
-
-# Create confirmDialog.html Template
-- Put this in the web-app folder so it is served up from Grails:
-
-``` html
-<div>
-  <div class="modal-header">
-    <h3 class="modal-title">{{ title }}</h3>
-  </div>
-  <div class="modal-body">
-    {{ message }}
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+<div class="container" style="margin-top:5em;">
+  <div class="row">
+        <ngb-carousel class="col-12">
+          <template ngbSlide *ngFor="let article of articles">
+            <img class="carousel-image" [src]="getArticleImageUrl(article)" [alt]="getArticleImageCaption(article)">
+            <div class="carousel-caption">
+              <h3>{{article.title}}</h3>
+              <p>{{article.abstract}}</p>
+            </div>
+          </template>
+        </ngb-carousel>
   </div>
 </div>
 ```
 
 ---
 
-# Add a Controller for Confirm Dialog
+# Accordion control
+- Displays collapsible content panels
+- Used to present information in a limited amount of space.
+- Click headers to expand/collapse content
 
-``` javascript
+---
 
-  .controller('confirmDialogController', function ($scope, $modalInstance, title, message) {
-    $scope.message = message;
-    $scope.title = title;
+# Accordion control
 
-    $scope.ok = function () {
-      $modalInstance.close();
-    };
-
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
-  });
+``` html
+<div class="container" style="margin-top:5em;">
+  <div class="row">
+    <ngb-accordion [closeOthers]="true" activeIds="1" class="col-12">
+      <ngb-panel [id]="i" [title]="article.title" *ngFor="let article of articles, let i=index">
+        <template ngbPanelContent>
+          <h3>{{article.byline}}</h3>
+          {{article.abstract}}
+          <img class="accordion-image" [src]="getArticleImageUrl(article)"
+          [alt]="getArticleImageCaption(article)" (click)="open(article)">
+        </template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
 ```
 
 ---
 
-# Explore Other Controls
-- Glyph Icons
-- [http://angular-ui.github.io/bootstrap/](http://angular-ui.github.io/bootstrap/)
+# Modals
+- Modals are dialog prompts
+- A number of use cases from user notification to completely custom content
+- Helpful subcomponents, sizes, and more.
+
+---
+
+# Modal - view
+
+``` html
+<div class="modal-header">
+  <h4 class="modal-title">{{article?.title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+ <app-article-detail [article]="article" [showContent]="false"
+ [showTitle]="false" style="margin-top:-5em;"></app-article-detail>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>
+```
+
+---
+
+# Modal - component
+
+``` javascript
+@Component({
+  selector: 'app-article-detail-modal',
+  templateUrl: 'article-detail-modal.component.html',
+  styleUrls: ['article-detail-modal.component.css']
+})
+export class ArticleDetailModalComponent {
+
+  @Input() article: Article;
+  constructor(private activeModal: NgbActiveModal){
+
+  }
+
+}
+```
+
+---
+
+# Modal - open
+
+``` javascript
+open(article: Article) {
+  const modalRef = this.modalService.open(ArticleDetailModalComponent, {size:'lg'});
+  modalRef.componentInstance.article = article;
+}
+```
+---
+
+# Typeahead
+- AutoComplete behavior on input element
+- Type to narrow down results
+- Select from list of matching results
+
+---
+
+# Typeahead - view
+
+
+``` html
+<div class="container" style="margin-top:5em;">
+  <div class="row">
+    <div class="col-12">
+      <label>Search for Article:</label>
+      <input type="text" class="form-control" [(ngModel)]="article" [ngbTypeahead]="search" [resultFormatter]="formatter" [inputFormatter]="formatter"/>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <app-article-detail [article]="article" *ngIf="article?.title != null" style="margin-top:-5em;"></app-article-detail>
+  </div>
+</div>
+
+```
+
+---
+
+# Typeahead - component
+
+``` javascript
+export class ArticleListSearchComponent extends ArticleListComponent {
+  article: Article;
+
+  formatter = (result: Article) => result.title;
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.articles.filter(v => new RegExp(term, 'gi').test(v.title)).splice(0, 10));
+}
+```
+
+---
+
+# Dropdown
+- Menu for displaying lists of links.
+- Toggle menu open and closed
+
+---
+
+# Dropdown - view
+
+``` html
+<div ngbDropdown class="d-inline-block">
+ <label>Category: </label>
+ <button class="btn btn-outline-primary" id="dropdownMenu1"
+ ngbDropdownToggle>{{selectedCategory}}</button>
+ <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+   <button *ngFor="let category of categories"
+   class="dropdown-item" (click)="onCategoryChange(category)">{{category}}</button>
+ </div>
+</div>
+```
