@@ -10,7 +10,9 @@ layout: default
 ### Due Date: 4/14/2017
 
 # Assignment Overview
-In this assignment you will build on the domain and controller project started in assignments 1 and 2 to create a simple single page app user interface using AngularJS.  All requirements should be verified using Geb functional tests against a running Spring Boot application.
+In this assignment you will build on the domain and controller project started in assignments 1 and 2 to create a simple single page app user interface using AngularJS.
+All requirements should be verified using Geb functional tests against a running Spring Boot application.
+All components should validate Angular Dependency injection wiring and initialization using Jasmine.
 
 Feel free to use your creativity to build a usable and attractive web UI.  However, points will not be subtracted for 'ugly but functional implementations'.
 
@@ -21,6 +23,7 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
   - [Spotify API Reference](https://developer.spotify.com/web-api/search-item/)
 - S3: Search results are displayed as list
 - S4: Search results can be paged through
+- S5: Unit test all search page component methods using Jasmine
 
 # Search by Song
 - SS1: Search results display each song as artist name, album name and song title
