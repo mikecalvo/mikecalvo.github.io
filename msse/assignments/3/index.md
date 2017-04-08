@@ -33,6 +33,6 @@ Feel free to use your creativity to build a usable and attractive web UI.  Howev
 
 # Search Results by Album
 - Album1: Search results list display each album as Artist name, Album name and album cover
-- Album2: Clicking an individual album display Artist Name, Album Name, Album and cover and track listings, and release year
+- Album2: Clicking an individual album display Artist Name, Album Name, Album cover and track listings, and release year
 - Album3: Track listings should display track number, song title, and duration in minutes
 
