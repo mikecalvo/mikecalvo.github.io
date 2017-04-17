@@ -5,25 +5,26 @@ layout: default
 
 # Assignment #4
 
-### twtr
+### Playist final Assignment
 
-### Due Date: 5/7/2016
+### Due Date: 5/6/2017
 
 ---
 
 # Assignment Overview
-In this assignment you will complete the twtr messaging application.  All requirements should be verified using Geb functional tests against a running Grails application.
+
+The final assignment will complete the functionality for the playlist app.  You will implement screens for creating an account and logging in.  You will also create screens for creating playlists and modifying them.
 
 Feel free to use your creativity to build a usable and attractive web UI.  However, points will not be subtracted for 'ugly but functional implementations'.
 
 ---
 
 # Requirements
-The following screens/features must be implemented within a single page application using AngularJS:
+The following screens/features must be implemented within a single page application using AngularJS.  Verify these requirements using Geb functional tests.
 
-- R0. Allow for the logged in user to post a new message.
-- R1. Use a alert control from the Angular UI library to display an info message saying 'Message Posted!'.
-- R2. Use Angular validation to validate a message prior to posting it to the server via the REST API (client side validation).
-- R3. Write a Jasmine test to validate the Angular controller the message posting from R0.
-- R4. Create an Angular directive to display the follow button or "Following User" indicator on another user's account page. Validate this control with either a functional test or a Jasmine test.
-- R5. Use the AngularJS date filter to format the date of a message in the feed in this style: `Mar 16`.  Validate with a functional test.
+- R0. Create an account
+- R1. Log into account
+- R2. Logged in user can create a playlist
+- R3. Logged in user can add and remove a song to/from a playlist
+- R5. Use AngularJS validation to validate the account creation (email is valid format, name is required)
+- R6. Create an AngularJS directive to display information about an Album image, artist name and title.
