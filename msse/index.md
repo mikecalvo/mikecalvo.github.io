@@ -34,4 +34,3 @@ layout: default
 | [3/10/2017](assignments/2) | Spring Controllers & REST  |
 | [4/14/2017](assignments/3) | Angular Basics & Routing   |
 | [5/6/2017](assignments/4)  | Angular Forms and Security |
-
