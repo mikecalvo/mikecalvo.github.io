@@ -7,6 +7,7 @@ layout: default
 ## Adam Keyser
 
 ---
+
 # Pipes
 - Transform data only for display
 - Format data: currency, dates, numbers
@@ -73,9 +74,10 @@ let person.firstName = 'fred';
 - Seperate them all with a `:`
 
 ---
-
 # Chaining Pipes
 - Use the | to chain filters together
+
+`{{ birthday | date | uppercase}}`
 
 ---
 # Filtering Collections
@@ -168,7 +170,6 @@ it('transforms "abc" to "Abc"', () => {
     expect(pipe.transform('NAME')).toBe('Name');
   });
 ```
-
 
 ---
 
