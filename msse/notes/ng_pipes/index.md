@@ -77,7 +77,6 @@ let person.firstName = 'fred';
 # Chaining Pipes
 - Use the | to chain filters together
 
-`{{ birthday | date | uppercase}}`
 
 ---
 # Filtering Collections
