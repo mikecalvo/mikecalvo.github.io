@@ -135,7 +135,7 @@ theme: Next, 3
 - Stopping a container does not remove or delete it (can specify --rm)
 
 ``` groovy
-docker run —rm -ti ubuntu sleep 5`
+docker run --rm -ti ubuntu sleep 5
 ```
 
 ---
